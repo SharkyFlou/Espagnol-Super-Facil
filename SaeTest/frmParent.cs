@@ -18,24 +18,43 @@ namespace SaeTest
             InitializeComponent();
         }
 
-        string chcon = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\charl\OneDrive\Bureau\Charly\Cours\BUT S2\saeTest\SaeTest\SaeTest\baseLangue.mdb";
+        string chcon = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=..\..\baseLangue.mdb";
         OleDbConnection connec = new OleDbConnection();
+        
 
-
-        private void btnVersEnfant_Click(object sender, EventArgs e)
+        private void frmParent_Load(object sender, EventArgs e)
         {
-            frmEnfant feuille = new frmEnfant();
-            if (feuille.ShowDialog() == DialogResult.OK)
+            testConnexion();
+        }
+
+        private void txtLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
             {
-                MessageBox.Show("Tu as cliqué sur quitter", "mmh");
-            }
-            else
-            {
-                MessageBox.Show("Tu as cliqué sur la croix, ou tu as Alt+F4","mmh");
+                btnValide_Click(sender, e);
             }
         }
 
-        private void frmParent_Load(object sender, EventArgs e)
+        private void btnValide_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string login = txtLogin.Text;
+                connec.ConnectionString = chcon;
+                connec.Open();
+                OleDbCommand cd = new OleDbCommand("SELECT ");
+
+            }
+            finally
+            {
+                if (connec.State == ConnectionState.Open)
+                {
+                    connec.Close();
+                }
+            }
+        }
+
+        private void testConnexion()
         {
             try
             {
@@ -45,7 +64,7 @@ namespace SaeTest
             }
             catch (InvalidOperationException erreur)
             {
-                MessageBox.Show("Erreur de connexion à la base\n"+ erreur.Message+"\n"+ erreur.GetType());
+                MessageBox.Show("Erreur de connexion à la base\n" + erreur.Message + "\n" + erreur.GetType());
             }
             catch (OleDbException erreur)
             {
@@ -62,6 +81,35 @@ namespace SaeTest
                     connec.Close();
                 }
             }
+        }
+
+
+
+        private void recupExo(int numCours, int numLecon, int numExo)
+        {
+            try
+            {
+                connec.ConnectionString = chcon;
+                connec.Open();
+                string requete = "select textePhrase " +
+                                                    "from Phrases " +
+                                                    "where codePhrase=" +
+                                                                    "(select codePhrase " +
+                                                                    "from Exercices e " +
+                                                                    "where numExo=" + numExo + "" +
+                                                                    "and numLecon=" + numLecon + "" +
+                                                                    "and numCours=" + numCours+")";
+                OleDbCommand cd = new OleDbCommand(requete,connec);
+                cd.CommandType = CommandType.Text;
+                string phrase = cd.ExecuteScalar().ToString();
+                MessageBox.Show(phrase);
+            
+            }
+            finally
+            {
+                
+            }
+
         }
     }
 }

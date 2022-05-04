@@ -30,36 +30,47 @@ namespace SaeTest
         private void InitializeComponent()
         {
             this.lblYes = new System.Windows.Forms.Label();
-            this.btnVersEnfant = new System.Windows.Forms.Button();
+            this.txtLogin = new System.Windows.Forms.TextBox();
+            this.btnValide = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblYes
             // 
             this.lblYes.AutoSize = true;
-            this.lblYes.Location = new System.Drawing.Point(391, 64);
+            this.lblYes.Font = new System.Drawing.Font("Nirmala UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYes.Location = new System.Drawing.Point(294, 9);
             this.lblYes.Name = "lblYes";
-            this.lblYes.Size = new System.Drawing.Size(35, 17);
+            this.lblYes.Size = new System.Drawing.Size(247, 38);
             this.lblYes.TabIndex = 0;
-            this.lblYes.Text = "Yes !";
+            this.lblYes.Text = "Español súper fácil";
             // 
-            // btnVersEnfant
+            // txtLogin
             // 
-            this.btnVersEnfant.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnVersEnfant.Location = new System.Drawing.Point(260, 147);
-            this.btnVersEnfant.Name = "btnVersEnfant";
-            this.btnVersEnfant.Size = new System.Drawing.Size(321, 150);
-            this.btnVersEnfant.TabIndex = 1;
-            this.btnVersEnfant.Text = "Appel enfant";
-            this.btnVersEnfant.UseVisualStyleBackColor = true;
-            this.btnVersEnfant.Click += new System.EventHandler(this.btnVersEnfant_Click);
+            this.txtLogin.Location = new System.Drawing.Point(195, 116);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(270, 33);
+            this.txtLogin.TabIndex = 1;
+            this.txtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLogin_KeyPress);
+            // 
+            // btnValide
+            // 
+            this.btnValide.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnValide.Location = new System.Drawing.Point(484, 116);
+            this.btnValide.Name = "btnValide";
+            this.btnValide.Size = new System.Drawing.Size(134, 33);
+            this.btnValide.TabIndex = 2;
+            this.btnValide.Text = "Valider";
+            this.btnValide.UseVisualStyleBackColor = true;
+            this.btnValide.Click += new System.EventHandler(this.btnValide_Click);
             // 
             // frmParent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 427);
-            this.Controls.Add(this.btnVersEnfant);
+            this.Controls.Add(this.btnValide);
+            this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.lblYes);
             this.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -75,7 +86,8 @@ namespace SaeTest
         #endregion
 
         private System.Windows.Forms.Label lblYes;
-        private System.Windows.Forms.Button btnVersEnfant;
+        private System.Windows.Forms.TextBox txtLogin;
+        private System.Windows.Forms.Button btnValide;
     }
 }
 

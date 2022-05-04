@@ -36,9 +36,9 @@ namespace SaeTest
             // lblEnfant
             // 
             this.lblEnfant.AutoSize = true;
-            this.lblEnfant.Location = new System.Drawing.Point(221, 94);
+            this.lblEnfant.Location = new System.Drawing.Point(184, 83);
             this.lblEnfant.Name = "lblEnfant";
-            this.lblEnfant.Size = new System.Drawing.Size(104, 17);
+            this.lblEnfant.Size = new System.Drawing.Size(153, 28);
             this.lblEnfant.TabIndex = 0;
             this.lblEnfant.Text = "Je suis un enfant";
             // 
@@ -55,7 +55,7 @@ namespace SaeTest
             // 
             // frmEnfant
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(558, 341);
