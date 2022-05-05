@@ -18,13 +18,15 @@ namespace SaeTest
             InitializeComponent();
         }
 
+        //Initialise la chaine de connexion global, et un OleDbConnection global aussi
         string chcon = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=..\..\baseLangue.mdb";
         OleDbConnection connec = new OleDbConnection();
         
 
         private void frmParent_Load(object sender, EventArgs e)
         {
-            testConnexion();
+            //vérifie d'abord si l'application peut se connecter à la BDD
+            testConnexion(chcon,connec);
         }
 
         private void txtLogin_KeyPress(object sender, KeyPressEventArgs e)
@@ -54,31 +56,42 @@ namespace SaeTest
             }
         }
 
-        private void testConnexion()
+        //Fonction qui test la connexion à la BDD, avec la chaine de connexion donnée, et le OleDbConenction donné
+        public bool testConnexion(string Xchcon, OleDbConnection Xconnec)
         {
             try
             {
-                connec.ConnectionString = chcon;
-                connec.Open();
+                Xconnec.ConnectionString = Xchcon;
+                Xconnec.Open();
                 MessageBox.Show("Connecté à la BDD");
+                return true;
             }
+
+            //interception des erreurs possibles
             catch (InvalidOperationException erreur)
             {
                 MessageBox.Show("Erreur de connexion à la base\n" + erreur.Message + "\n" + erreur.GetType());
+                return false;
             }
             catch (OleDbException erreur)
             {
                 MessageBox.Show("Erreur de requete SQL" + erreur.Message + "\n" + erreur.GetType());
+                return false;
             }
+
+            //interception des autres eurreurs
             catch (Exception erreur)
             {
                 MessageBox.Show(erreur.Message + "\n\n" + "Nom erreur : '" + erreur.GetType() + "'");
+                return false;
             }
+
+            //fermeture du OledBConnection dans tout les cas
             finally
             {
-                if (connec.State == ConnectionState.Open)
+                if (Xconnec.State == ConnectionState.Open)
                 {
-                    connec.Close();
+                    Xconnec.Close();
                 }
             }
         }

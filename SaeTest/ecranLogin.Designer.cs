@@ -1,7 +1,7 @@
 ﻿
 namespace SaeTest
 {
-    partial class test
+    partial class ecranLogin
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -29,43 +29,46 @@ namespace SaeTest
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtLogin = new System.Windows.Forms.TextBox();
             this.btnValider = new System.Windows.Forms.Button();
+            this.cboLogin = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // txtLogin
-            // 
-            this.txtLogin.Location = new System.Drawing.Point(3, 3);
-            this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(243, 26);
-            this.txtLogin.TabIndex = 0;
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(252, 3);
+            this.btnValider.Location = new System.Drawing.Point(339, 200);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(167, 29);
+            this.btnValider.Size = new System.Drawing.Size(129, 25);
             this.btnValider.TabIndex = 1;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
             // 
-            // test
+            // cboLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.cboLogin.FormattingEnabled = true;
+            this.cboLogin.Location = new System.Drawing.Point(149, 201);
+            this.cboLogin.Name = "cboLogin";
+            this.cboLogin.Size = new System.Drawing.Size(169, 25);
+            this.cboLogin.TabIndex = 2;
+            // 
+            // ecranLogin
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.cboLogin);
             this.Controls.Add(this.btnValider);
-            this.Controls.Add(this.txtLogin);
-            this.Name = "test";
-            this.Size = new System.Drawing.Size(430, 33);
+            this.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Name = "ecranLogin";
+            this.Size = new System.Drawing.Size(597, 424);
+            this.Load += new System.EventHandler(this.ecranLogin_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtLogin;
         private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.ComboBox cboLogin;
     }
 }

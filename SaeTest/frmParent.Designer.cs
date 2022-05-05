@@ -30,8 +30,8 @@ namespace SaeTest
         private void InitializeComponent()
         {
             this.lblYes = new System.Windows.Forms.Label();
-            this.txtLogin = new System.Windows.Forms.TextBox();
             this.btnValide = new System.Windows.Forms.Button();
+            this.txtLogin = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblYes
@@ -40,17 +40,9 @@ namespace SaeTest
             this.lblYes.Font = new System.Drawing.Font("Nirmala UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblYes.Location = new System.Drawing.Point(294, 9);
             this.lblYes.Name = "lblYes";
-            this.lblYes.Size = new System.Drawing.Size(247, 38);
+            this.lblYes.Size = new System.Drawing.Size(170, 25);
             this.lblYes.TabIndex = 0;
             this.lblYes.Text = "Español súper fácil";
-            // 
-            // txtLogin
-            // 
-            this.txtLogin.Location = new System.Drawing.Point(195, 116);
-            this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(270, 33);
-            this.txtLogin.TabIndex = 1;
-            this.txtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLogin_KeyPress);
             // 
             // btnValide
             // 
@@ -63,9 +55,17 @@ namespace SaeTest
             this.btnValide.UseVisualStyleBackColor = true;
             this.btnValide.Click += new System.EventHandler(this.btnValide_Click);
             // 
+            // txtLogin
+            // 
+            this.txtLogin.Location = new System.Drawing.Point(195, 116);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(270, 25);
+            this.txtLogin.TabIndex = 1;
+            this.txtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLogin_KeyPress);
+            // 
             // frmParent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 427);
@@ -86,8 +86,8 @@ namespace SaeTest
         #endregion
 
         private System.Windows.Forms.Label lblYes;
-        private System.Windows.Forms.TextBox txtLogin;
         private System.Windows.Forms.Button btnValide;
+        private System.Windows.Forms.TextBox txtLogin;
     }
 }
 
