@@ -31,8 +31,7 @@ namespace SaeTest
         {
             this.lblYes = new System.Windows.Forms.Label();
             this.btnValide = new System.Windows.Forms.Button();
-            this.txtLogin = new System.Windows.Forms.TextBox();
-            this.ecranLogin1 = new SaeTest.ecranLogin();
+            this.cboLogin = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblYes
@@ -56,23 +55,14 @@ namespace SaeTest
             this.btnValide.UseVisualStyleBackColor = true;
             this.btnValide.Click += new System.EventHandler(this.btnValide_Click);
             // 
-            // txtLogin
+            // cboLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(195, 116);
-            this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(270, 33);
-            this.txtLogin.TabIndex = 1;
-            this.txtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLogin_KeyPress);
-            // 
-            // ecranLogin1
-            // 
-            this.ecranLogin1.BackColor = System.Drawing.Color.DimGray;
-            this.ecranLogin1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ecranLogin1.Location = new System.Drawing.Point(284, 163);
-            this.ecranLogin1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.ecranLogin1.Name = "ecranLogin1";
-            this.ecranLogin1.Size = new System.Drawing.Size(508, 252);
-            this.ecranLogin1.TabIndex = 3;
+            this.cboLogin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLogin.FormattingEnabled = true;
+            this.cboLogin.Location = new System.Drawing.Point(269, 116);
+            this.cboLogin.Name = "cboLogin";
+            this.cboLogin.Size = new System.Drawing.Size(195, 36);
+            this.cboLogin.TabIndex = 3;
             // 
             // frmParent
             // 
@@ -80,9 +70,8 @@ namespace SaeTest
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 427);
-            this.Controls.Add(this.ecranLogin1);
+            this.Controls.Add(this.cboLogin);
             this.Controls.Add(this.btnValide);
-            this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.lblYes);
             this.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -99,8 +88,7 @@ namespace SaeTest
 
         private System.Windows.Forms.Label lblYes;
         private System.Windows.Forms.Button btnValide;
-        private System.Windows.Forms.TextBox txtLogin;
-        private ecranLogin ecranLogin1;
+        private System.Windows.Forms.ComboBox cboLogin;
     }
 }
 

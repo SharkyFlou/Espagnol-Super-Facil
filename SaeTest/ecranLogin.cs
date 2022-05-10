@@ -27,41 +27,6 @@ namespace SaeTest
 
         private void ecranLogin_Load(object sender, EventArgs e)
         {
-            //vérifie d'abord si l'interface peut se connecter à la BDD
-            if(testConnexion(chcon, connec)) 
-            {
-                try
-                {
-                    //connection à la BDD
-                    connec.ConnectionString = chcon;
-                    connec.Open();
-
-                    string requete = "SELECT pnUtil || nomUtil " +
-                                                                "FROM Utilisateurs" +
-                                                                "ORDER BY codeUtil";
-                    OleDbCommand comm = new OleDbCommand(requete, connec);
-                    OleDbDataReader reader = comm.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        cboLogin.Items.Add(reader[0].ToString());
-                    }
-
-
-                }
-                //intercepetion et affichage de l'erreur si occurence
-                catch (Exception erreur)
-                {
-                    MessageBox.Show(erreur.Message + "\n\n" + "Nom erreur : '" + erreur.GetType() + "'");
-                }
-                //fermeture du OledBConnection dans tout les cas
-                finally
-                {
-                    if (connec.State == ConnectionState.Open)
-                    {
-                        connec.Close();
-                    }
-                }
-            }
 
         }
 

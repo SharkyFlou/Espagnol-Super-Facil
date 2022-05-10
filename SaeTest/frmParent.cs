@@ -26,22 +26,53 @@ namespace SaeTest
         private void frmParent_Load(object sender, EventArgs e)
         {
             //vérifie d'abord si l'application peut se connecter à la BDD
-            testConnexion(chcon,connec);
-        }
-
-        private void txtLogin_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
+            if (testConnexion(chcon, connec))
             {
-                btnValide_Click(sender, e);
+                chargeLogin();
             }
         }
+
+        private void chargeLogin()
+        {
+                try
+                {
+                    //connection à la BDD
+                    connec.ConnectionString = chcon;
+                    connec.Open();
+
+                    string requete = "SELECT (pnUtil +' '+ nomUtil) " +
+                                                                "FROM Utilisateurs " +
+                                                                "ORDER BY codeUtil";
+                    OleDbCommand comm = new OleDbCommand(requete, connec);
+                    OleDbDataReader reader = comm.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        cboLogin.Items.Add(reader[0].ToString());
+                    }
+
+
+                }
+                //intercepetion et affichage de l'erreur si occurence
+                catch (Exception erreur)
+                {
+                    MessageBox.Show(erreur.Message + "\n\n" + "Nom erreur : '" + erreur.GetType() + "'");
+                }
+                //fermeture du OledBConnection dans tout les cas
+                finally
+                {
+                    if (connec.State == ConnectionState.Open)
+                    {
+                        connec.Close();
+                    }
+                }
+        }
+
 
         private void btnValide_Click(object sender, EventArgs e)
         {
             try
             {
-                string login = txtLogin.Text;
+                string login = cboLogin.Text;
                 connec.ConnectionString = chcon;
                 connec.Open();
                 OleDbCommand cd = new OleDbCommand("SELECT ");
