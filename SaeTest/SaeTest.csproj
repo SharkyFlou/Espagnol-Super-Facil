@@ -67,12 +67,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ecranLogin.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ecranLogin.Designer.cs">
-      <DependentUpon>ecranLogin.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="frmEnfant.resx">
       <DependentUpon>frmEnfant.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,9 +82,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ecranLogin.resx">
-      <DependentUpon>ecranLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="baseLangueDataSet.xsc">
       <DependentUpon>baseLangueDataSet.xsd</DependentUpon>
     </None>
