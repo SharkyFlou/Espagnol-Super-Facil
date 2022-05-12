@@ -74,8 +74,12 @@ namespace SaeTest
             {
                 string login = cboLogin.Text;
                 connec.ConnectionString = chcon;
-                connec.Open();
+               // connec.Open();
                 OleDbCommand cd = new OleDbCommand("SELECT ");
+                string numCours = "DEBUT1";
+                int numLecon = 4;
+                int numExo = 1;
+                recupExo(numCours, numLecon, numExo);
 
             }
             finally
@@ -129,25 +133,53 @@ namespace SaeTest
 
 
 
-        private void recupExo(int numCours, int numLecon, int numExo)
+        private void recupExo(string numCours, int numLecon, int numExo)
         {
             try
             {
                 connec.ConnectionString = chcon;
                 connec.Open();
-                string requete = "select textePhrase " +
-                                                    "from Phrases " +
-                                                    "where codePhrase=" +
-                                                                    "(select codePhrase " +
-                                                                    "from Exercices e " +
-                                                                    "where numExo=" + numExo + "" +
-                                                                    "and numLecon=" + numLecon + "" +
-                                                                    "and numCours=" + numCours+")";
-                OleDbCommand cd = new OleDbCommand(requete,connec);
+                string requeteCode = "select codePhrase" +
+                                    " from Exercices " +
+                                     "where numExo=" + numExo +
+                                     " and numCours='" + numCours + "'" +
+                                     " and numLecon=" + numLecon + ";";
+
+                OleDbCommand cd = new OleDbCommand(requeteCode,connec);
                 cd.CommandType = CommandType.Text;
-                string phrase = cd.ExecuteScalar().ToString();
-                MessageBox.Show(phrase);
-            
+
+                int numéroPhrase =(int)cd.ExecuteScalar();
+                MessageBox.Show(numéroPhrase.ToString());
+
+                if(numéroPhrase!=0)
+                {
+                    string requeteComplete = "select completeON from Exercices where codePhrase=" + numéroPhrase + ";";
+                                     
+                    OleDbCommand cdd = new OleDbCommand(requeteComplete, connec);
+                    cdd.CommandType = CommandType.Text;
+
+                    bool Complete = (bool)cdd.ExecuteScalar();
+                    MessageBox.Show(Complete.ToString());
+
+                    if(!Complete)
+                    {
+                        string requete
+                    }
+                    else
+                    {
+                        string requetePhrase = "select textePhrase " +
+                                               "from Phrases " +
+                                               "where codePhrase=" + numéroPhrase + ";";
+
+                        OleDbCommand cddd = new OleDbCommand(requetePhrase, connec);
+                        cddd.CommandType = CommandType.Text;
+
+                        string phrase = cddd.ExecuteScalar().ToString();
+                        MessageBox.Show(phrase);
+                    }
+                }
+              
+
             }
             finally
             {
