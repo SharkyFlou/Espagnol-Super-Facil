@@ -16,6 +16,8 @@ namespace SaeTest
         {
             InitializeComponent();
             instance = this;
+            this.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperSpainBlur.jpg"));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
         }
 
         //pour permettre aux autres form d'utiliser les fonctions du frmDema

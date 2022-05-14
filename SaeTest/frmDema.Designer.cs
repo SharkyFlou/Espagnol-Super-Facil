@@ -65,6 +65,7 @@ namespace SaeTest
             this.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDema";
+            this.Opacity = 0.5D;
             this.Text = "frmDema";
             this.ResumeLayout(false);
 

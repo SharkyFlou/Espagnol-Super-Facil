@@ -53,6 +53,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>baseLangueDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdmin.Designer.cs">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminCrea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminCrea.Designer.cs">
+      <DependentUpon>frmAdminCrea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminScroll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminScroll.Designer.cs">
+      <DependentUpon>frmAdminScroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBilan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBilan.Designer.cs">
+      <DependentUpon>frmBilan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConnec.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +95,18 @@
     <Compile Include="frmEnfant.Designer.cs">
       <DependentUpon>frmEnfant.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmExo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExo.Designer.cs">
+      <DependentUpon>frmExo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInscri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInscri.Designer.cs">
+      <DependentUpon>frmInscri.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmParent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +115,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminCrea.resx">
+      <DependentUpon>frmAdminCrea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminScroll.resx">
+      <DependentUpon>frmAdminScroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBilan.resx">
+      <DependentUpon>frmBilan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConnec.resx">
       <DependentUpon>frmConnec.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,6 +135,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEnfant.resx">
       <DependentUpon>frmEnfant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExo.resx">
+      <DependentUpon>frmExo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInscri.resx">
+      <DependentUpon>frmInscri.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmParent.resx">
       <DependentUpon>frmParent.cs</DependentUpon>

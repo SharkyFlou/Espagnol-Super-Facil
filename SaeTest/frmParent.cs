@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.IO;
 
 namespace SaeTest
 {
@@ -19,16 +20,17 @@ namespace SaeTest
             instance = this;
         }
 
-        Object temp = null;
+        //permet aux autres formes de changer d'écran
+        Object formActu = null;
         public Object load
         {
             get
             {
-                return temp;
+                return formActu;
             }
             set
             {
-                chargeForm(value);
+                formActu = value; chargeForm(value);
             }
         }
 
@@ -39,13 +41,14 @@ namespace SaeTest
             if (testConnexion(chcon, connec))
             {
                 chargeForm(new frmDema());
+                btnMaison.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\maisonLogo.png"));
+                btnMaison.BackgroundImageLayout= System.Windows.Forms.ImageLayout.Stretch;
             }
         }
 
 
         public void chargeForm(object Form)
         {
-            MessageBox.Show("mmh debut");
             if (this.pnlForm.Controls.Count > 0)
             {
                 this.pnlForm.Controls.RemoveAt(0);
@@ -56,7 +59,6 @@ namespace SaeTest
             this.pnlForm.Controls.Add(f);
             this.pnlForm.Tag = f;
             f.Show();
-            MessageBox.Show("mmh fin");
         }
 
         //pour permettre aux autres form d'utiliser les fonctions du frmParent
@@ -139,6 +141,21 @@ namespace SaeTest
         public String getLienBase()
         {
             return chcon;
+        }
+
+        public String photoExiste(String path)
+        {
+            String defaultPath = @"..\..\Photos\default.jpg";
+            if (File.Exists(path))
+            {
+                defaultPath = path;
+            }
+            return defaultPath;
+        }
+
+        private void btnMaison_Click(object sender, EventArgs e)
+        {
+            chargeForm(new frmDema());
         }
     }
 }

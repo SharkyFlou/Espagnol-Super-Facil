@@ -33,21 +33,24 @@ namespace SaeTest
             this.pnlForm = new System.Windows.Forms.Panel();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.pnlHaut = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMaison = new System.Windows.Forms.Button();
             this.pnlHaut.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblYes
             // 
             this.lblYes.AutoSize = true;
-            this.lblYes.Font = new System.Drawing.Font("Nirmala UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYes.Location = new System.Drawing.Point(336, 11);
+            this.lblYes.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYes.Location = new System.Drawing.Point(291, 4);
             this.lblYes.Name = "lblYes";
-            this.lblYes.Size = new System.Drawing.Size(170, 25);
+            this.lblYes.Size = new System.Drawing.Size(237, 37);
             this.lblYes.TabIndex = 0;
             this.lblYes.Text = "Español súper fácil";
             // 
             // pnlForm
             // 
+            this.pnlForm.BackColor = System.Drawing.Color.Transparent;
             this.pnlForm.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlForm.Location = new System.Drawing.Point(0, 52);
             this.pnlForm.Name = "pnlForm";
@@ -71,15 +74,40 @@ namespace SaeTest
             // 
             // pnlHaut
             // 
+            this.pnlHaut.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHaut.Controls.Add(this.btnMaison);
+            this.pnlHaut.Controls.Add(this.panel1);
             this.pnlHaut.Controls.Add(this.btnQuitter);
             this.pnlHaut.Controls.Add(this.lblYes);
             this.pnlHaut.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHaut.Location = new System.Drawing.Point(0, 0);
             this.pnlHaut.Name = "pnlHaut";
-            this.pnlHaut.Size = new System.Drawing.Size(831, 46);
+            this.pnlHaut.Size = new System.Drawing.Size(831, 55);
             this.pnlHaut.TabIndex = 6;
             this.pnlHaut.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
             this.pnlHaut.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Location = new System.Drawing.Point(-1, 52);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(834, 10);
+            this.panel1.TabIndex = 7;
+            // 
+            // btnMaison
+            // 
+            this.btnMaison.BackColor = System.Drawing.Color.Transparent;
+            this.btnMaison.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnMaison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMaison.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMaison.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnMaison.Location = new System.Drawing.Point(3, 3);
+            this.btnMaison.Name = "btnMaison";
+            this.btnMaison.Size = new System.Drawing.Size(40, 40);
+            this.btnMaison.TabIndex = 8;
+            this.btnMaison.UseVisualStyleBackColor = false;
+            this.btnMaison.Click += new System.EventHandler(this.btnMaison_Click);
             // 
             // frmParent
             // 
@@ -109,6 +137,8 @@ namespace SaeTest
         private System.Windows.Forms.Panel pnlForm;
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Panel pnlHaut;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnMaison;
     }
 }
 

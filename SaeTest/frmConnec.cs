@@ -19,6 +19,9 @@ namespace SaeTest
             InitializeComponent();
             chcon = frmParent.instance.getLienBase();
             instance = this;
+            this.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperSpainBlur.jpg"));
+            this.pnlMid.BackColor = Color.FromArgb(150, 0, 0, 0);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
         }
 
         //pour permettre aux autres form d'utiliser les fonctions du frmDema
@@ -76,25 +79,7 @@ namespace SaeTest
 
         private void btnValide_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string login = cboLogin.Text;
-                connec.ConnectionString = chcon;
-                // connec.Open();
-                OleDbCommand cd = new OleDbCommand("SELECT ");
-                string numCours = "DEBUT1";
-                int numLecon = 4;
-                int numExo = 1;
-                recupExo(numCours, numLecon, numExo);
 
-            }
-            finally
-            {
-                if (connec.State == ConnectionState.Open)
-                {
-                    connec.Close();
-                }
-            }
         }
         private void recupExo(string numCours, int numLecon, int numExo)
         {
