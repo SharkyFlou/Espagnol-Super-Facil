@@ -53,6 +53,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>baseLangueDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmConnec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConnec.Designer.cs">
+      <DependentUpon>frmConnec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDema.Designer.cs">
+      <DependentUpon>frmDema.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEnfant.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +79,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmConnec.resx">
+      <DependentUpon>frmConnec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDema.resx">
+      <DependentUpon>frmDema.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEnfant.resx">
       <DependentUpon>frmEnfant.cs</DependentUpon>
     </EmbeddedResource>

@@ -16,80 +16,64 @@ namespace SaeTest
         public frmParent()
         {
             InitializeComponent();
+            instance = this;
         }
 
-        //Initialise la chaine de connexion global, et un OleDbConnection global aussi
-        string chcon = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=..\..\baseLangue.mdb";
-        OleDbConnection connec = new OleDbConnection();
-        
+        Object temp = null;
+        public Object load
+        {
+            get
+            {
+                return temp;
+            }
+            set
+            {
+                chargeForm(value);
+            }
+        }
+
 
         private void frmParent_Load(object sender, EventArgs e)
         {
             //vérifie d'abord si l'application peut se connecter à la BDD
             if (testConnexion(chcon, connec))
             {
-                chargeLogin();
+                chargeForm(new frmDema());
             }
         }
 
-        private void chargeLogin()
+
+        public void chargeForm(object Form)
         {
-                try
-                {
-                    //connection à la BDD
-                    connec.ConnectionString = chcon;
-                    connec.Open();
-
-                    string requete = "SELECT (pnUtil +' '+ nomUtil) " +
-                                                                "FROM Utilisateurs " +
-                                                                "ORDER BY codeUtil";
-                    OleDbCommand comm = new OleDbCommand(requete, connec);
-                    OleDbDataReader reader = comm.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        cboLogin.Items.Add(reader[0].ToString());
-                    }
-
-
-                }
-                //intercepetion et affichage de l'erreur si occurence
-                catch (Exception erreur)
-                {
-                    MessageBox.Show(erreur.Message + "\n\n" + "Nom erreur : '" + erreur.GetType() + "'");
-                }
-                //fermeture du OledBConnection dans tout les cas
-                finally
-                {
-                    if (connec.State == ConnectionState.Open)
-                    {
-                        connec.Close();
-                    }
-                }
+            MessageBox.Show("mmh debut");
+            if (this.pnlForm.Controls.Count > 0)
+            {
+                this.pnlForm.Controls.RemoveAt(0);
+            }
+            Form f = Form as Form;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.pnlForm.Controls.Add(f);
+            this.pnlForm.Tag = f;
+            f.Show();
+            MessageBox.Show("mmh fin");
         }
 
+        //pour permettre aux autres form d'utiliser les fonctions du frmParent
+        public static frmParent instance;
 
-        private void btnValide_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string login = cboLogin.Text;
-                connec.ConnectionString = chcon;
-               // connec.Open();
-                OleDbCommand cd = new OleDbCommand("SELECT ");
-                string numCours = "DEBUT1";
-                int numLecon = 4;
-                int numExo = 1;
-                recupExo(numCours, numLecon, numExo);
 
-            }
-            finally
-            {
-                if (connec.State == ConnectionState.Open)
-                {
-                    connec.Close();
-                }
-            }
-        }
+        //pour permettre à l'utilisateur de deplacer la fenetre
+        public Point mouseLocation;
+
+
+        //Initialise la chaine de connexion global, et un OleDbConnection global aussi
+        string chcon = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=..\..\baseLangue.mdb";
+        OleDbConnection connec = new OleDbConnection();
+        
+
+
+
 
         //Fonction qui test la connexion à la BDD, avec la chaine de connexion donnée, et le OleDbConenction donné
         public bool testConnexion(string Xchcon, OleDbConnection Xconnec)
@@ -132,60 +116,29 @@ namespace SaeTest
         }
 
 
-
-        private void recupExo(string numCours, int numLecon, int numExo)
+        private void btnQuitter_Click(object sender, EventArgs e)
         {
-            try
+            Application.Exit();
+        }
+
+        private void pnlHaut_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new Point(-e.X, -e.Y);
+        }
+
+        private void pnlHaut_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
             {
-                connec.ConnectionString = chcon;
-                connec.Open();
-                string requeteCode = "select codePhrase" +
-                                    " from Exercices " +
-                                     "where numExo=" + numExo +
-                                     " and numCours='" + numCours + "'" +
-                                     " and numLecon=" + numLecon + ";";
-
-                OleDbCommand cd = new OleDbCommand(requeteCode,connec);
-                cd.CommandType = CommandType.Text;
-
-                int numéroPhrase =(int)cd.ExecuteScalar();
-                MessageBox.Show(numéroPhrase.ToString());
-
-                if(numéroPhrase!=0)
-                {
-                    string requeteComplete = "select completeON from Exercices where codePhrase=" + numéroPhrase + ";";
-                                     
-                    OleDbCommand cdd = new OleDbCommand(requeteComplete, connec);
-                    cdd.CommandType = CommandType.Text;
-
-                    bool Complete = (bool)cdd.ExecuteScalar();
-                    MessageBox.Show(Complete.ToString());
-
-                    if(!Complete)
-                    {
-                        string requete
-                    }
-                    else
-                    {
-                        string requetePhrase = "select textePhrase " +
-                                               "from Phrases " +
-                                               "where codePhrase=" + numéroPhrase + ";";
-
-                        OleDbCommand cddd = new OleDbCommand(requetePhrase, connec);
-                        cddd.CommandType = CommandType.Text;
-
-                        string phrase = cddd.ExecuteScalar().ToString();
-                        MessageBox.Show(phrase);
-                    }
-                }
-              
-
+                Point mousePose = Control.MousePosition;
+                mousePose.Offset(mouseLocation.X, mouseLocation.Y);
+                Location = mousePose;
             }
-            finally
-            {
-                
-            }
+        }
 
+        public String getLienBase()
+        {
+            return chcon;
         }
     }
 }
