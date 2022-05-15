@@ -51,7 +51,7 @@ namespace SaeTest
 
                 string requete = "SELECT (pnUtil +' '+ nomUtil) " +
                                                             "FROM Utilisateurs " +
-                                                            "ORDER BY codeUtil";
+                                                            "ORDER BY codeUtil ASC";
                 OleDbCommand comm = new OleDbCommand(requete, connec);
                 OleDbDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
@@ -79,7 +79,25 @@ namespace SaeTest
 
         private void btnValide_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string login = cboLogin.Text;
+                connec.ConnectionString = chcon;
+                // connec.Open();
+                OleDbCommand cd = new OleDbCommand("SELECT ");
+                string numCours = "DEBUT1";
+                int numLecon = 4;
+                int numExo = 1;
+                recupExo(numCours, numLecon, numExo);
 
+            }
+            finally
+            {
+                if (connec.State == ConnectionState.Open)
+                {
+                    connec.Close();
+                }
+            }
         }
         private void recupExo(string numCours, int numLecon, int numExo)
         {
@@ -131,10 +149,19 @@ namespace SaeTest
             }
             finally
             {
-
+                if (connec.State == ConnectionState.Open)
+                {
+                    connec.Close();
+                }
             }
 
         }
 
+        private void cboLogin_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            eLog.lien = frmParent.instance.getLienBase();
+            eLog.codeUtil = cboLogin.SelectedIndex+1;
+            eLog.refresh = true;
+        }
     }
 }

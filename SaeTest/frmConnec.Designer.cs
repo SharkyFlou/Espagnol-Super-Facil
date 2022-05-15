@@ -32,6 +32,7 @@ namespace SaeTest
             this.cboLogin = new System.Windows.Forms.ComboBox();
             this.btnValide = new System.Windows.Forms.Button();
             this.pnlMid = new System.Windows.Forms.Panel();
+            this.eLog = new ecranLogin.ecranLogin();
             this.pnlMid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,17 +40,18 @@ namespace SaeTest
             // 
             this.cboLogin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLogin.FormattingEnabled = true;
-            this.cboLogin.Location = new System.Drawing.Point(46, 98);
-            this.cboLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboLogin.Location = new System.Drawing.Point(49, 26);
+            this.cboLogin.Margin = new System.Windows.Forms.Padding(4);
             this.cboLogin.Name = "cboLogin";
             this.cboLogin.Size = new System.Drawing.Size(237, 32);
             this.cboLogin.TabIndex = 4;
+            this.cboLogin.SelectionChangeCommitted += new System.EventHandler(this.cboLogin_SelectionChangeCommitted);
             // 
             // btnValide
             // 
             this.btnValide.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnValide.Location = new System.Drawing.Point(331, 96);
-            this.btnValide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnValide.Location = new System.Drawing.Point(339, 26);
+            this.btnValide.Margin = new System.Windows.Forms.Padding(4);
             this.btnValide.Name = "btnValide";
             this.btnValide.Size = new System.Drawing.Size(163, 35);
             this.btnValide.TabIndex = 5;
@@ -59,12 +61,28 @@ namespace SaeTest
             // 
             // pnlMid
             // 
+            this.pnlMid.Controls.Add(this.eLog);
             this.pnlMid.Controls.Add(this.btnValide);
             this.pnlMid.Controls.Add(this.cboLogin);
             this.pnlMid.Location = new System.Drawing.Point(146, 62);
             this.pnlMid.Name = "pnlMid";
             this.pnlMid.Size = new System.Drawing.Size(566, 259);
             this.pnlMid.TabIndex = 6;
+            // 
+            // eLog
+            // 
+            this.eLog.BackColor = System.Drawing.Color.Transparent;
+            this.eLog.codeUtil = -1;
+            this.eLog.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eLog.lien = null;
+            this.eLog.Location = new System.Drawing.Point(38, 104);
+            this.eLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.eLog.MaximumSize = new System.Drawing.Size(500, 140);
+            this.eLog.MinimumSize = new System.Drawing.Size(500, 140);
+            this.eLog.Name = "eLog";
+            this.eLog.refresh = false;
+            this.eLog.Size = new System.Drawing.Size(500, 140);
+            this.eLog.TabIndex = 6;
             // 
             // frmConnec
             // 
@@ -75,7 +93,7 @@ namespace SaeTest
             this.Controls.Add(this.pnlMid);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmConnec";
             this.Opacity = 0.2D;
             this.Text = "frmConnec";
@@ -90,5 +108,6 @@ namespace SaeTest
         private System.Windows.Forms.ComboBox cboLogin;
         private System.Windows.Forms.Button btnValide;
         private System.Windows.Forms.Panel pnlMid;
+        private ecranLogin.ecranLogin eLog;
     }
 }

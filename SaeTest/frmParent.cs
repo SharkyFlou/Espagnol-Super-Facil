@@ -120,7 +120,10 @@ namespace SaeTest
 
         private void btnQuitter_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if(MessageBox.Show("Etes vous sur de vouloir quitter ?\n Vos données seront sauvegarder","Quitter ?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Application.Exit();
+            }
         }
 
         private void pnlHaut_MouseDown(object sender, MouseEventArgs e)

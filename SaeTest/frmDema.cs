@@ -18,6 +18,7 @@ namespace SaeTest
             instance = this;
             this.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperSpainBlur.jpg"));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            pnlMid.BackColor = Color.FromArgb(100, 0, 0, 0);
         }
 
         //pour permettre aux autres form d'utiliser les fonctions du frmDema
