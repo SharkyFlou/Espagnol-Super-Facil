@@ -79,21 +79,14 @@ namespace SaeTest
 
         private void btnValide_Click(object sender, EventArgs e)
         {
-            try
+            int codeUtile = cboLogin.SelectedIndex + 1;
+            if(codeUtile==5 || codeUtile == 6)
             {
-                string login = cboLogin.Text;
-                connec.ConnectionString = chcon;
-                connec.Open();
-                
-
+                frmParent.instance.chargeForm(new frmAdmin());
             }
-            finally
+            else if (codeUtile >= 0)
             {
-                if (connec.State == ConnectionState.Open)
-                {
-                    connec.Close();
-                }
-                frmParent.instance.chargeForm(new frmExo(cboLogin.SelectedIndex+1));
+                frmParent.instance.chargeForm(new frmExo(codeUtile));
             }
         }
         private void cboLogin_SelectionChangeCommitted(object sender, EventArgs e)

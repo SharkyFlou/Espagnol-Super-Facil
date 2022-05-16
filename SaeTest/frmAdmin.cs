@@ -15,6 +15,17 @@ namespace SaeTest
         public frmAdmin()
         {
             InitializeComponent();
+            instance = this;
+            this.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperAdmin.jpg"));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            pnlMid.BackColor = Color.FromArgb(150, 0, 0, 0);
+        }
+
+        public static frmAdmin instance;
+
+        private void btnVoirExo_Click(object sender, EventArgs e)
+        {
+            frmParent.instance.chargeForm(new frmAdminScroll());
         }
     }
 }

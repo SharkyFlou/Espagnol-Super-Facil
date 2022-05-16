@@ -38,7 +38,7 @@ namespace SaeTest
             // btnInscri
             // 
             this.btnInscri.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInscri.Location = new System.Drawing.Point(13, 12);
+            this.btnInscri.Location = new System.Drawing.Point(94, 15);
             this.btnInscri.Name = "btnInscri";
             this.btnInscri.Size = new System.Drawing.Size(225, 82);
             this.btnInscri.TabIndex = 0;
@@ -48,7 +48,7 @@ namespace SaeTest
             // btnConnec
             // 
             this.btnConnec.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnec.Location = new System.Drawing.Point(13, 100);
+            this.btnConnec.Location = new System.Drawing.Point(94, 103);
             this.btnConnec.Name = "btnConnec";
             this.btnConnec.Size = new System.Drawing.Size(225, 82);
             this.btnConnec.TabIndex = 1;
@@ -60,14 +60,14 @@ namespace SaeTest
             // 
             this.pnlMid.Controls.Add(this.btnConnec);
             this.pnlMid.Controls.Add(this.btnInscri);
-            this.pnlMid.Location = new System.Drawing.Point(296, 61);
+            this.pnlMid.Location = new System.Drawing.Point(213, 62);
             this.pnlMid.Name = "pnlMid";
-            this.pnlMid.Size = new System.Drawing.Size(250, 200);
+            this.pnlMid.Size = new System.Drawing.Size(399, 200);
             this.pnlMid.TabIndex = 2;
             // 
             // frmDema
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 375);
