@@ -83,68 +83,8 @@ namespace SaeTest
             {
                 string login = cboLogin.Text;
                 connec.ConnectionString = chcon;
-                // connec.Open();
-                OleDbCommand cd = new OleDbCommand("SELECT ");
-                string numCours = "DEBUT1";
-                int numLecon = 4;
-                int numExo = 1;
-                recupExo(numCours, numLecon, numExo);
-
-            }
-            finally
-            {
-                if (connec.State == ConnectionState.Open)
-                {
-                    connec.Close();
-                }
-            }
-        }
-        private void recupExo(string numCours, int numLecon, int numExo)
-        {
-            try
-            {
-                connec.ConnectionString = chcon;
                 connec.Open();
-                string requeteCode = "select codePhrase" +
-                                    " from Exercices " +
-                                     "where numExo=" + numExo +
-                                     " and numCours='" + numCours + "'" +
-                                     " and numLecon=" + numLecon + ";";
-
-                OleDbCommand cd = new OleDbCommand(requeteCode, connec);
-                cd.CommandType = CommandType.Text;
-
-                int numéroPhrase = (int)cd.ExecuteScalar();
-                MessageBox.Show(numéroPhrase.ToString());
-
-                if (numéroPhrase != 0)
-                {
-                    string requeteComplete = "select completeON from Exercices where codePhrase=" + numéroPhrase + ";";
-
-                    OleDbCommand cdd = new OleDbCommand(requeteComplete, connec);
-                    cdd.CommandType = CommandType.Text;
-
-                    bool Complete = (bool)cdd.ExecuteScalar();
-                    MessageBox.Show(Complete.ToString());
-
-                    if (!Complete)
-                    {
-                        //string requete
-                    }
-                    else
-                    {
-                        string requetePhrase = "select textePhrase " +
-                                               "from Phrases " +
-                                               "where codePhrase=" + numéroPhrase + ";";
-
-                        OleDbCommand cddd = new OleDbCommand(requetePhrase, connec);
-                        cddd.CommandType = CommandType.Text;
-
-                        string phrase = cddd.ExecuteScalar().ToString();
-                        MessageBox.Show(phrase);
-                    }
-                }
-
+                
 
             }
             finally
@@ -153,10 +93,9 @@ namespace SaeTest
                 {
                     connec.Close();
                 }
+                frmParent.instance.chargeForm(new frmExo());
             }
-
         }
-
         private void cboLogin_SelectionChangeCommitted(object sender, EventArgs e)
         {
             eLog.lien = frmParent.instance.getLienBase();
