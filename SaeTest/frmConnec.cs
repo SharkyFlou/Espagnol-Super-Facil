@@ -93,7 +93,7 @@ namespace SaeTest
                 {
                     connec.Close();
                 }
-                frmParent.instance.chargeForm(new frmExo());
+                frmParent.instance.chargeForm(new frmExo(cboLogin.SelectedIndex+1));
             }
         }
         private void cboLogin_SelectionChangeCommitted(object sender, EventArgs e)

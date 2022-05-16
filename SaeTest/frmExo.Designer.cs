@@ -29,10 +29,13 @@ namespace SaeTest
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnValider = new System.Windows.Forms.Button();
             this.btnAide = new System.Windows.Forms.Button();
-            this.pnlExo = new System.Windows.Forms.Panel();
+            this.pnlExo1 = new System.Windows.Forms.Panel();
             this.btnRecommencer = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // btnValider
@@ -55,12 +58,12 @@ namespace SaeTest
             this.btnAide.UseVisualStyleBackColor = true;
             this.btnAide.Click += new System.EventHandler(this.btnAide_Click);
             // 
-            // pnlExo
+            // pnlExo1
             // 
-            this.pnlExo.Location = new System.Drawing.Point(73, 76);
-            this.pnlExo.Name = "pnlExo";
-            this.pnlExo.Size = new System.Drawing.Size(601, 194);
-            this.pnlExo.TabIndex = 2;
+            this.pnlExo1.Location = new System.Drawing.Point(73, 76);
+            this.pnlExo1.Name = "pnlExo1";
+            this.pnlExo1.Size = new System.Drawing.Size(601, 194);
+            this.pnlExo1.TabIndex = 2;
             // 
             // btnRecommencer
             // 
@@ -72,14 +75,27 @@ namespace SaeTest
             this.btnRecommencer.UseVisualStyleBackColor = true;
             this.btnRecommencer.Click += new System.EventHandler(this.btnRecommencer_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(44, 42);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(583, 161);
+            this.panel1.TabIndex = 5;
+            // 
             // frmExo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 375);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnRecommencer);
-            this.Controls.Add(this.pnlExo);
+            this.Controls.Add(this.pnlExo1);
             this.Controls.Add(this.btnAide);
             this.Controls.Add(this.btnValider);
             this.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -97,7 +113,9 @@ namespace SaeTest
 
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Button btnAide;
-        private System.Windows.Forms.Panel pnlExo;
+        private System.Windows.Forms.Panel pnlExo1;
         private System.Windows.Forms.Button btnRecommencer;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

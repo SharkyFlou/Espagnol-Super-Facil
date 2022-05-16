@@ -19,9 +19,18 @@ namespace SaeTest
             chcon = frmParent.instance.getLienBase();
             
         }
+        public frmExo(int xcodeUtile)
+        {
+            InitializeComponent();
+            chcon = frmParent.instance.getLienBase();
+            codeUtile = xcodeUtile;
+
+        }
         string chcon;
         OleDbConnection connec = new OleDbConnection();
         DataSet dsLocal = new DataSet();
+        private int codeUtile;
+
 
 
         private void frmExo_Load(object sender, EventArgs e)
@@ -31,7 +40,7 @@ namespace SaeTest
             OleDbDataAdapter da = new OleDbDataAdapter();
             chargementDsLocal();
 
-
+            MessageBox.Show(codeUtile.ToString());
             string numCours = "DEBUT1";
             int numLecon = 4;
             int numExo = 1;
@@ -42,7 +51,7 @@ namespace SaeTest
             Label traduc = new Label();
             traduc.Text = "Traduction de la phrase:";
             traduc.Width = 200;
-            pnlExo.Controls.Add(traduc);
+            pnlExo1.Controls.Add(traduc);
         }
         private void Exo2()
         {
