@@ -17,6 +17,7 @@ namespace SaeTest
         {
             InitializeComponent();
             chcon = frmParent.instance.getLienBase();
+            instance = this;
             
         }
         public frmExo(int xcodeUtile)
@@ -24,6 +25,7 @@ namespace SaeTest
             InitializeComponent();
             chcon = frmParent.instance.getLienBase();
             codeUtile = xcodeUtile;
+            instance = this;
 
         }
         string chcon;
@@ -31,6 +33,7 @@ namespace SaeTest
         DataSet dsLocal = new DataSet();
         private int codeUtile;
 
+        public static frmExo instance;
 
 
         private void frmExo_Load(object sender, EventArgs e)
@@ -40,26 +43,49 @@ namespace SaeTest
             OleDbDataAdapter da = new OleDbDataAdapter();
             chargementDsLocal();
 
-            MessageBox.Show(codeUtile.ToString());
-            string numCours = "DEBUT1";
-            int numLecon = 4;
-            int numExo = 1;
+            string requeteExo = "codeUtil=" + codeUtile;
+            DataRow[] Utilisateur = dsLocal.Tables["Utilisateurs"].Select(requeteExo);
+            string numCours = Utilisateur[0]["codeCours"].ToString();
+            int numLecon = (int)Utilisateur[0]["codeLeçon"];
+            int numExo = (int)Utilisateur[0]["codeExo"];
+           
             recupExo(numCours, numLecon, numExo);
         }
-        private void Exo1()
+        private void Exo1(string phrase,string traducPhrase,string []listeMots,string enonceExo)
         {
-            Label traduc = new Label();
-            traduc.Text = "Traduction de la phrase:";
-            traduc.Width = 200;
-            pnlExo1.Controls.Add(traduc);
+            if(pnlExo2.Visible==true || pnlExo3.Visible==true)
+            {
+                pnlExo2.Visible=false;
+                pnlExo3.Visible=false;
+
+            }
+            pnlExo1.Visible = true;
+            lblEnonce.Visible = true;
+            lblEnonce.Text = enonceExo;
+            lblTraductionFrançais.Text = traducPhrase;
+           
         }
         private void Exo2()
         {
+            if (pnlExo1.Visible == true || pnlExo3.Visible == true)
+            {
+                pnlExo1.Visible = false;
+                pnlExo3.Visible = false;
+
+            }
+            pnlExo2.Visible = true;
+            
 
         }
         private void Exo3()
         {
+            if (pnlExo2.Visible == true || pnlExo1.Visible == true)
+            {
+                pnlExo2.Visible = false;
+                pnlExo1.Visible = false;
 
+            }
+            pnlExo3.Visible = true;
         }
 
         private void btnRecommencer_Click(object sender, EventArgs e)
@@ -101,18 +127,24 @@ namespace SaeTest
             try
             {
                
-                string requeteCode = "numExo=" + numExo + " and numCours='" + numCours + "'" + " and numLecon=" + numLecon;
-                
-                DataRow[] salute = dsLocal.Tables["Exercices"].Select(requeteCode);
-                int count = salute.Length;
-                int numéroPhrase = (int)salute[0]["codePhrase"];
+                string requeteCode = "numExo=" + numExo + " and numCours='" + numCours + "'" + " and numLecon=" + numLecon;     
+                DataRow[] Exercices = dsLocal.Tables["Exercices"].Select(requeteCode);
 
-                MessageBox.Show(numéroPhrase.ToString());
+                int numéroPhrase = (int)Exercices[0]["codePhrase"];
+                string enonceExo = Exercices[0]["enonceExo"].ToString();
 
                 if (numéroPhrase != 0)
                 {
+                    string requetePhrase = "codePhrase=" + numéroPhrase;
+                    DataRow[] phrases = dsLocal.Tables["Phrases"].Select(requetePhrase);
+
+                    string phrase = phrases[0]["textePhrase"].ToString();
+                    string traducPhrase = phrases[0]["traducPhrase"].ToString();
+
                     string requeteComplete = "codePhrase="+numéroPhrase;
                     DataRow[] CompleteON = dsLocal.Tables["Exercices"].Select(requeteComplete);
+
+                    
 
                     bool Complete = (bool)CompleteON[0]["CompleteOn"];
                     MessageBox.Show(Complete.ToString());
@@ -124,18 +156,16 @@ namespace SaeTest
 
                         string listeMots = CompleteON[0]["listeMots"].ToString();
                         string[] liste = listeMots.Split('/');
-                        Exo1();
+                     
+
+                        Exo1(phrase,traducPhrase,liste,enonceExo);
 
                     }
 
                     //Phrases dans le désordre : 2
                     else
                     {
-                        string requetePhrase ="codePhrase=" + numéroPhrase;
-                        DataRow[] phrases = dsLocal.Tables["Phrases"].Select(requetePhrase);
-
-                        string phrase = phrases[0]["textePhrase"].ToString();
-                        MessageBox.Show(phrase);
+                       
                         Exo2();
                     }
                 }
