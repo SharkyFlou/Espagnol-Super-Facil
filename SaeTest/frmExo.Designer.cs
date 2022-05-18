@@ -33,14 +33,17 @@ namespace SaeTest
             this.btnValider = new System.Windows.Forms.Button();
             this.btnAide = new System.Windows.Forms.Button();
             this.pnlExo1 = new System.Windows.Forms.Panel();
+            this.lblEnonce = new System.Windows.Forms.Label();
             this.lblTraductionFrançais = new System.Windows.Forms.Label();
             this.lblTrad = new System.Windows.Forms.Label();
             this.btnRecommencer = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pnlExo2 = new System.Windows.Forms.Panel();
+            this.lblTraduction2 = new System.Windows.Forms.Label();
+            this.lblEnonce2 = new System.Windows.Forms.Label();
             this.pnlExo3 = new System.Windows.Forms.Panel();
-            this.lblEnonce = new System.Windows.Forms.Label();
             this.pnlExo1.SuspendLayout();
+            this.pnlExo2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnValider
@@ -69,11 +72,21 @@ namespace SaeTest
             this.pnlExo1.Controls.Add(this.lblEnonce);
             this.pnlExo1.Controls.Add(this.lblTraductionFrançais);
             this.pnlExo1.Controls.Add(this.lblTrad);
-            this.pnlExo1.Location = new System.Drawing.Point(73, 100);
+            this.pnlExo1.Location = new System.Drawing.Point(47, 100);
             this.pnlExo1.Name = "pnlExo1";
-            this.pnlExo1.Size = new System.Drawing.Size(651, 194);
+            this.pnlExo1.Size = new System.Drawing.Size(677, 194);
             this.pnlExo1.TabIndex = 2;
             this.pnlExo1.Visible = false;
+            // 
+            // lblEnonce
+            // 
+            this.lblEnonce.AutoSize = true;
+            this.lblEnonce.ForeColor = System.Drawing.Color.Black;
+            this.lblEnonce.Location = new System.Drawing.Point(131, 30);
+            this.lblEnonce.Name = "lblEnonce";
+            this.lblEnonce.Size = new System.Drawing.Size(44, 21);
+            this.lblEnonce.TabIndex = 2;
+            this.lblEnonce.Text = "Texte";
             // 
             // lblTraductionFrançais
             // 
@@ -113,11 +126,33 @@ namespace SaeTest
             // pnlExo2
             // 
             this.pnlExo2.BackColor = System.Drawing.Color.Silver;
-            this.pnlExo2.Location = new System.Drawing.Point(448, 29);
+            this.pnlExo2.Controls.Add(this.lblTraduction2);
+            this.pnlExo2.Controls.Add(this.lblEnonce2);
+            this.pnlExo2.Location = new System.Drawing.Point(46, 29);
             this.pnlExo2.Name = "pnlExo2";
-            this.pnlExo2.Size = new System.Drawing.Size(651, 194);
+            this.pnlExo2.Size = new System.Drawing.Size(677, 194);
             this.pnlExo2.TabIndex = 5;
             this.pnlExo2.Visible = false;
+            // 
+            // lblTraduction2
+            // 
+            this.lblTraduction2.AutoSize = true;
+            this.lblTraduction2.Location = new System.Drawing.Point(45, 47);
+            this.lblTraduction2.Name = "lblTraduction2";
+            this.lblTraduction2.Size = new System.Drawing.Size(52, 21);
+            this.lblTraduction2.TabIndex = 1;
+            this.lblTraduction2.Text = "label1";
+            // 
+            // lblEnonce2
+            // 
+            this.lblEnonce2.AutoSize = true;
+            this.lblEnonce2.BackColor = System.Drawing.Color.Silver;
+            this.lblEnonce2.ForeColor = System.Drawing.Color.Black;
+            this.lblEnonce2.Location = new System.Drawing.Point(45, 12);
+            this.lblEnonce2.Name = "lblEnonce2";
+            this.lblEnonce2.Size = new System.Drawing.Size(44, 21);
+            this.lblEnonce2.TabIndex = 0;
+            this.lblEnonce2.Text = "Texte";
             // 
             // pnlExo3
             // 
@@ -127,16 +162,6 @@ namespace SaeTest
             this.pnlExo3.Size = new System.Drawing.Size(651, 194);
             this.pnlExo3.TabIndex = 5;
             this.pnlExo3.Visible = false;
-            // 
-            // lblEnonce
-            // 
-            this.lblEnonce.AutoSize = true;
-            this.lblEnonce.ForeColor = System.Drawing.Color.Black;
-            this.lblEnonce.Location = new System.Drawing.Point(131, 30);
-            this.lblEnonce.Name = "lblEnonce";
-            this.lblEnonce.Size = new System.Drawing.Size(44, 21);
-            this.lblEnonce.TabIndex = 2;
-            this.lblEnonce.Text = "Texte";
             // 
             // frmExo
             // 
@@ -159,6 +184,8 @@ namespace SaeTest
             this.Load += new System.EventHandler(this.frmExo_Load);
             this.pnlExo1.ResumeLayout(false);
             this.pnlExo1.PerformLayout();
+            this.pnlExo2.ResumeLayout(false);
+            this.pnlExo2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -175,5 +202,7 @@ namespace SaeTest
         private System.Windows.Forms.Label lblTraductionFrançais;
         private System.Windows.Forms.Label lblTrad;
         private System.Windows.Forms.Label lblEnonce;
+        private System.Windows.Forms.Label lblEnonce2;
+        private System.Windows.Forms.Label lblTraduction2;
     }
 }

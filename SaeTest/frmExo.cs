@@ -32,6 +32,10 @@ namespace SaeTest
         OleDbConnection connec = new OleDbConnection();
         DataSet dsLocal = new DataSet();
         private int codeUtile;
+        private string[] mots;
+        private string[] liste;
+        private int lefttt = lblTraduction2.Left;
+        private int toppp = lblTraduction2.Top;
 
         public static frmExo instance;
 
@@ -45,10 +49,14 @@ namespace SaeTest
 
             string requeteExo = "codeUtil=" + codeUtile;
             DataRow[] Utilisateur = dsLocal.Tables["Utilisateurs"].Select(requeteExo);
-            string numCours = Utilisateur[0]["codeCours"].ToString();
-            int numLecon = (int)Utilisateur[0]["codeLeçon"];
-            int numExo = (int)Utilisateur[0]["codeExo"];
-           
+            //string numCours = Utilisateur[0]["codeCours"].ToString();
+            //  int numLecon = (int)Utilisateur[0]["codeLeçon"];
+            //int numExo = (int)Utilisateur[0]["codeExo"];
+            string numCours = "DEBUT1";
+
+
+            int numExo = 4;
+            int numLecon = 2;
             recupExo(numCours, numLecon, numExo);
         }
         private void Exo1(string phrase,string traducPhrase,string []listeMots,string enonceExo)
@@ -63,9 +71,41 @@ namespace SaeTest
             lblEnonce.Visible = true;
             lblEnonce.Text = enonceExo;
             lblTraductionFrançais.Text = traducPhrase;
-           
+            int left = lblTrad.Left;
+            int top = lblTrad.Top + 30;
+            mots = phrase.Split(' ');
+
+            for(int i = 0; i < mots.Length; i++)
+            {
+                if(listeMots.Contains((i+1).ToString()))
+                {
+                    TextBox name = new TextBox();
+                    name.Name = i+"txtBox";
+                    name.Left = left;
+                    name.Top = top;
+                    pnlExo1.Controls.Add(name);
+                    left += name.Width;
+                }
+                else
+                {
+                    Label mot = new Label();
+                    mot.Text = mots[i];
+                    mot.Width = (mots[i].Length + 1)*9;
+                    mot.ForeColor = Color.Black;
+                    mot.Left = left;
+                    mot.Top = top;
+                    pnlExo1.Controls.Add(mot);
+                    left += mot.Width;
+
+                }
+                if (left>pnlExo1.Width)
+                {
+                    left = lblTrad.Left;
+                    top = lblTrad.Top + 60;
+                }
+            }
         }
-        private void Exo2()
+        private void Exo2(string phrase, string traduc, string enonce)
         {
             if (pnlExo1.Visible == true || pnlExo3.Visible == true)
             {
@@ -74,7 +114,35 @@ namespace SaeTest
 
             }
             pnlExo2.Visible = true;
+            lblEnonce2.Text = enonce;
+            lblTraduction2.Text = traduc;
+
+            mots = phrase.Split(' ');
+            int left = lblEnonce2.Left;
+            int top = lblTraduction2.Top + 80;
+
+            for(int i = 0; i < mots.Length; i++)
+            {
+                Button t = new Button();
+                t.Left = left;
+                t.Top = top;
+                t.ForeColor = Color.Black;
+                t.Name = i + "btn";
+                t.Text = mots[i];
+                t.BackColor = Color.Yellow;
+                t.Height = 30;
+                t.Tag = i;
+                t.Click += Queue;
+                pnlExo2.Controls.Add(t);
+                left += t.Width + 5;
+                if (left>pnlExo2.Width)
+                {
+                    left = lblEnonce.Left;
+                    top = lblTraduction2.Top + 110;
+                }
+            }
             
+
 
         }
         private void Exo3()
@@ -100,7 +168,24 @@ namespace SaeTest
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-
+            int numéro = 0;
+            foreach (Object o in pnlExo1.Controls)
+            {
+                if(o.GetType()==typeof(TextBox))
+                {
+                    TextBox t = (TextBox)o;
+                    int num = int.Parse(liste[numéro]);
+                    if(t.Text==mots[num-1])
+                    {
+                        t.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        t.BackColor = Color.Red;
+                    }
+                    numéro++;
+                }
+            }
         }
         private void chargementDsLocal()
         {
@@ -144,10 +229,7 @@ namespace SaeTest
                     string requeteComplete = "codePhrase="+numéroPhrase;
                     DataRow[] CompleteON = dsLocal.Tables["Exercices"].Select(requeteComplete);
 
-                    
-
                     bool Complete = (bool)CompleteON[0]["CompleteOn"];
-                    MessageBox.Show(Complete.ToString());
 
                     //Complétez les trous : 1
                     if (!Complete)
@@ -155,7 +237,7 @@ namespace SaeTest
                         string requeteListe = "codePhrase=" +numéroPhrase;
 
                         string listeMots = CompleteON[0]["listeMots"].ToString();
-                        string[] liste = listeMots.Split('/');
+                        liste= listeMots.Split('/');
                      
 
                         Exo1(phrase,traducPhrase,liste,enonceExo);
@@ -166,7 +248,7 @@ namespace SaeTest
                     else
                     {
                        
-                        Exo2();
+                        Exo2(phrase,traducPhrase,enonceExo);
                     }
                 }
                 //Vocabulaire : 3
@@ -185,7 +267,25 @@ namespace SaeTest
                 }
             }
 
+
+
         }
-    }
+        private void Queue(object sender,EventArgs e)
+        {
+            object tag = ((Button)sender).Tag;
+            foreach(Control c in pnlExo2.Controls)
+            {
+                if (c.Tag == tag)
+                {
+                    c.Enabled = false;
+                    c.BackColor = Color.DarkGray;
+                    Label t = new Label();
+                    t.Tag = tag;
+                    t.Left = left;
+                    t.Top = top;
+                }
+            }
+        }
+    } 
 }
 
