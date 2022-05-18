@@ -159,7 +159,7 @@ namespace SaeTest
             // pnlExo3
             // 
             this.pnlExo3.BackColor = System.Drawing.Color.Black;
-            this.pnlExo3.Location = new System.Drawing.Point(49, 118);
+            this.pnlExo3.Location = new System.Drawing.Point(72, 113);
             this.pnlExo3.Name = "pnlExo3";
             this.pnlExo3.Size = new System.Drawing.Size(651, 194);
             this.pnlExo3.TabIndex = 5;
@@ -170,7 +170,7 @@ namespace SaeTest
             this.bpg.BackColor = System.Drawing.Color.Transparent;
             this.bpg.chaineConn = null;
             this.bpg.fail = false;
-            this.bpg.Location = new System.Drawing.Point(155, 342);
+            this.bpg.Location = new System.Drawing.Point(47, 342);
             this.bpg.MaximumSize = new System.Drawing.Size(2000, 65);
             this.bpg.MinimumSize = new System.Drawing.Size(200, 30);
             this.bpg.Name = "bpg";
@@ -178,7 +178,7 @@ namespace SaeTest
             this.bpg.numCours = "DEBUT1";
             this.bpg.numLecon = 1;
             this.bpg.refresh = false;
-            this.bpg.Size = new System.Drawing.Size(600, 30);
+            this.bpg.Size = new System.Drawing.Size(677, 30);
             this.bpg.spawn = false;
             this.bpg.TabIndex = 6;
             // 
