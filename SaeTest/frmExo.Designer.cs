@@ -42,6 +42,7 @@ namespace SaeTest
             this.lblTraduction2 = new System.Windows.Forms.Label();
             this.lblEnonce2 = new System.Windows.Forms.Label();
             this.pnlExo3 = new System.Windows.Forms.Panel();
+            this.bpg = new barProgression.barProgression();
             this.pnlExo1.SuspendLayout();
             this.pnlExo2.SuspendLayout();
             this.SuspendLayout();
@@ -128,6 +129,7 @@ namespace SaeTest
             this.pnlExo2.BackColor = System.Drawing.Color.Silver;
             this.pnlExo2.Controls.Add(this.lblTraduction2);
             this.pnlExo2.Controls.Add(this.lblEnonce2);
+            this.pnlExo2.Controls.Add(this.pnlExo3);
             this.pnlExo2.Location = new System.Drawing.Point(46, 29);
             this.pnlExo2.Name = "pnlExo2";
             this.pnlExo2.Size = new System.Drawing.Size(677, 194);
@@ -157,11 +159,28 @@ namespace SaeTest
             // pnlExo3
             // 
             this.pnlExo3.BackColor = System.Drawing.Color.Black;
-            this.pnlExo3.Location = new System.Drawing.Point(73, 325);
+            this.pnlExo3.Location = new System.Drawing.Point(49, 118);
             this.pnlExo3.Name = "pnlExo3";
             this.pnlExo3.Size = new System.Drawing.Size(651, 194);
             this.pnlExo3.TabIndex = 5;
             this.pnlExo3.Visible = false;
+            // 
+            // bpg
+            // 
+            this.bpg.BackColor = System.Drawing.Color.Transparent;
+            this.bpg.chaineConn = null;
+            this.bpg.fail = false;
+            this.bpg.Location = new System.Drawing.Point(155, 342);
+            this.bpg.MaximumSize = new System.Drawing.Size(2000, 65);
+            this.bpg.MinimumSize = new System.Drawing.Size(200, 30);
+            this.bpg.Name = "bpg";
+            this.bpg.next = false;
+            this.bpg.numCours = "DEBUT1";
+            this.bpg.numLecon = 1;
+            this.bpg.refresh = false;
+            this.bpg.Size = new System.Drawing.Size(600, 30);
+            this.bpg.spawn = false;
+            this.bpg.TabIndex = 6;
             // 
             // frmExo
             // 
@@ -169,8 +188,8 @@ namespace SaeTest
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 375);
+            this.Controls.Add(this.bpg);
             this.Controls.Add(this.pnlExo2);
-            this.Controls.Add(this.pnlExo3);
             this.Controls.Add(this.btnRecommencer);
             this.Controls.Add(this.pnlExo1);
             this.Controls.Add(this.btnAide);
@@ -204,5 +223,6 @@ namespace SaeTest
         private System.Windows.Forms.Label lblEnonce;
         private System.Windows.Forms.Label lblEnonce2;
         private System.Windows.Forms.Label lblTraduction2;
+        private barProgression.barProgression bpg;
     }
 }

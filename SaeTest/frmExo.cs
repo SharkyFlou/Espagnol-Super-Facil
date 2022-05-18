@@ -18,7 +18,8 @@ namespace SaeTest
             InitializeComponent();
             chcon = frmParent.instance.getLienBase();
             instance = this;
-            
+            this.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperExo.jpg"));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
         }
         public frmExo(int xcodeUtile)
         {
@@ -26,6 +27,8 @@ namespace SaeTest
             chcon = frmParent.instance.getLienBase();
             codeUtile = xcodeUtile;
             instance = this;
+            this.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperExo.jpg"));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 
         }
         string chcon;
@@ -34,8 +37,8 @@ namespace SaeTest
         private int codeUtile;
         private string[] mots;
         private string[] liste;
-        private int lefttt = lblTraduction2.Left;
-        private int toppp = lblTraduction2.Top;
+        //private int lefttt = lblTraduction2.Left;
+        //private int toppp = lblTraduction2.Top;
 
         public static frmExo instance;
 
@@ -57,6 +60,14 @@ namespace SaeTest
 
             int numExo = 4;
             int numLecon = 2;
+
+            bpg.chaineConn = frmParent.instance.getLienBase();
+            bpg.numCours = "GRAMM1";
+            bpg.numLecon = 1;
+            bpg.spawn = true;
+            MessageBox.Show("mmmmmmmmh");
+
+
             recupExo(numCours, numLecon, numExo);
         }
         private void Exo1(string phrase,string traducPhrase,string []listeMots,string enonceExo)
@@ -281,8 +292,8 @@ namespace SaeTest
                     c.BackColor = Color.DarkGray;
                     Label t = new Label();
                     t.Tag = tag;
-                    t.Left = left;
-                    t.Top = top;
+                    //t.Left = left;
+                    //t.Top = top;
                 }
             }
         }

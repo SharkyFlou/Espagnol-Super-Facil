@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="barProgression">
+      <HintPath>.\barProgression.dll</HintPath>
+    </Reference>
     <Reference Include="ecranLogin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\ecranLogin.dll</HintPath>
