@@ -73,7 +73,7 @@ namespace SaeTest
             this.pnlExo1.Controls.Add(this.lblEnonce);
             this.pnlExo1.Controls.Add(this.lblTraductionFrançais);
             this.pnlExo1.Controls.Add(this.lblTrad);
-            this.pnlExo1.Location = new System.Drawing.Point(47, 100);
+            this.pnlExo1.Location = new System.Drawing.Point(47, 85);
             this.pnlExo1.Name = "pnlExo1";
             this.pnlExo1.Size = new System.Drawing.Size(677, 194);
             this.pnlExo1.TabIndex = 2;
@@ -129,7 +129,6 @@ namespace SaeTest
             this.pnlExo2.BackColor = System.Drawing.Color.Silver;
             this.pnlExo2.Controls.Add(this.lblTraduction2);
             this.pnlExo2.Controls.Add(this.lblEnonce2);
-            this.pnlExo2.Controls.Add(this.pnlExo3);
             this.pnlExo2.Location = new System.Drawing.Point(46, 29);
             this.pnlExo2.Name = "pnlExo2";
             this.pnlExo2.Size = new System.Drawing.Size(677, 194);
@@ -141,9 +140,9 @@ namespace SaeTest
             this.lblTraduction2.AutoSize = true;
             this.lblTraduction2.Location = new System.Drawing.Point(45, 47);
             this.lblTraduction2.Name = "lblTraduction2";
-            this.lblTraduction2.Size = new System.Drawing.Size(52, 21);
+            this.lblTraduction2.Size = new System.Drawing.Size(0, 21);
             this.lblTraduction2.TabIndex = 1;
-            this.lblTraduction2.Text = "label1";
+            this.lblTraduction2.Tag = "Test";
             // 
             // lblEnonce2
             // 
@@ -154,12 +153,13 @@ namespace SaeTest
             this.lblEnonce2.Name = "lblEnonce2";
             this.lblEnonce2.Size = new System.Drawing.Size(44, 21);
             this.lblEnonce2.TabIndex = 0;
+            this.lblEnonce2.Tag = "Test";
             this.lblEnonce2.Text = "Texte";
             // 
             // pnlExo3
             // 
             this.pnlExo3.BackColor = System.Drawing.Color.Black;
-            this.pnlExo3.Location = new System.Drawing.Point(72, 113);
+            this.pnlExo3.Location = new System.Drawing.Point(517, 12);
             this.pnlExo3.Name = "pnlExo3";
             this.pnlExo3.Size = new System.Drawing.Size(651, 194);
             this.pnlExo3.TabIndex = 5;
@@ -170,7 +170,7 @@ namespace SaeTest
             this.bpg.BackColor = System.Drawing.Color.Transparent;
             this.bpg.chaineConn = null;
             this.bpg.fail = false;
-            this.bpg.Location = new System.Drawing.Point(47, 342);
+            this.bpg.Location = new System.Drawing.Point(46, 347);
             this.bpg.MaximumSize = new System.Drawing.Size(2000, 65);
             this.bpg.MinimumSize = new System.Drawing.Size(200, 30);
             this.bpg.Name = "bpg";
@@ -189,6 +189,7 @@ namespace SaeTest
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 375);
             this.Controls.Add(this.bpg);
+            this.Controls.Add(this.pnlExo3);
             this.Controls.Add(this.pnlExo2);
             this.Controls.Add(this.btnRecommencer);
             this.Controls.Add(this.pnlExo1);
