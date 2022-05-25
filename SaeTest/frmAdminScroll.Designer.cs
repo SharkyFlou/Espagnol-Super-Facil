@@ -29,18 +29,20 @@ namespace SaeTest
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlMid = new System.Windows.Forms.Panel();
             this.lblTitre = new System.Windows.Forms.Label();
             this.btnArriere = new System.Windows.Forms.Button();
             this.btnDebut = new System.Windows.Forms.Button();
             this.btnAvant = new System.Windows.Forms.Button();
             this.btnFin = new System.Windows.Forms.Button();
-            this.lblLecon = new System.Windows.Forms.Label();
-            this.lblCours = new System.Windows.Forms.Label();
-            this.cboLecon = new System.Windows.Forms.ComboBox();
-            this.cboCours = new System.Windows.Forms.ComboBox();
-            this.barProgression1 = new barProgression.barProgression();
+            this.trwExos = new System.Windows.Forms.TreeView();
+            this.baseLangueDataSet = new SaeTest.baseLangueDataSet();
+            this.exercicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.exercicesTableAdapter = new SaeTest.baseLangueDataSetTableAdapters.ExercicesTableAdapter();
             this.pnlMid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.baseLangueDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exercicesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMid
@@ -50,24 +52,21 @@ namespace SaeTest
             this.pnlMid.Controls.Add(this.btnDebut);
             this.pnlMid.Controls.Add(this.btnAvant);
             this.pnlMid.Controls.Add(this.btnFin);
-            this.pnlMid.Controls.Add(this.lblLecon);
-            this.pnlMid.Controls.Add(this.lblCours);
-            this.pnlMid.Controls.Add(this.cboLecon);
-            this.pnlMid.Controls.Add(this.cboCours);
-            this.pnlMid.Location = new System.Drawing.Point(12, 12);
+            this.pnlMid.Location = new System.Drawing.Point(283, 12);
             this.pnlMid.Name = "pnlMid";
-            this.pnlMid.Size = new System.Drawing.Size(807, 307);
+            this.pnlMid.Size = new System.Drawing.Size(536, 351);
             this.pnlMid.TabIndex = 0;
             // 
             // lblTitre
             // 
             this.lblTitre.AutoSize = true;
             this.lblTitre.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitre.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.exercicesBindingSource, "enonceExo", true));
             this.lblTitre.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitre.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblTitre.Location = new System.Drawing.Point(344, 85);
+            this.lblTitre.Location = new System.Drawing.Point(234, 19);
             this.lblTitre.Name = "lblTitre";
-            this.lblTitre.Size = new System.Drawing.Size(54, 30);
+            this.lblTitre.Size = new System.Drawing.Size(84, 45);
             this.lblTitre.TabIndex = 8;
             this.lblTitre.Text = "Titre";
             // 
@@ -76,111 +75,79 @@ namespace SaeTest
             this.btnArriere.BackColor = System.Drawing.Color.Transparent;
             this.btnArriere.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnArriere.ForeColor = System.Drawing.Color.Transparent;
-            this.btnArriere.Location = new System.Drawing.Point(69, 274);
+            this.btnArriere.Location = new System.Drawing.Point(69, 318);
             this.btnArriere.Name = "btnArriere";
             this.btnArriere.Size = new System.Drawing.Size(40, 30);
             this.btnArriere.TabIndex = 7;
             this.btnArriere.UseVisualStyleBackColor = false;
+            this.btnArriere.Click += new System.EventHandler(this.btnArriere_Click);
             // 
             // btnDebut
             // 
             this.btnDebut.BackColor = System.Drawing.Color.Transparent;
             this.btnDebut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDebut.ForeColor = System.Drawing.Color.Transparent;
-            this.btnDebut.Location = new System.Drawing.Point(3, 274);
+            this.btnDebut.Location = new System.Drawing.Point(3, 318);
             this.btnDebut.Name = "btnDebut";
             this.btnDebut.Size = new System.Drawing.Size(60, 30);
             this.btnDebut.TabIndex = 6;
             this.btnDebut.UseVisualStyleBackColor = false;
+            this.btnDebut.Click += new System.EventHandler(this.btnDebut_Click);
             // 
             // btnAvant
             // 
             this.btnAvant.BackColor = System.Drawing.Color.Transparent;
             this.btnAvant.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAvant.ForeColor = System.Drawing.Color.Transparent;
-            this.btnAvant.Location = new System.Drawing.Point(698, 274);
+            this.btnAvant.Location = new System.Drawing.Point(427, 318);
             this.btnAvant.Name = "btnAvant";
             this.btnAvant.Size = new System.Drawing.Size(40, 30);
             this.btnAvant.TabIndex = 5;
             this.btnAvant.UseVisualStyleBackColor = false;
+            this.btnAvant.Click += new System.EventHandler(this.btnAvant_Click);
             // 
             // btnFin
             // 
             this.btnFin.BackColor = System.Drawing.Color.Transparent;
             this.btnFin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFin.ForeColor = System.Drawing.Color.Transparent;
-            this.btnFin.Location = new System.Drawing.Point(744, 274);
+            this.btnFin.Location = new System.Drawing.Point(473, 318);
             this.btnFin.Name = "btnFin";
             this.btnFin.Size = new System.Drawing.Size(60, 30);
             this.btnFin.TabIndex = 4;
             this.btnFin.UseVisualStyleBackColor = false;
+            this.btnFin.Click += new System.EventHandler(this.btnFin_Click);
             // 
-            // lblLecon
+            // trwExos
             // 
-            this.lblLecon.AutoSize = true;
-            this.lblLecon.BackColor = System.Drawing.Color.Transparent;
-            this.lblLecon.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblLecon.Location = new System.Drawing.Point(451, 34);
-            this.lblLecon.Name = "lblLecon";
-            this.lblLecon.Size = new System.Drawing.Size(58, 21);
-            this.lblLecon.TabIndex = 3;
-            this.lblLecon.Text = "Leçon :";
+            this.trwExos.BackColor = System.Drawing.Color.DimGray;
+            this.trwExos.Location = new System.Drawing.Point(12, 12);
+            this.trwExos.Name = "trwExos";
+            this.trwExos.Size = new System.Drawing.Size(265, 351);
+            this.trwExos.TabIndex = 1;
+            this.trwExos.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trwExos_AfterSelect);
             // 
-            // lblCours
+            // baseLangueDataSet
             // 
-            this.lblCours.AutoSize = true;
-            this.lblCours.BackColor = System.Drawing.Color.Transparent;
-            this.lblCours.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblCours.Location = new System.Drawing.Point(16, 34);
-            this.lblCours.Name = "lblCours";
-            this.lblCours.Size = new System.Drawing.Size(58, 21);
-            this.lblCours.TabIndex = 2;
-            this.lblCours.Text = "Cours :";
+            this.baseLangueDataSet.DataSetName = "baseLangueDataSet";
+            this.baseLangueDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // cboLecon
+            // exercicesBindingSource
             // 
-            this.cboLecon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLecon.FormattingEnabled = true;
-            this.cboLecon.Location = new System.Drawing.Point(509, 31);
-            this.cboLecon.Name = "cboLecon";
-            this.cboLecon.Size = new System.Drawing.Size(295, 29);
-            this.cboLecon.TabIndex = 1;
-            this.cboLecon.SelectionChangeCommitted += new System.EventHandler(this.cboLecon_SelectionChangeCommitted);
+            this.exercicesBindingSource.DataMember = "Exercices";
+            this.exercicesBindingSource.DataSource = this.baseLangueDataSet;
             // 
-            // cboCours
+            // exercicesTableAdapter
             // 
-            this.cboCours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCours.FormattingEnabled = true;
-            this.cboCours.Location = new System.Drawing.Point(84, 31);
-            this.cboCours.Name = "cboCours";
-            this.cboCours.Size = new System.Drawing.Size(257, 29);
-            this.cboCours.TabIndex = 0;
-            this.cboCours.SelectionChangeCommitted += new System.EventHandler(this.cboCours_SelectionChangeCommitted);
-            // 
-            // barProgression1
-            // 
-            this.barProgression1.BackColor = System.Drawing.Color.Transparent;
-            this.barProgression1.chaineConn = null;
-            this.barProgression1.fail = false;
-            this.barProgression1.Location = new System.Drawing.Point(96, 325);
-            this.barProgression1.MaximumSize = new System.Drawing.Size(2000, 65);
-            this.barProgression1.MinimumSize = new System.Drawing.Size(200, 30);
-            this.barProgression1.Name = "barProgression1";
-            this.barProgression1.next = false;
-            this.barProgression1.numCours = "DEBUT1";
-            this.barProgression1.numLecon = 1;
-            this.barProgression1.refresh = false;
-            this.barProgression1.Size = new System.Drawing.Size(658, 38);
-            this.barProgression1.spawn = false;
-            this.barProgression1.TabIndex = 1;
+            this.exercicesTableAdapter.ClearBeforeFill = true;
             // 
             // frmAdminScroll
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 375);
-            this.Controls.Add(this.barProgression1);
+            this.Controls.Add(this.trwExos);
             this.Controls.Add(this.pnlMid);
             this.Font = new System.Drawing.Font("Nirmala UI", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -190,6 +157,8 @@ namespace SaeTest
             this.Load += new System.EventHandler(this.frmAdminScroll_Load);
             this.pnlMid.ResumeLayout(false);
             this.pnlMid.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.baseLangueDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exercicesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -197,15 +166,14 @@ namespace SaeTest
         #endregion
 
         private System.Windows.Forms.Panel pnlMid;
-        private barProgression.barProgression barProgression1;
-        private System.Windows.Forms.Label lblLecon;
-        private System.Windows.Forms.Label lblCours;
-        private System.Windows.Forms.ComboBox cboLecon;
-        private System.Windows.Forms.ComboBox cboCours;
         private System.Windows.Forms.Button btnArriere;
         private System.Windows.Forms.Button btnDebut;
         private System.Windows.Forms.Button btnAvant;
         private System.Windows.Forms.Button btnFin;
         private System.Windows.Forms.Label lblTitre;
+        private System.Windows.Forms.TreeView trwExos;
+        private baseLangueDataSet baseLangueDataSet;
+        private System.Windows.Forms.BindingSource exercicesBindingSource;
+        private baseLangueDataSetTableAdapters.ExercicesTableAdapter exercicesTableAdapter;
     }
 }
