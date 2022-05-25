@@ -11,6 +11,32 @@ using System.Data.OleDb;
 
 namespace SaeTest
 {
+    /*Régler la taille des Button Exo2() -> Pas assez large selon les mots 
+     * Label générés pas assez large selon les mots
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
     public partial class frmExo : Form
     {
         public frmExo()
@@ -37,8 +63,11 @@ namespace SaeTest
         private int codeUtile;
         private string[] mots;
         private string[] liste;
-        //private int lefttt = lblTraduction2.Left;
-        //private int toppp = lblTraduction2.Top;
+        private int lefttt;
+        private int toppp;
+        private int decalage;
+        string phrase;
+        private bool Reussi;
 
         public static frmExo instance;
 
@@ -52,24 +81,25 @@ namespace SaeTest
 
             string requeteExo = "codeUtil=" + codeUtile;
             DataRow[] Utilisateur = dsLocal.Tables["Utilisateurs"].Select(requeteExo);
-            //string numCours = Utilisateur[0]["codeCours"].ToString();
-            //  int numLecon = (int)Utilisateur[0]["codeLeçon"];
-            //int numExo = (int)Utilisateur[0]["codeExo"];
-            string numCours = "DEBUT1";
 
+            string numCours = Utilisateur[0]["codeCours"].ToString();
+            int numLecon = (int)Utilisateur[0]["codeLeçon"];
+            int numExo = (int)Utilisateur[0]["codeExo"];
 
-            int numExo = 4;
-            int numLecon = 2;
+            numCours = "DEBUT1";
+            numExo = 4;
+            numLecon = 1;
 
             bpg.chaineConn = frmParent.instance.getLienBase();
-            bpg.numCours = "GRAMM1";
-            bpg.numLecon = 1;
+            bpg.numCours = numCours;
+            bpg.numLecon = numLecon;
             bpg.spawn = true;
-            MessageBox.Show("mmmmmmmmh");
+            Reussi = false;
 
 
             recupExo(numCours, numLecon, numExo);
         }
+        
         private void Exo1(string phrase,string traducPhrase,string []listeMots,string enonceExo)
         {
             if(pnlExo2.Visible==true || pnlExo3.Visible==true)
@@ -85,6 +115,7 @@ namespace SaeTest
             int left = lblTrad.Left;
             int top = lblTrad.Top + 30;
             mots = phrase.Split(' ');
+           
 
             for(int i = 0; i < mots.Length; i++)
             {
@@ -101,7 +132,7 @@ namespace SaeTest
                 {
                     Label mot = new Label();
                     mot.Text = mots[i];
-                    mot.Width = (mots[i].Length + 1)*9;
+                    mot.AutoSize = true;
                     mot.ForeColor = Color.Black;
                     mot.Left = left;
                     mot.Top = top;
@@ -116,6 +147,8 @@ namespace SaeTest
                 }
             }
         }
+
+
         private void Exo2(string phrase, string traduc, string enonce)
         {
             if (pnlExo1.Visible == true || pnlExo3.Visible == true)
@@ -129,8 +162,14 @@ namespace SaeTest
             lblTraduction2.Text = traduc;
 
             mots = phrase.Split(' ');
+            Random random = new Random();
+            mots = mots.OrderBy(x => random.Next()).ToArray();
+
             int left = lblEnonce2.Left;
             int top = lblTraduction2.Top + 80;
+
+            lefttt = lblTraduction2.Left;
+            toppp = lblTraduction2.Top + 30;
 
             for(int i = 0; i < mots.Length; i++)
             {
@@ -142,6 +181,7 @@ namespace SaeTest
                 t.Text = mots[i];
                 t.BackColor = Color.Yellow;
                 t.Height = 30;
+                t.AutoSize = true;
                 t.Tag = i;
                 t.Click += Queue;
                 pnlExo2.Controls.Add(t);
@@ -152,10 +192,10 @@ namespace SaeTest
                     top = lblTraduction2.Top + 110;
                 }
             }
-            
-
-
         }
+
+
+
         private void Exo3()
         {
             if (pnlExo2.Visible == true || pnlExo1.Visible == true)
@@ -177,27 +217,103 @@ namespace SaeTest
 
         }
 
+
+
         private void btnValider_Click(object sender, EventArgs e)
         {
-            int numéro = 0;
-            foreach (Object o in pnlExo1.Controls)
+            if (pnlExo1.Visible)
             {
-                if(o.GetType()==typeof(TextBox))
+                if (Reussi)
                 {
-                    TextBox t = (TextBox)o;
-                    int num = int.Parse(liste[numéro]);
-                    if(t.Text==mots[num-1])
+                    frmParent.instance.chargeForm(new frmExo(codeUtile));
+                }
+                int numéro = 0;
+                foreach (Object o in pnlExo1.Controls)
+                {
+                    if (o.GetType() == typeof(TextBox))
                     {
-                        t.BackColor = Color.Green;
+                        TextBox t = (TextBox)o;
+                        int num = int.Parse(liste[numéro]);
+                        if (t.Text == mots[num - 1])
+                        {
+                            t.BackColor = Color.Green;
+                        }
+                        else
+                        {
+                            t.BackColor = Color.Red;
+                        }
+                        numéro++;
+                    }
+                }
+                Reussi = true;
+                foreach(TextBox t in pnlExo1.Controls.OfType<TextBox>())
+                {
+                    if(t.BackColor==Color.Red)
+                    {
+                        Reussi = false;
+                    }
+                }
+                if(Reussi)
+                {
+                    btnValider.AutoSize = true;
+                    btnValider.Text = "Continuer";
+                }
+            }
+            if(pnlExo2.Visible)
+            {
+                bool vérif = true;
+                foreach(Button btn in pnlExo2.Controls.OfType<Button>())
+                {
+                    if(btn.Enabled)
+                    {
+                        vérif = false;
+                    }
+                }
+                if (vérif)
+                {
+                    if(Reussi)
+                    {
+                        frmParent.instance.chargeForm(new frmExo(codeUtile));
+                    }
+                    string réponse = "";
+                    foreach (Label l in pnlExo2.Controls.OfType<Label>())
+                    {
+                        if (l.Tag.ToString() != "Test")
+                        {
+                            réponse += l.Text.ToString()+" "; 
+                        }
+                    }
+
+                    phrase = phrase.Trim();
+                    réponse = réponse.Trim();
+
+                    if (phrase.Equals(réponse)) 
+                    {
+                        MessageBox.Show("Gagné!");
+                        Reussi = true;
                     }
                     else
                     {
-                        t.BackColor = Color.Red;
+                        MessageBox.Show("Perdu...");
                     }
-                    numéro++;
+                    if(Reussi)
+                    {
+                        btnValider.AutoSize = true;
+                        btnValider.Text = "Continuer";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez utiliser tout les mots");
                 }
             }
+            if(pnlExo3.Visible)
+            {
+
+            }
         }
+
+
         private void chargementDsLocal()
         {
             connec.Open();
@@ -234,7 +350,9 @@ namespace SaeTest
                     string requetePhrase = "codePhrase=" + numéroPhrase;
                     DataRow[] phrases = dsLocal.Tables["Phrases"].Select(requetePhrase);
 
-                    string phrase = phrases[0]["textePhrase"].ToString();
+
+                    phrase = phrases[0]["textePhrase"].ToString();
+                    phrase = Normalsation(phrase);
                     string traducPhrase = phrases[0]["traducPhrase"].ToString();
 
                     string requeteComplete = "codePhrase="+numéroPhrase;
@@ -292,10 +410,49 @@ namespace SaeTest
                     c.BackColor = Color.DarkGray;
                     Label t = new Label();
                     t.Tag = tag;
-                    //t.Left = left;
-                    //t.Top = top;
+                    t.Left = lefttt;
+                    t.Top = toppp;
+                    t.Text = c.Text;
+                    t.AutoSize = true;
+                    t.Click += Chatte;
+                    pnlExo2.Controls.Add(t);
+                    lefttt += t.Width;
                 }
             }
+        }
+        private void Chatte(object sender, EventArgs e)
+        {
+            object tag = ((Label)sender).Tag;
+            decalage = ((Label)sender).Width;
+            foreach (Control c in pnlExo2.Controls)
+            {
+                if (c.Tag == tag)
+                {
+                    pnlExo2.Controls.Remove((Label)sender);
+                    c.Enabled = true;
+                    c.BackColor = Color.Yellow;
+                }
+            }
+            foreach (Label l in pnlExo2.Controls.OfType<Label>())
+            {
+                if (l.Left > ((Label)sender).Left)
+                {
+                    if (l.Tag.ToString() != "Test")
+                    {
+                        l.Left -= decalage;
+                    }
+                }
+            }
+            lefttt -= decalage;
+
+        }
+        private String Normalsation(string s )
+        {
+            s = s.ToLower();
+            var sb = new StringBuilder(); foreach (char c in s) { if (!char.IsPunctuation(c)) sb.Append(c); }
+            s = sb.ToString();
+
+            return s;
         }
     } 
 }
