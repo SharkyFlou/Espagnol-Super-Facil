@@ -30,6 +30,9 @@ namespace SaeTest
             frmParent.instance.chargeForm(new frmConnec());   
         }
 
-
+        private void btnInscri_Click(object sender, EventArgs e)
+        {
+            frmParent.instance.chargeForm(new frmInscri());
+        }
     }
 }

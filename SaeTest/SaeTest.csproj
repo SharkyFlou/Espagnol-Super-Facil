@@ -106,6 +106,12 @@
     <Compile Include="frmEnfant.Designer.cs">
       <DependentUpon>frmEnfant.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEnfantAdminCrea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnfantAdminCrea.Designer.cs">
+      <DependentUpon>frmEnfantAdminCrea.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmExo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEnfant.resx">
       <DependentUpon>frmEnfant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnfantAdminCrea.resx">
+      <DependentUpon>frmEnfantAdminCrea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmExo.resx">
       <DependentUpon>frmExo.cs</DependentUpon>

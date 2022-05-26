@@ -33,15 +33,16 @@ namespace SaeTest
             this.cboLecon = new System.Windows.Forms.ComboBox();
             this.cboCours = new System.Windows.Forms.ComboBox();
             this.cboExo = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblTitre = new System.Windows.Forms.Label();
+            this.lblExo = new System.Windows.Forms.Label();
+            this.lblLecon = new System.Windows.Forms.Label();
+            this.lblCours = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.pnlGauche = new System.Windows.Forms.Panel();
             this.pnlDroit = new System.Windows.Forms.Panel();
+            this.btSuppr = new System.Windows.Forms.Button();
             this.pnlGauche.SuspendLayout();
             this.pnlDroit.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +54,7 @@ namespace SaeTest
             this.cboUtil.FormattingEnabled = true;
             this.cboUtil.Location = new System.Drawing.Point(7, 49);
             this.cboUtil.Name = "cboUtil";
-            this.cboUtil.Size = new System.Drawing.Size(339, 29);
+            this.cboUtil.Size = new System.Drawing.Size(360, 29);
             this.cboUtil.TabIndex = 0;
             this.cboUtil.SelectionChangeCommitted += new System.EventHandler(this.cboUtil_SelectionChangeCommitted);
             // 
@@ -64,7 +65,7 @@ namespace SaeTest
             this.cboLecon.FormattingEnabled = true;
             this.cboLecon.Location = new System.Drawing.Point(7, 180);
             this.cboLecon.Name = "cboLecon";
-            this.cboLecon.Size = new System.Drawing.Size(339, 29);
+            this.cboLecon.Size = new System.Drawing.Size(360, 29);
             this.cboLecon.TabIndex = 2;
             this.cboLecon.SelectionChangeCommitted += new System.EventHandler(this.cboLecon_SelectionChangeCommitted);
             // 
@@ -75,7 +76,7 @@ namespace SaeTest
             this.cboCours.FormattingEnabled = true;
             this.cboCours.Location = new System.Drawing.Point(7, 115);
             this.cboCours.Name = "cboCours";
-            this.cboCours.Size = new System.Drawing.Size(339, 29);
+            this.cboCours.Size = new System.Drawing.Size(360, 29);
             this.cboCours.TabIndex = 3;
             this.cboCours.SelectionChangeCommitted += new System.EventHandler(this.cboCours_SelectionChangeCommitted);
             // 
@@ -86,77 +87,79 @@ namespace SaeTest
             this.cboExo.FormattingEnabled = true;
             this.cboExo.Location = new System.Drawing.Point(7, 254);
             this.cboExo.Name = "cboExo";
-            this.cboExo.Size = new System.Drawing.Size(339, 29);
+            this.cboExo.Size = new System.Drawing.Size(360, 29);
             this.cboExo.TabIndex = 4;
             // 
-            // label1
+            // lblTitre
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(279, 30);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Modifier un utilisateur inscrit";
+            this.lblTitre.AutoSize = true;
+            this.lblTitre.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitre.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.ForeColor = System.Drawing.Color.White;
+            this.lblTitre.Location = new System.Drawing.Point(3, 16);
+            this.lblTitre.Name = "lblTitre";
+            this.lblTitre.Size = new System.Drawing.Size(279, 30);
+            this.lblTitre.TabIndex = 5;
+            this.lblTitre.Text = "Modifier un utilisateur inscrit";
             // 
-            // label3
+            // lblExo
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 230);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 21);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Exercices";
+            this.lblExo.AutoSize = true;
+            this.lblExo.BackColor = System.Drawing.Color.Transparent;
+            this.lblExo.ForeColor = System.Drawing.Color.White;
+            this.lblExo.Location = new System.Drawing.Point(3, 230);
+            this.lblExo.Name = "lblExo";
+            this.lblExo.Size = new System.Drawing.Size(72, 21);
+            this.lblExo.TabIndex = 7;
+            this.lblExo.Text = "Exercices";
             // 
-            // label4
+            // lblLecon
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(3, 156);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 21);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Leçon";
+            this.lblLecon.AutoSize = true;
+            this.lblLecon.BackColor = System.Drawing.Color.Transparent;
+            this.lblLecon.ForeColor = System.Drawing.Color.White;
+            this.lblLecon.Location = new System.Drawing.Point(3, 156);
+            this.lblLecon.Name = "lblLecon";
+            this.lblLecon.Size = new System.Drawing.Size(51, 21);
+            this.lblLecon.TabIndex = 8;
+            this.lblLecon.Text = "Leçon";
             // 
-            // label5
+            // lblCours
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(3, 81);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 21);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Cours";
+            this.lblCours.AutoSize = true;
+            this.lblCours.BackColor = System.Drawing.Color.Transparent;
+            this.lblCours.ForeColor = System.Drawing.Color.White;
+            this.lblCours.Location = new System.Drawing.Point(4, 91);
+            this.lblCours.Name = "lblCours";
+            this.lblCours.Size = new System.Drawing.Size(51, 21);
+            this.lblCours.TabIndex = 9;
+            this.lblCours.Text = "Cours";
             // 
             // btnReset
             // 
+            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnReset.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(7, 297);
+            this.btnReset.Location = new System.Drawing.Point(141, 296);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(124, 50);
+            this.btnReset.Size = new System.Drawing.Size(96, 50);
             this.btnReset.TabIndex = 10;
             this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.button1_Click);
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnValider
             // 
+            this.btnValider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnValider.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.ForeColor = System.Drawing.Color.Black;
-            this.btnValider.Location = new System.Drawing.Point(222, 297);
+            this.btnValider.Location = new System.Drawing.Point(243, 296);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(124, 50);
             this.btnValider.TabIndex = 11;
-            this.btnValider.Text = "Valider";
-            this.btnValider.UseVisualStyleBackColor = true;
-            this.btnValider.Click += new System.EventHandler(this.button2_Click);
+            this.btnValider.Text = "Modifier";
+            this.btnValider.UseVisualStyleBackColor = false;
+            this.btnValider.Click += new System.EventHandler(this.btnModifier_Click);
             // 
             // btnAjouter
             // 
@@ -168,6 +171,7 @@ namespace SaeTest
             this.btnAjouter.TabIndex = 1;
             this.btnAjouter.Text = "Ajouter un nouvel utilisateur";
             this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // pnlGauche
             // 
@@ -179,20 +183,34 @@ namespace SaeTest
             // 
             // pnlDroit
             // 
-            this.pnlDroit.Controls.Add(this.label1);
+            this.pnlDroit.Controls.Add(this.btSuppr);
+            this.pnlDroit.Controls.Add(this.lblTitre);
             this.pnlDroit.Controls.Add(this.cboUtil);
             this.pnlDroit.Controls.Add(this.btnValider);
             this.pnlDroit.Controls.Add(this.cboCours);
             this.pnlDroit.Controls.Add(this.btnReset);
-            this.pnlDroit.Controls.Add(this.label5);
-            this.pnlDroit.Controls.Add(this.label3);
-            this.pnlDroit.Controls.Add(this.label4);
+            this.pnlDroit.Controls.Add(this.lblCours);
+            this.pnlDroit.Controls.Add(this.lblExo);
+            this.pnlDroit.Controls.Add(this.lblLecon);
             this.pnlDroit.Controls.Add(this.cboExo);
             this.pnlDroit.Controls.Add(this.cboLecon);
             this.pnlDroit.Location = new System.Drawing.Point(412, 12);
             this.pnlDroit.Name = "pnlDroit";
             this.pnlDroit.Size = new System.Drawing.Size(370, 350);
             this.pnlDroit.TabIndex = 13;
+            // 
+            // btSuppr
+            // 
+            this.btSuppr.BackColor = System.Drawing.Color.Red;
+            this.btSuppr.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSuppr.ForeColor = System.Drawing.Color.Black;
+            this.btSuppr.Location = new System.Drawing.Point(8, 297);
+            this.btSuppr.Name = "btSuppr";
+            this.btSuppr.Size = new System.Drawing.Size(127, 50);
+            this.btSuppr.TabIndex = 12;
+            this.btSuppr.Text = "Supprimer l\'utilisateur";
+            this.btSuppr.UseVisualStyleBackColor = false;
+            this.btSuppr.Click += new System.EventHandler(this.btSuppr_Click);
             // 
             // frmAdminCrea
             // 
@@ -221,14 +239,15 @@ namespace SaeTest
         private System.Windows.Forms.ComboBox cboLecon;
         private System.Windows.Forms.ComboBox cboCours;
         private System.Windows.Forms.ComboBox cboExo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTitre;
+        private System.Windows.Forms.Label lblExo;
+        private System.Windows.Forms.Label lblLecon;
+        private System.Windows.Forms.Label lblCours;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.Panel pnlGauche;
         private System.Windows.Forms.Panel pnlDroit;
+        private System.Windows.Forms.Button btSuppr;
     }
 }

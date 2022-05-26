@@ -41,9 +41,10 @@ namespace SaeTest
             if (testConnexion(chcon, connec))
             {
                 chargeForm(new frmDema());
-                btnMaison.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\maisonLogo.png"));
-                btnMaison.BackgroundImageLayout= System.Windows.Forms.ImageLayout.Stretch;
+                chargePhotopb();
             }
+            this.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperHexa.png"));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Tile;
         }
 
 
@@ -52,6 +53,14 @@ namespace SaeTest
             if (this.pnlForm.Controls.Count > 0)
             {
                 this.pnlForm.Controls.RemoveAt(0);
+            }
+            //activation ou desactivation du bouton retour
+            if (Form.GetType() == typeof(frmDema)){
+                pbRetour.Enabled = false;
+            }
+            else
+            {
+               pbRetour.Enabled = true;
             }
             Form f = Form as Form;
             f.TopLevel = false;
@@ -84,7 +93,7 @@ namespace SaeTest
             {
                 Xconnec.ConnectionString = Xchcon;
                 Xconnec.Open();
-                MessageBox.Show("Connecté à la BDD");
+                //MessageBox.Show("Connecté à la BDD");
                 return true;
             }
 
@@ -120,7 +129,7 @@ namespace SaeTest
 
         private void btnQuitter_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Etes vous sur de vouloir quitter ?\n Vos données seront sauvegarder","Quitter ?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if(MessageBox.Show("Etes vous sur de vouloir quitter ?\nVos données seront sauvegardées", "Quitter ?", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 Application.Exit();
             }
@@ -128,7 +137,16 @@ namespace SaeTest
 
         private void pnlHaut_MouseDown(object sender, MouseEventArgs e)
         {
-            mouseLocation = new Point(-e.X, -e.Y);
+            if (sender.GetType() == typeof(Label))
+            {
+                Label lbl = (Label)sender;
+                mouseLocation = new Point(-e.X- lbl.Left, -e.Y-lbl.Top);
+            }
+            else
+            {
+                mouseLocation = new Point(-e.X, -e.Y);
+            }
+            
         }
 
         private void pnlHaut_MouseMove(object sender, MouseEventArgs e)
@@ -158,7 +176,74 @@ namespace SaeTest
 
         private void btnMaison_Click(object sender, EventArgs e)
         {
+            if (pnlForm.Controls[0].GetType() == typeof(frmExo))
+            {
+                if (MessageBox.Show("Etes vous sur de vouloir revenir au menu ?\nVos données seront sauvegardées", "Partir ?", MessageBoxButtons.OKCancel) != DialogResult.OK)
+                {
+                    return;
+                }
+            }
             chargeForm(new frmDema());
+        }
+
+        private void chargePhotopb()
+        {
+            pbMaison.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\maisonLogo.png"));
+            pbCroix.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\croixLogo.png"));
+            pbRetour.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\flecheArriereLogo.png"));
+        }
+
+        private void pbMaison_MouseEnter(object sender, EventArgs e)
+        {
+            pbMaison.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\maisonHoverLogo.png"));
+        }
+
+        private void pbMaison_MouseLeave(object sender, EventArgs e)
+        {
+            pbMaison.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\maisonLogo.png"));
+        }
+
+        private void pbRetour_MouseEnter(object sender, EventArgs e)
+        {
+            pbRetour.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\flecheArriereHoverLogo.png"));
+        }
+
+        private void pbRetour_MouseLeave(object sender, EventArgs e)
+        {
+            pbRetour.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\flecheArriereLogo.png"));
+        }
+
+        private void pbCroix_MouseEnter(object sender, EventArgs e)
+        {
+            pbCroix.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\croixHoverLogo.png"));
+        }
+
+        private void pbCroix_MouseLeave(object sender, EventArgs e)
+        {
+            pbCroix.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\croixLogo.png"));
+        }
+
+        private void pbRetour_Click(object sender, EventArgs e)
+        {
+            if (pnlForm.Controls[0].GetType() == typeof(frmConnec) || pnlForm.Controls[0].GetType() == typeof(frmInscri))
+            {
+                chargeForm(new frmDema());
+            }
+            else if(pnlForm.Controls[0].GetType() == typeof(frmExo))
+            {
+                if (MessageBox.Show("Etes vous sur de vouloir revenir en arrière ?\nVos données seront sauvegardées", "Partir ?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    chargeForm(new frmConnec());
+                }
+            }
+            else if (pnlForm.Controls[0].GetType() == typeof(frmAdmin))
+            {
+                chargeForm(new frmConnec());
+            }
+            else if (pnlForm.Controls[0].GetType() == typeof(frmAdminScroll) || pnlForm.Controls[0].GetType() == typeof(frmAdminCrea))
+            {
+                chargeForm(new frmAdmin());
+            }
         }
     }
 }

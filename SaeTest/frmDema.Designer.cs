@@ -44,6 +44,7 @@ namespace SaeTest
             this.btnInscri.TabIndex = 0;
             this.btnInscri.Text = "Inscription";
             this.btnInscri.UseVisualStyleBackColor = true;
+            this.btnInscri.Click += new System.EventHandler(this.btnInscri_Click);
             // 
             // btnConnec
             // 
@@ -67,7 +68,7 @@ namespace SaeTest
             // 
             // frmDema
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 375);

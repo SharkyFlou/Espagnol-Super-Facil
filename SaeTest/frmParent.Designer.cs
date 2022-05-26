@@ -31,11 +31,15 @@ namespace SaeTest
         {
             this.lblYes = new System.Windows.Forms.Label();
             this.pnlForm = new System.Windows.Forms.Panel();
-            this.btnQuitter = new System.Windows.Forms.Button();
             this.pnlHaut = new System.Windows.Forms.Panel();
+            this.pbCroix = new System.Windows.Forms.PictureBox();
+            this.pbRetour = new System.Windows.Forms.PictureBox();
+            this.pbMaison = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnMaison = new System.Windows.Forms.Button();
             this.pnlHaut.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCroix)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRetour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMaison)).BeginInit();
             this.SuspendLayout();
             // 
             // lblYes
@@ -47,6 +51,8 @@ namespace SaeTest
             this.lblYes.Size = new System.Drawing.Size(237, 37);
             this.lblYes.TabIndex = 0;
             this.lblYes.Text = "Español súper fácil";
+            this.lblYes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
+            this.lblYes.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
             // 
             // pnlForm
             // 
@@ -57,27 +63,13 @@ namespace SaeTest
             this.pnlForm.Size = new System.Drawing.Size(831, 375);
             this.pnlForm.TabIndex = 4;
             // 
-            // btnQuitter
-            // 
-            this.btnQuitter.BackColor = System.Drawing.Color.Transparent;
-            this.btnQuitter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnQuitter.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitter.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnQuitter.Location = new System.Drawing.Point(787, 3);
-            this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(41, 38);
-            this.btnQuitter.TabIndex = 5;
-            this.btnQuitter.Text = "X";
-            this.btnQuitter.UseVisualStyleBackColor = false;
-            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
-            // 
             // pnlHaut
             // 
             this.pnlHaut.BackColor = System.Drawing.Color.Transparent;
-            this.pnlHaut.Controls.Add(this.btnMaison);
+            this.pnlHaut.Controls.Add(this.pbCroix);
+            this.pnlHaut.Controls.Add(this.pbRetour);
+            this.pnlHaut.Controls.Add(this.pbMaison);
             this.pnlHaut.Controls.Add(this.panel1);
-            this.pnlHaut.Controls.Add(this.btnQuitter);
             this.pnlHaut.Controls.Add(this.lblYes);
             this.pnlHaut.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHaut.Location = new System.Drawing.Point(0, 0);
@@ -87,6 +79,45 @@ namespace SaeTest
             this.pnlHaut.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
             this.pnlHaut.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
             // 
+            // pbCroix
+            // 
+            this.pbCroix.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCroix.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCroix.Location = new System.Drawing.Point(783, 4);
+            this.pbCroix.Name = "pbCroix";
+            this.pbCroix.Size = new System.Drawing.Size(44, 42);
+            this.pbCroix.TabIndex = 10;
+            this.pbCroix.TabStop = false;
+            this.pbCroix.Click += new System.EventHandler(this.btnQuitter_Click);
+            this.pbCroix.MouseEnter += new System.EventHandler(this.pbCroix_MouseEnter);
+            this.pbCroix.MouseLeave += new System.EventHandler(this.pbCroix_MouseLeave);
+            // 
+            // pbRetour
+            // 
+            this.pbRetour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbRetour.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbRetour.Location = new System.Drawing.Point(62, 8);
+            this.pbRetour.Name = "pbRetour";
+            this.pbRetour.Size = new System.Drawing.Size(47, 33);
+            this.pbRetour.TabIndex = 9;
+            this.pbRetour.TabStop = false;
+            this.pbRetour.Click += new System.EventHandler(this.pbRetour_Click);
+            this.pbRetour.MouseEnter += new System.EventHandler(this.pbRetour_MouseEnter);
+            this.pbRetour.MouseLeave += new System.EventHandler(this.pbRetour_MouseLeave);
+            // 
+            // pbMaison
+            // 
+            this.pbMaison.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbMaison.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMaison.Location = new System.Drawing.Point(12, 4);
+            this.pbMaison.Name = "pbMaison";
+            this.pbMaison.Size = new System.Drawing.Size(44, 42);
+            this.pbMaison.TabIndex = 8;
+            this.pbMaison.TabStop = false;
+            this.pbMaison.Click += new System.EventHandler(this.btnMaison_Click);
+            this.pbMaison.MouseEnter += new System.EventHandler(this.pbMaison_MouseEnter);
+            this.pbMaison.MouseLeave += new System.EventHandler(this.pbMaison_MouseLeave);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
@@ -94,20 +125,6 @@ namespace SaeTest
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(834, 10);
             this.panel1.TabIndex = 7;
-            // 
-            // btnMaison
-            // 
-            this.btnMaison.BackColor = System.Drawing.Color.Transparent;
-            this.btnMaison.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnMaison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnMaison.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaison.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnMaison.Location = new System.Drawing.Point(3, 3);
-            this.btnMaison.Name = "btnMaison";
-            this.btnMaison.Size = new System.Drawing.Size(40, 40);
-            this.btnMaison.TabIndex = 8;
-            this.btnMaison.UseVisualStyleBackColor = false;
-            this.btnMaison.Click += new System.EventHandler(this.btnMaison_Click);
             // 
             // frmParent
             // 
@@ -127,6 +144,9 @@ namespace SaeTest
             this.Load += new System.EventHandler(this.frmParent_Load);
             this.pnlHaut.ResumeLayout(false);
             this.pnlHaut.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCroix)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRetour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMaison)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -135,10 +155,11 @@ namespace SaeTest
 
         private System.Windows.Forms.Label lblYes;
         private System.Windows.Forms.Panel pnlForm;
-        private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Panel pnlHaut;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnMaison;
+        private System.Windows.Forms.PictureBox pbCroix;
+        private System.Windows.Forms.PictureBox pbRetour;
+        private System.Windows.Forms.PictureBox pbMaison;
     }
 }
 
