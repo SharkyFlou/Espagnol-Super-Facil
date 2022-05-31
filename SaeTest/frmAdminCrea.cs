@@ -95,10 +95,24 @@ namespace SaeTest
         {   
             try
             {
+                //cherche le nombre max de num d'util
+                connec.ConnectionString = frmParent.instance.getLienBase();
                 connec.Open();
-                string requete = "INSERT INTO Utilisateurs " +
+
+                string requete = "SELECT max(codeUtil) " +
+                    "FROM Utilisateurs ";
+                OleDbCommand cd = new OleDbCommand(requete, connec);
+                cd.CommandText = requete;
+                int nbrMax = (int)cd.ExecuteScalar();
+
+
+                connec.Close();
+                
+
+                connec.Open();
+                requete = "INSERT INTO Utilisateurs " +
                 "(codeUtil, nomUtil, pnUtil, mailUtil, codeCours, codeLeçon, codeExo) " +
-                "VALUES (" + (cboUtil.Items.Count + 1) + ", '" + nom + "' ,'" + prenom + "', '" + mail + "' ,'" + coursRetour + "', " + leconRetour + " ," + exoRetour + ")";
+                "VALUES (" + (nbrMax+1) + ", '" + nom + "' ,'" + prenom + "', '" + mail + "' ,'" + coursRetour + "', " + leconRetour + " ," + exoRetour + ")";
                 OleDbCommand comm = new OleDbCommand(requete, connec);
                 int res = comm.ExecuteNonQuery();
                 if (res > 0)

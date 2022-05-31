@@ -60,7 +60,7 @@ namespace SaeTest
             //intercepetion et affichage de l'erreur si occurence
             catch (Exception erreur)
             {
-                MessageBox.Show(erreur.Message + "\n\n" + "Nom erreur : '" + erreur.GetType() + "'");
+                MessageBox.Show(erreur.Message + "\n\n" + "Nom erreur : '" + erreur.GetType() + "'","ERREUR");
             }
             //fermeture du OledBConnection dans tout les cas
             finally
@@ -101,7 +101,7 @@ namespace SaeTest
             //intercepetion et affichage de l'erreur si occurence
             catch (Exception erreur)
             {
-                MessageBox.Show(erreur.Message + "\n\n" + "Nom erreur : '" + erreur.GetType() + "'");
+                MessageBox.Show(erreur.Message + "\n\n" + "Nom erreur : '" + erreur.GetType() + "'", "ERREUR");
             }
             //fermeture du OledBConnection dans tout les cas
             finally
@@ -161,7 +161,7 @@ namespace SaeTest
             //intercepetion et affichage de l'erreur si occurence
             catch (Exception erreur)
             {
-                MessageBox.Show(erreur.Message + "\n\n" + "Nom erreur : '" + erreur.GetType() + "'");
+                MessageBox.Show(erreur.Message + "\n\n" + "Nom erreur : '" + erreur.GetType() + "'", "ERREUR");
             }
             //fermeture du OledBConnection dans tout les cas
             finally

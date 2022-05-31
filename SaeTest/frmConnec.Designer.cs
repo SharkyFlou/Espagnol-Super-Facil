@@ -33,6 +33,7 @@ namespace SaeTest
             this.btnValide = new System.Windows.Forms.Button();
             this.pnlMid = new System.Windows.Forms.Panel();
             this.eLog = new ecranLogin.ecranLogin();
+            this.lblTitre = new System.Windows.Forms.Label();
             this.pnlMid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,7 +41,7 @@ namespace SaeTest
             // 
             this.cboLogin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLogin.FormattingEnabled = true;
-            this.cboLogin.Location = new System.Drawing.Point(49, 26);
+            this.cboLogin.Location = new System.Drawing.Point(49, 71);
             this.cboLogin.Margin = new System.Windows.Forms.Padding(4);
             this.cboLogin.Name = "cboLogin";
             this.cboLogin.Size = new System.Drawing.Size(237, 32);
@@ -50,7 +51,7 @@ namespace SaeTest
             // btnValide
             // 
             this.btnValide.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnValide.Location = new System.Drawing.Point(339, 26);
+            this.btnValide.Location = new System.Drawing.Point(339, 71);
             this.btnValide.Margin = new System.Windows.Forms.Padding(4);
             this.btnValide.Name = "btnValide";
             this.btnValide.Size = new System.Drawing.Size(163, 35);
@@ -61,12 +62,13 @@ namespace SaeTest
             // 
             // pnlMid
             // 
+            this.pnlMid.Controls.Add(this.lblTitre);
             this.pnlMid.Controls.Add(this.eLog);
             this.pnlMid.Controls.Add(this.btnValide);
             this.pnlMid.Controls.Add(this.cboLogin);
-            this.pnlMid.Location = new System.Drawing.Point(146, 62);
+            this.pnlMid.Location = new System.Drawing.Point(132, 26);
             this.pnlMid.Name = "pnlMid";
-            this.pnlMid.Size = new System.Drawing.Size(566, 259);
+            this.pnlMid.Size = new System.Drawing.Size(566, 309);
             this.pnlMid.TabIndex = 6;
             // 
             // eLog
@@ -75,7 +77,7 @@ namespace SaeTest
             this.eLog.codeUtil = -1;
             this.eLog.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eLog.lien = null;
-            this.eLog.Location = new System.Drawing.Point(38, 104);
+            this.eLog.Location = new System.Drawing.Point(38, 149);
             this.eLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.eLog.MaximumSize = new System.Drawing.Size(500, 140);
             this.eLog.MinimumSize = new System.Drawing.Size(500, 140);
@@ -83,6 +85,21 @@ namespace SaeTest
             this.eLog.refresh = false;
             this.eLog.Size = new System.Drawing.Size(500, 140);
             this.eLog.TabIndex = 6;
+            // 
+            // lblTitre
+            // 
+            this.lblTitre.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTitre.AutoSize = true;
+            this.lblTitre.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitre.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.ForeColor = System.Drawing.Color.White;
+            this.lblTitre.Location = new System.Drawing.Point(219, 13);
+            this.lblTitre.Name = "lblTitre";
+            this.lblTitre.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTitre.Size = new System.Drawing.Size(130, 32);
+            this.lblTitre.TabIndex = 7;
+            this.lblTitre.Text = "Connexion";
+            this.lblTitre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmConnec
             // 
@@ -99,6 +116,7 @@ namespace SaeTest
             this.Text = "frmConnec";
             this.Load += new System.EventHandler(this.frmConnec_Load);
             this.pnlMid.ResumeLayout(false);
+            this.pnlMid.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -109,5 +127,6 @@ namespace SaeTest
         private System.Windows.Forms.Button btnValide;
         private System.Windows.Forms.Panel pnlMid;
         private ecranLogin.ecranLogin eLog;
+        private System.Windows.Forms.Label lblTitre;
     }
 }

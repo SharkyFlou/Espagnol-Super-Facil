@@ -32,6 +32,7 @@ namespace SaeTest
         Dictionary<String, List<int>> trvDejaPresent = new Dictionary<String, List<int>>();
         Dictionary<String, int[]> lienVersNodesEnfant = new Dictionary<String, int[]> ();
         Dictionary<String, int> lienVersNodesParent = new Dictionary<String, int>();
+        DataTable tableMoment = new DataTable();
 
         private String numCoursActu = null;
         private int numExoActu = -1;
@@ -50,6 +51,19 @@ namespace SaeTest
 
             btnFin.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\skipAvant" + blanc + "Logo.png"));
             btnFin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+        }
+
+        static DataTable GetSchemaTable(string connectionString)
+        {
+            using (OleDbConnection connection = new
+                       OleDbConnection(connectionString))
+            {
+                connection.Open();
+                DataTable schemaTable = connection.GetOleDbSchemaTable(
+                    OleDbSchemaGuid.Tables,
+                    new object[] { null, null, null, "TABLE" });
+                return schemaTable;
+            }
         }
 
 
@@ -102,7 +116,12 @@ namespace SaeTest
 
         private void chargementTree()
         {
-            DataTable dr = dsLocal.Tables["Exercices"];
+
+            //trie le dataset
+            dsLocal.Tables["Exercices"].DefaultView.Sort = "numCours, numLecon, numExo";
+            DataTable dr = dsLocal.Tables["Exercices"].DefaultView.ToTable();
+
+            //init
             string numCours;
             int numLecon;
             int numExo;
@@ -128,9 +147,9 @@ namespace SaeTest
                     if (!lienVersNodesParent.ContainsKey(numCours))
                     {
                         lienVersNodesParent.Add(numCours, trwExos.Nodes.Count);
-                        String temp = dsLocal.Tables["Cours"].Select("numCours ='" + numCours+"'")[0][1].ToString();
+                        String temp = dsLocal.Tables["Cours"].Select("numCours ='" + numCours + "'")[0][1].ToString();
                         trwExos.Nodes.Add(temp);
-                        trwExos.Nodes[trwExos.Nodes.Count - 1].Tag=numCours;
+                        trwExos.Nodes[trwExos.Nodes.Count - 1].Tag = numCours;
                     }
 
                     if (!lienVersNodesParent.ContainsKey(numCours+ numLecon))
@@ -146,19 +165,8 @@ namespace SaeTest
                 }
                 repereCours = lienVersNodesParent[numCours];
                 repereLecon = lienVersNodesEnfant[numCours + numLecon][1];
-                if (trwExos.Nodes[repereCours].Nodes[repereLecon].Nodes.Count < numExo-1)
-                {
-                    trwExos.Nodes[repereCours].Nodes[repereLecon].Nodes.Add("Exo n°" + numExo.ToString());
-                    trwExos.Nodes[repereCours].Nodes[repereLecon].Nodes[trwExos.Nodes[repereCours].Nodes[repereLecon].Nodes.Count - 1].Tag = numExo;
-                }
-                else
-                {
-                    trwExos.Nodes[repereCours].Nodes[repereLecon].Nodes.Insert(numExo-1, "Exo n°" + numExo.ToString());
-                    trwExos.Nodes[repereCours].Nodes[repereLecon].Nodes[numExo-1].Tag = numExo;
-                }
-                
-
-                
+                trwExos.Nodes[repereCours].Nodes[repereLecon].Nodes.Add("Exo n°" + numExo.ToString());
+                trwExos.Nodes[repereCours].Nodes[repereLecon].Nodes[trwExos.Nodes[repereCours].Nodes[repereLecon].Nodes.Count - 1].Tag = numExo;
             }
         }     
 
@@ -166,12 +174,41 @@ namespace SaeTest
         {
             if (trwExos.SelectedNode.Level == 2)
             {
-                numCoursActu = trwExos.SelectedNode.Parent.Parent.Tag.ToString();
-                numLeconActu = (int)trwExos.SelectedNode.Parent.Tag;
-                numExoActu = (int)trwExos.SelectedNode.Tag;
-                string requete = "numExo=" + numExoActu + " and numCours='" + numCoursActu + "'" + " and numLecon=" + numLeconActu;
-                lblTitre.Text = dsLocal.Tables["Exercices"].Select(requete)[0][3].ToString();
-                lblTitre.Left = (pnlMid.Width - lblTitre.Width) / 2;
+                if((int)trwExos.SelectedNode.Parent.Tag != numLeconActu || numCoursActu != trwExos.SelectedNode.Parent.Parent.Tag.ToString())
+                {
+                    numCoursActu = trwExos.SelectedNode.Parent.Parent.Tag.ToString();
+                    numLeconActu = (int)trwExos.SelectedNode.Parent.Tag;
+
+                    changeTableMoment();
+                }
+                if (numExoActu != (int)trwExos.SelectedNode.Tag)
+                {
+                    numExoActu = (int)trwExos.SelectedNode.Tag;
+                    string requete = "numExo=" + numExoActu + " and numCours='" + numCoursActu + "'" + " and numLecon=" + numLeconActu;
+                    lblTitre.Text = dsLocal.Tables["Exercices"].Select(requete)[0][3].ToString();
+                    lblTitre.Left = (pnlMid.Width - lblTitre.Width) / 2;
+                }
+            }
+        }
+
+        public void changeTableMoment()
+        {
+            tableMoment.Clear();
+            tableMoment = new DataTable("superTable");
+            tableMoment.Columns.Add(new DataColumn("numCours", typeof(string)));
+            tableMoment.Columns.Add(new DataColumn("numLecon", typeof(int)));
+            tableMoment.Columns.Add(new DataColumn("numExo", typeof(int)));
+            tableMoment.Columns.Add(new DataColumn("enonce", typeof(string)));
+            tableMoment.Columns.Add(new DataColumn("codePhrase", typeof(string)));
+            tableMoment.Columns.Add(new DataColumn("codeVerbe", typeof(string)));
+
+            tableMoment.Columns.Add(new DataColumn("phrase", typeof(string)));
+            tableMoment.Columns.Add(new DataColumn("corrige", typeof(string)));
+
+            foreach(DataRow dr in dsLocal.Tables["Exercices"].Select("numCours = '"+numCoursActu+"' AND numLecon ="+ numLeconActu))
+            {
+                tableMoment.Rows.Add(dr["numCours"].ToString(), (int)dr["numLecon"], (int)dr["numExo"], dr["enonceExo"].ToString(), (int)dr["codePhrase"], (int)dr["codeVerbe"], "","");
+                //MessageBox.Show("Num 0 : " + dr["numExo"]+" num 4 : "+ dr["enonceExo"]); 
             }
         }
 

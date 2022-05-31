@@ -22,6 +22,9 @@ namespace SaeTest
 
         //permet aux autres formes de changer d'écran
         Object formActu = null;
+        public Font fontDeBase = new Font(new FontFamily("Nirmala UI"), 12F, FontStyle.Regular);
+
+
         public Object load
         {
             get
