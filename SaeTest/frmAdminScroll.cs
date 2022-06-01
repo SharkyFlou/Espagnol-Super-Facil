@@ -33,6 +33,8 @@ namespace SaeTest
         Dictionary<String, int[]> lienVersNodesEnfant = new Dictionary<String, int[]> ();
         Dictionary<String, int> lienVersNodesParent = new Dictionary<String, int>();
         DataTable tableMoment = new DataTable();
+        BindingSource bd = new BindingSource();
+
 
         private String numCoursActu = null;
         private int numExoActu = -1;
@@ -112,6 +114,18 @@ namespace SaeTest
             connec.ConnectionString = frmParent.instance.getLienBase();
             chargementDsLocal();
             chargementTree();
+
+
+            tableMoment = new DataTable("superTable");
+            tableMoment.Columns.Add(new DataColumn("numCours", typeof(string)));
+            tableMoment.Columns.Add(new DataColumn("numLecon", typeof(int)));
+            tableMoment.Columns.Add(new DataColumn("numExo", typeof(int)));
+            tableMoment.Columns.Add(new DataColumn("enonce", typeof(string)));
+            tableMoment.Columns.Add(new DataColumn("codePhrase", typeof(int)));
+            tableMoment.Columns.Add(new DataColumn("codeVerbe", typeof(int)));
+
+            tableMoment.Columns.Add(new DataColumn("phrase", typeof(string)));
+            tableMoment.Columns.Add(new DataColumn("corrige", typeof(string)));
         }
 
         private void chargementTree()
@@ -184,9 +198,24 @@ namespace SaeTest
                 if (numExoActu != (int)trwExos.SelectedNode.Tag)
                 {
                     numExoActu = (int)trwExos.SelectedNode.Tag;
-                    string requete = "numExo=" + numExoActu + " and numCours='" + numCoursActu + "'" + " and numLecon=" + numLeconActu;
-                    lblTitre.Text = dsLocal.Tables["Exercices"].Select(requete)[0][3].ToString();
+                    bd.Position = numExoActu;
+                    
                     lblTitre.Left = (pnlMid.Width - lblTitre.Width) / 2;
+
+                    lblCorr.Font = new Font(new FontFamily("Nirmala UI"), 16F, FontStyle.Regular);
+                    lblPhrase.Font = new Font(new FontFamily("Nirmala UI"), 16F, FontStyle.Regular);
+
+                    if ((pnlMid.Width - lblPhrase.Width) < 0) //si ça depasse
+                    {
+                        lblPhrase.Font = new Font(new FontFamily("Nirmala UI"), 12F, FontStyle.Regular);
+                    }
+                    lblPhrase.Left = (pnlMid.Width - lblPhrase.Width) / 2;
+
+                    if ((pnlMid.Width - lblCorr.Width) < 0) //si ça depasse
+                    {
+                        lblCorr.Font = new Font(new FontFamily("Nirmala UI"), 12F, FontStyle.Regular);
+                    }
+                    lblCorr.Left = (pnlMid.Width - lblCorr.Width) / 2;
                 }
             }
         }
@@ -194,28 +223,75 @@ namespace SaeTest
         public void changeTableMoment()
         {
             tableMoment.Clear();
-            tableMoment = new DataTable("superTable");
-            tableMoment.Columns.Add(new DataColumn("numCours", typeof(string)));
-            tableMoment.Columns.Add(new DataColumn("numLecon", typeof(int)));
-            tableMoment.Columns.Add(new DataColumn("numExo", typeof(int)));
-            tableMoment.Columns.Add(new DataColumn("enonce", typeof(string)));
-            tableMoment.Columns.Add(new DataColumn("codePhrase", typeof(string)));
-            tableMoment.Columns.Add(new DataColumn("codeVerbe", typeof(string)));
+            
 
-            tableMoment.Columns.Add(new DataColumn("phrase", typeof(string)));
-            tableMoment.Columns.Add(new DataColumn("corrige", typeof(string)));
-
-            foreach(DataRow dr in dsLocal.Tables["Exercices"].Select("numCours = '"+numCoursActu+"' AND numLecon ="+ numLeconActu))
+            //rajout des infos de bases des exos
+            int codeVerbe; //car peut être NULL, et je ne peut pas cast les NULL
+            foreach (DataRow dr in dsLocal.Tables["Exercices"].Select("numCours = '"+numCoursActu+"' AND numLecon ="+ numLeconActu))
             {
-                tableMoment.Rows.Add(dr["numCours"].ToString(), (int)dr["numLecon"], (int)dr["numExo"], dr["enonceExo"].ToString(), (int)dr["codePhrase"], (int)dr["codeVerbe"], "","");
-                //MessageBox.Show("Num 0 : " + dr["numExo"]+" num 4 : "+ dr["enonceExo"]); 
+                codeVerbe = 0;
+                if (dr["codeVerbe"].ToString().Length>0)
+                {
+                    codeVerbe = (int)dr["codeVerbe"];
+                }
+                tableMoment.Rows.Add(dr["numCours"].ToString(), (int)dr["numLecon"], (int)dr["numExo"], dr["enonceExo"].ToString(), (int)dr["codePhrase"], codeVerbe, "","");
             }
+
+            //rajout des corrigés si quand codePhrase != 0 pour exo 1 et 2 et mtn 3
+            int i = 0;
+            string requete;
+            foreach (DataRow dr in tableMoment.Rows)
+            {
+                if ((int)dr["codePhrase"] != 0) //soit exo 1 ou 2
+                {
+                    DataRow[] drr = dsLocal.Tables["Phrases"].Select("codePhrase = " + tableMoment.Rows[i]["codePhrase"]);
+
+                    tableMoment.Rows[i]["phrase"] = drr[0]["textePhrase"].ToString();
+                    tableMoment.Rows[i]["corrige"] = drr[0]["traducPhrase"].ToString();
+                }
+                else if((int)dr["codeVerbe"] == 0)
+                {
+                    requete = "numExo=" + dr["numExo"] + " and numCours='" + dr["numCours"] + "'" + " and numLecon=" + dr["numLecon"];
+                    DataRow[] MotsConcerne = dsLocal.Tables["ConcerneMots"].Select(requete);
+                    string fr="";
+                    string esp="";
+                    foreach(DataRow dr2 in MotsConcerne)
+                    {
+                        DataRow[] vraimot = dsLocal.Tables["Mots"].Select("numMot = "+dr2["numMot"]);
+                        esp = esp + vraimot[0]["traducMot"].ToString()+ "; ";
+                        fr = fr + vraimot[0]["libMot"].ToString() + "; ";
+                    }
+                    esp = esp.Substring(0, esp.Length-2);
+                    fr = fr.Substring(0, fr.Length - 2);
+
+                    tableMoment.Rows[i]["corrige"] = esp;
+                    tableMoment.Rows[i]["phrase"] = fr;
+                }
+                i++;
+
+
+            }
+
+            bd.DataSource = tableMoment;
+
+            Binding bdTitre = new Binding("Text", bd, "enonce", true, DataSourceUpdateMode.OnPropertyChanged);
+            lblTitre.DataBindings.Clear();
+            lblTitre.DataBindings.Add(bdTitre);
+
+            Binding bdPhrase = new Binding("Text", bd, "phrase", true, DataSourceUpdateMode.OnPropertyChanged);
+            lblPhrase.DataBindings.Clear();
+            lblPhrase.DataBindings.Add(bdPhrase);
+
+            Binding bdCorr = new Binding("Text", bd, "corrige", true, DataSourceUpdateMode.OnPropertyChanged);
+            lblCorr.DataBindings.Clear();
+            lblCorr.DataBindings.Add(bdCorr);
         }
 
         private void btnDebut_Click(object sender, EventArgs e)
         {
             if (numCoursActu != null)
             {
+                bd.MoveFirst();
                 trwExos.SelectedNode = trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes[0];
                 trwExos.Focus();
             }
@@ -227,10 +303,10 @@ namespace SaeTest
             {
                 if((int)trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes[numExoActu-1].Tag > 1)
                 {
+                    bd.MovePrevious();
                     trwExos.SelectedNode = trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes[numExoActu-2];
-                }
-               
-                trwExos.Focus();
+                    trwExos.Focus();
+                }          
             }
         }
 
@@ -240,9 +316,10 @@ namespace SaeTest
             {
                 if ((int)trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes[numExoActu-1].Tag  < trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes.Count)
                 {
-                    trwExos.SelectedNode = trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes[numExoActu ];
+                    bd.MoveNext();
+                    trwExos.SelectedNode = trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes[numExoActu];
+                    trwExos.Focus();
                 }
-                trwExos.Focus();
             }
         }
 
@@ -250,7 +327,8 @@ namespace SaeTest
         {
             if (numCoursActu != null)
             {
-                trwExos.SelectedNode = trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes[trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes.Count-1];
+                bd.MoveLast();
+                trwExos.SelectedNode = trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes[trwExos.Nodes[lienVersNodesParent[numCoursActu]].Nodes[lienVersNodesEnfant[numCoursActu + numLeconActu][1]].Nodes.Count - 1];
                 trwExos.Focus();
             }
         }

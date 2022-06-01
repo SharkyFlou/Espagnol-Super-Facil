@@ -40,6 +40,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\ecranLogin.dll</HintPath>
     </Reference>
+    <Reference Include="Exerc">
+      <HintPath>.\Exerc.dll</HintPath>
+    </Reference>
     <Reference Include="petiteBoule, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\petiteBoule.dll</HintPath>

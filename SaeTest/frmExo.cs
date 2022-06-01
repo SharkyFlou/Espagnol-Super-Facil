@@ -11,32 +11,6 @@ using System.Data.OleDb;
 
 namespace SaeTest
 {
-    /*Régler la taille des Button Exo2() -> Pas assez large selon les mots 
-     * Label générés pas assez large selon les mots
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
     public partial class frmExo : Form
     {
         public frmExo()
@@ -55,23 +29,35 @@ namespace SaeTest
             instance = this;
             this.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperExo.jpg"));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-
+            
         }
         string chcon;
         OleDbConnection connec = new OleDbConnection();
         DataSet dsLocal = new DataSet();
+
         private int codeUtile;
+
         private string[] mots;
         private string[] liste;
+        private List<string> TerminaisonsExo4=new List<string>();
+
         private int lefttt;
         private int toppp;
         private int decalage;
+
         string phrase;
         private bool Reussi;
 
         public static frmExo instance;
 
+        private int numLecon;
+        private int numExo;
+        private string numCours;
 
+        private string reponseExo1;
+        
+
+        //Charge le formulaire et s'occupe de préparer les bases 
         private void frmExo_Load(object sender, EventArgs e)
         {
             connec.ConnectionString = chcon;
@@ -82,13 +68,11 @@ namespace SaeTest
             string requeteExo = "codeUtil=" + codeUtile;
             DataRow[] Utilisateur = dsLocal.Tables["Utilisateurs"].Select(requeteExo);
 
-            string numCours = Utilisateur[0]["codeCours"].ToString();
-            int numLecon = (int)Utilisateur[0]["codeLeçon"];
-            int numExo = (int)Utilisateur[0]["codeExo"];
+            numCours = Utilisateur[0]["codeCours"].ToString();
+            numLecon = (int)Utilisateur[0]["codeLeçon"];
+            numExo = (int)Utilisateur[0]["codeExo"];
 
-            numCours = "DEBUT1";
-            numExo = 4;
-            numLecon = 1;
+           
 
             bpg.chaineConn = frmParent.instance.getLienBase();
             bpg.numCours = numCours;
@@ -96,37 +80,47 @@ namespace SaeTest
             bpg.spawn = true;
             Reussi = false;
 
+            pnlExo1.BackColor = Color.FromArgb(150, 0, 0, 0);
+            pnlExo2.BackColor = Color.FromArgb(150, 0, 0, 0);
+            pnlExo3.BackColor = Color.FromArgb(150, 0, 0, 0);
+            pnlExo4.BackColor = Color.FromArgb(150, 0, 0, 0);
+
 
             recupExo(numCours, numLecon, numExo);
         }
         
+        //Exercice Type 1 : Phrase à trous 
         private void Exo1(string phrase,string traducPhrase,string []listeMots,string enonceExo)
         {
-            if(pnlExo2.Visible==true || pnlExo3.Visible==true)
+            if(pnlExo2.Visible==true || pnlExo3.Visible==true || pnlExo4.Visible == true)
             {
                 pnlExo2.Visible=false;
                 pnlExo3.Visible=false;
+                pnlExo4.Visible = false;
 
             }
+            pnlPhrase.Controls.Clear();
             pnlExo1.Visible = true;
             lblEnonce.Visible = true;
             lblEnonce.Text = enonceExo;
             lblTraductionFrançais.Text = traducPhrase;
-            int left = lblTrad.Left;
-            int top = lblTrad.Top + 30;
+            int left = lblEnonce.Left;
+            int top = lblEnonce.Top;
             mots = phrase.Split(' ');
-           
+            reponseExo1 = "";
 
             for(int i = 0; i < mots.Length; i++)
             {
-                if(listeMots.Contains((i+1).ToString()))
+                if (listeMots.Contains((i+1).ToString()))
                 {
                     TextBox name = new TextBox();
                     name.Name = i+"txtBox";
                     name.Left = left;
                     name.Top = top;
-                    pnlExo1.Controls.Add(name);
+                    pnlPhrase.Controls.Add(name);
                     left += name.Width;
+
+                    reponseExo1 += mots[i]+", ";
                 }
                 else
                 {
@@ -136,27 +130,46 @@ namespace SaeTest
                     mot.ForeColor = Color.Black;
                     mot.Left = left;
                     mot.Top = top;
-                    pnlExo1.Controls.Add(mot);
+                    pnlPhrase.Controls.Add(mot);
                     left += mot.Width;
+                    if (left> pnlPhrase.Width)
+                    {
+                        left = lblEnonce.Left;
+                        top = lblEnonce.Top + 30;
+                        mot.Left = left;
+                        mot.Top = top;
+                        left += mot.Width;
+                    }
+                   // pnlPhrase.Controls.Add(mot);
+
 
                 }
-                if (left>pnlExo1.Width)
-                {
-                    left = lblTrad.Left;
-                    top = lblTrad.Top + 60;
-                }
+                /* if ((left+mot.Witdth)>pnlPhrase.Width)
+                 {
+                     left = lblEnonce.Left;
+                     top = lblEnonce.Top + 30;
+                 }*/
             }
         }
 
-
+        //Exercice Type 2 : Remettre les mots dans l'ordre
         private void Exo2(string phrase, string traduc, string enonce)
         {
-            if (pnlExo1.Visible == true || pnlExo3.Visible == true)
+            Reussi = false;
+
+            if (pnlExo1.Visible == true || pnlExo3.Visible == true || pnlExo4.Visible == true)
             {
                 pnlExo1.Visible = false;
                 pnlExo3.Visible = false;
+                pnlExo4.Visible = false;
+
 
             }
+            int count = pnlExo2.Controls.Count;
+
+            pnlMots.Controls.Clear();
+            pnlButton.Controls.Clear();
+
             pnlExo2.Visible = true;
             lblEnonce2.Text = enonce;
             lblTraduction2.Text = traduc;
@@ -166,16 +179,16 @@ namespace SaeTest
             mots = mots.OrderBy(x => random.Next()).ToArray();
 
             int left = lblEnonce2.Left;
-            int top = lblTraduction2.Top + 80;
+            int top = lblEnonce2.Top;
 
             lefttt = lblTraduction2.Left;
-            toppp = lblTraduction2.Top + 30;
+            toppp = lblTraduction2.Top ;
 
             for(int i = 0; i < mots.Length; i++)
             {
                 Button t = new Button();
                 t.Left = left;
-                t.Top = top;
+                t.Top =top;
                 t.ForeColor = Color.Black;
                 t.Name = i + "btn";
                 t.Text = mots[i];
@@ -184,51 +197,159 @@ namespace SaeTest
                 t.AutoSize = true;
                 t.Tag = i;
                 t.Click += Queue;
-                pnlExo2.Controls.Add(t);
+                pnlButton.Controls.Add(t);
                 left += t.Width + 5;
-                if (left>pnlExo2.Width)
+                if (left>pnlButton.Width)
                 {
-                    left = lblEnonce.Left;
-                    top = lblTraduction2.Top + 110;
+                    left = lblTraduction2.Left;
+                    top +=30;
+                    t.Left = left;
+                    t.Top = top;
+                    left += t.Width+5;
                 }
             }
         }
 
 
-
-        private void Exo3()
+        //Exercice Type 3 : Affichage du vocabulaire
+        private void Exo3(List<string> motsEspagnols, List<string> motsFrançais, List<string> cheminMots )
         {
-            if (pnlExo2.Visible == true || pnlExo1.Visible == true)
+
+            Reussi = false;
+
+            if (pnlExo2.Visible == true || pnlExo1.Visible == true|| pnlExo4.Visible==true)
             {
                 pnlExo2.Visible = false;
                 pnlExo1.Visible = false;
+                pnlExo4.Visible = false;
 
             }
+            pnlExo3.Controls.Clear();
             pnlExo3.Visible = true;
+
+            int ImageLeft = 8;
+
+            for(int i=0;i<motsEspagnols.Count;i++)
+            {
+                Exerc.PetiteImage u = new Exerc.PetiteImage();
+                u.LienImage = frmParent.instance.photoExiste(@"..\..\Photos\"+cheminMots[i]);
+                u.LabelEspagnol = motsEspagnols[i];
+                u.LabelTraduction = motsFrançais[i];
+                u.Left = ImageLeft;
+                u.Top = 30;
+                pnlExo3.Controls.Add(u);
+                ImageLeft += 8+u.Width;
+            }
+        }
+        private void Exo4(string enonce,  string traducVerbe,string verbe,int codeTemps,int groupeTemps)
+        {
+            TerminaisonsExo4.Clear();
+            Reussi = false;
+            if(pnlExo1.Visible==true||pnlExo2.Visible==true||pnlExo3.Visible==true)
+            {
+                pnlExo1.Visible = false;
+                pnlExo2.Visible = false;
+                pnlExo3.Visible = false;
+            }
+            pnlExo4.Controls.Clear();
+            pnlExo4.Controls.Add(lblEnonce4);
+            lblEnonce4.Text = enonce+" : "+verbe + ", traduction : "+traducVerbe;
+
+            int left = lblEnonce4.Left;
+            int top = lblEnonce4.Top + 30;
+            pnlExo4.Visible = true;
+            traducVerbe = traducVerbe.Substring(0,traducVerbe.Length-2);
+            //MessageBox.Show(traducVerbe);
+            
+            for(int i=1;i<7;i++)
+            {
+                string requetePersonne = "codePersonne=" + i;
+                DataRow[] resultPersonne = dsLocal.Tables["Personne"].Select(requetePersonne);
+                string traducPersonne = resultPersonne[0]["traducPersonne"].ToString();
+
+                string requeteTerminaison = "numPersonne=" + i + " and numTemps=" + codeTemps + " and Groupe=" + groupeTemps;
+                DataRow[] resultTerminaison = dsLocal.Tables["Terminaisons"].Select(requeteTerminaison);
+                string Terminaison = resultTerminaison[0]["term"].ToString();
+                TerminaisonsExo4.Add(Terminaison);
+                Label nom = new Label();
+                nom.Text = traducPersonne + " "+ traducVerbe;
+                nom.Left = left;
+                nom.Top = top;
+                nom.AutoSize = true;
+                nom.BackColor = Color.Transparent;
+                pnlExo4.Controls.Add(nom);
+                TextBox t = new TextBox();
+                t.Left = left + nom.Width;
+                t.Top = top;
+                t.Height = nom.Height;
+                t.Width = 30;
+                t.Tag = i;
+                pnlExo4.Controls.Add(t);
+                top += nom.Height+12;
+            }
         }
 
+        //Reccomence l'exercice actuel à 0 si on est sur de vouloir recommencer
         private void btnRecommencer_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("êtes vous sur de vouloir recommencer?", "Recommencage", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                recupExo(numCours, numLecon, numExo);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
 
+            }
         }
 
-        private void btnAide_Click(object sender, EventArgs e)
+        //Donnes les réponses attendus en fonction du type d'exercice 
+        private void btnAide_Click(object sender,EventArgs e)
         {
+            if(pnlExo1.Visible)
+            {
+                MessageBox.Show("Les mots recherchés, dans l'ordre, sont : \n"+reponseExo1);
+                reponseExo1 = "";
+                recupExo(numCours, numLecon, numExo);
+            }
+            if(pnlExo2.Visible)
+            {
+                MessageBox.Show("La phrase dans l'ordre est :\n"+phrase);
+                recupExo(numCours, numLecon, numExo);
+            }
+            if (pnlExo3.Visible)
+            {
 
+            }
+            if(pnlExo4.Visible)
+            {
+                string réponse = "";
+                foreach(string s in TerminaisonsExo4)
+                {
+                    réponse += s + ",";
+                }
+                MessageBox.Show("Les terminaisons dans l'ordre sont : "+réponse);
+                réponse = "";
+                recupExo(numCours, numLecon, numExo);
+            }
+            
         }
 
 
-
-        private void btnValider_Click(object sender, EventArgs e)
+        //Compare et corrige l'exerice en fonction du type d'exercice
+        private void btnValider_Click(object sender,EventArgs e)
         {
             if (pnlExo1.Visible)
             {
                 if (Reussi)
                 {
-                    frmParent.instance.chargeForm(new frmExo(codeUtile));
+                    bpg.next = true;
+                    UpdateExo();
+                    ChangerExo();
+                    return;
                 }
                 int numéro = 0;
-                foreach (Object o in pnlExo1.Controls)
+                foreach (Object o in pnlPhrase.Controls)
                 {
                     if (o.GetType() == typeof(TextBox))
                     {
@@ -246,11 +367,12 @@ namespace SaeTest
                     }
                 }
                 Reussi = true;
-                foreach(TextBox t in pnlExo1.Controls.OfType<TextBox>())
+                foreach(TextBox t in pnlPhrase.Controls.OfType<TextBox>())
                 {
                     if(t.BackColor==Color.Red)
                     {
                         Reussi = false;
+                        bpg.fail = true;
                     }
                 }
                 if(Reussi)
@@ -259,10 +381,12 @@ namespace SaeTest
                     btnValider.Text = "Continuer";
                 }
             }
+
+
             if(pnlExo2.Visible)
             {
                 bool vérif = true;
-                foreach(Button btn in pnlExo2.Controls.OfType<Button>())
+                foreach(Button btn in pnlButton.Controls.OfType<Button>())
                 {
                     if(btn.Enabled)
                     {
@@ -271,35 +395,42 @@ namespace SaeTest
                 }
                 if (vérif)
                 {
-                    if(Reussi)
+                    if (!Reussi)
                     {
-                        frmParent.instance.chargeForm(new frmExo(codeUtile));
-                    }
-                    string réponse = "";
-                    foreach (Label l in pnlExo2.Controls.OfType<Label>())
-                    {
-                        if (l.Tag.ToString() != "Test")
+                        string réponse = "";
+                        foreach (Label l in pnlMots.Controls.OfType<Label>())
                         {
-                            réponse += l.Text.ToString()+" "; 
+                            if (l.Tag.ToString() != "Test")
+                            {
+                                réponse += l.Text.ToString() + " ";
+                            }
                         }
-                    }
 
-                    phrase = phrase.Trim();
-                    réponse = réponse.Trim();
+                        phrase = phrase.Trim();
+                        réponse = réponse.Trim();
 
-                    if (phrase.Equals(réponse)) 
-                    {
-                        MessageBox.Show("Gagné!");
-                        Reussi = true;
+                        if (phrase.Equals(réponse))
+                        {
+                            MessageBox.Show("Gagné!");
+                            Reussi = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Perdu...");
+                            bpg.fail = true;
+                        }
+                        if (Reussi)
+                        {
+                            btnValider.AutoSize = true;
+                            btnValider.Text = "Continuer";
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Perdu...");
-                    }
-                    if(Reussi)
-                    {
-                        btnValider.AutoSize = true;
-                        btnValider.Text = "Continuer";
+                        bpg.next = true;
+                        UpdateExo();
+                        ChangerExo();
+                        return;
                     }
                 }
                 else
@@ -307,13 +438,64 @@ namespace SaeTest
                     MessageBox.Show("Veuillez utiliser tout les mots");
                 }
             }
+
+
+
             if(pnlExo3.Visible)
             {
-
+                if(Reussi)
+                {
+                    bpg.next = true;
+                    UpdateExo();
+                    ChangerExo();
+                    btnValider.Text = "Valider";
+                    return;
+                }
+                Reussi = true;
+                btnValider.AutoSize = true;
+                btnValider.Text = "Continuer";
+            }
+            bool valide = true; ;
+            if(pnlExo4.Visible)
+            {
+                if(Reussi)
+                {
+                    bpg.next = true;
+                    UpdateExo();
+                    ChangerExo();
+                    btnValider.Text = "Valider";
+                    return;
+                }
+                foreach (TextBox t in pnlExo4.Controls.OfType<TextBox>())
+                {
+                    int numérotxtBox = (int)t.Tag-1;
+                    if(TerminaisonsExo4.ElementAt(numérotxtBox)!=t.Text)
+                    {
+                        valide = false;
+                        t.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        t.BackColor = Color.Green;
+                    }
+                }    
+                if(valide)
+                {
+                    Reussi = true;
+                    MessageBox.Show("Gagné!");        
+                    btnValider.AutoSize = true;
+                    btnValider.Text = "Continuer";
+                    
+                }
+                else
+                {
+                    MessageBox.Show("perdu...");
+                    bpg.fail = true;
+                }
             }
         }
-
-
+        
+        //S'occupe du chargement de toutes les tables de la base de donnée dans un DataSet Local
         private void chargementDsLocal()
         {
             connec.Open();
@@ -334,19 +516,23 @@ namespace SaeTest
                 da.Fill(dsLocal, nomTable);
             }
         }
+
+        //Récupère le type d'exercice et appele le void corresepondant au type d'exercice récuperer
         private void recupExo(string numCours, int numLecon, int numExo)
         {
             try
             {
                
-                string requeteCode = "numExo=" + numExo + " and numCours='" + numCours + "'" + " and numLecon=" + numLecon;     
+                string requeteCode = "numExo=" + numExo + " and numCours='" + numCours + "'" + " and numLecon=" + numLecon;
                 DataRow[] Exercices = dsLocal.Tables["Exercices"].Select(requeteCode);
-
+                //string numérophrase = Exercices[0]["codePhrase"].ToString();
                 int numéroPhrase = (int)Exercices[0]["codePhrase"];
+
                 string enonceExo = Exercices[0]["enonceExo"].ToString();
 
-                if (numéroPhrase != 0)
+                if (numéroPhrase!=0)
                 {
+
                     string requetePhrase = "codePhrase=" + numéroPhrase;
                     DataRow[] phrases = dsLocal.Tables["Phrases"].Select(requetePhrase);
 
@@ -375,15 +561,77 @@ namespace SaeTest
 
                     //Phrases dans le désordre : 2
                     else
-                    {
-                       
+                    {  
                         Exo2(phrase,traducPhrase,enonceExo);
                     }
                 }
                 //Vocabulaire : 3
                 else
                 {
-                    Exo3();
+                    int codeVerbe=0;
+                    int codetemps=0;
+                    
+                    string verbeToString = Exercices[0]["codeVerbe"].ToString();
+
+                    if(verbeToString!=string.Empty)
+                    {
+                        codeVerbe = int.Parse(verbeToString);
+                        codetemps = (int)Exercices[0]["codetemps"];
+                        
+                    }
+                    string requeteVerbe = "numMot=" + codeVerbe;
+                    DataRow[] verber = dsLocal.Tables["Mots"].Select(requeteVerbe);
+
+                    string verbe = verber[0]["traducMot"].ToString();
+                    if (codeVerbe!=0)
+                    {
+                        string traducVerbe = verber[0]["libMot"].ToString();
+                        int groupeTemps = 0;
+
+                        if (traducVerbe.Substring(traducVerbe.Length-2)=="ar")
+                        {
+                            groupeTemps = 1;
+                        }
+                        if (traducVerbe.Substring(traducVerbe.Length-2)=="er")
+                        {
+                            groupeTemps = 2;
+
+                        }
+                        if (traducVerbe.Substring(traducVerbe.Length-2) =="ir")
+                        {
+                            groupeTemps = 3;
+
+                        }
+
+
+                        Exo4(enonceExo,traducVerbe,verbe, codetemps, groupeTemps) ;
+                    }
+                    else
+                    {
+                        DataRow[] MotsConcerne = dsLocal.Tables["ConcerneMots"].Select(requeteCode);
+                        List<int> listeMotsConcerne = new List<int>();
+
+                        List<string> motsFrançais = new List<string>();
+                        List<string> motsEspagnols = new List<string>();
+                        List<string> cheminMots = new List<string>();
+
+                        for (int i = 0; i < MotsConcerne.Length; i++)
+                        {
+                            int numMot = (int)MotsConcerne[i]["numMot"];
+                            string requeteMots = "numMot="+numMot;
+                            DataRow[] mot = dsLocal.Tables["Mots"].Select(requeteMots);
+                            motsEspagnols.Add(mot[0]["libMot"].ToString());
+                            motsFrançais.Add(mot[0]["traducMot"].ToString());
+                            cheminMots.Add(mot[0]["cheminPhoto"].ToString());
+                        }
+
+                        for (int i=0;i<MotsConcerne.Length;i++)
+                        {
+                            listeMotsConcerne.Add((int)MotsConcerne[i]["numMot"]);
+                        }
+
+                        Exo3(motsEspagnols,motsFrançais,cheminMots);
+                    }
                 }
 
 
@@ -399,10 +647,13 @@ namespace SaeTest
 
 
         }
+
+
+        //Charge les Labels de l'exercice 2 dans un pnlMots et Disable le button correspondant au mot placé
         private void Queue(object sender,EventArgs e)
         {
             object tag = ((Button)sender).Tag;
-            foreach(Control c in pnlExo2.Controls)
+            foreach(Control c in pnlButton.Controls)
             {
                 if (c.Tag == tag)
                 {
@@ -410,30 +661,38 @@ namespace SaeTest
                     c.BackColor = Color.DarkGray;
                     Label t = new Label();
                     t.Tag = tag;
+                    t.BackColor = Color.Transparent;
                     t.Left = lefttt;
-                    t.Top = toppp;
+                    t.Top = 5;
                     t.Text = c.Text;
                     t.AutoSize = true;
                     t.Click += Chatte;
-                    pnlExo2.Controls.Add(t);
+                    t.MouseEnter += MouseEntre;
+                    t.MouseLeave += MouseSort;
+                    pnlMots.Controls.Add(t);
                     lefttt += t.Width;
                 }
             }
         }
+
+        //Supprime le label que l'on a cliqué, décale les labels sur la gauche et enable le button correspondant au label 
         private void Chatte(object sender, EventArgs e)
         {
+
             object tag = ((Label)sender).Tag;
-            decalage = ((Label)sender).Width;
-            foreach (Control c in pnlExo2.Controls)
+            Label lbl = ((Label)sender);
+            lbl.Font = new Font(new FontFamily("Nirmala UI"), 12F, FontStyle.Regular);
+            decalage = lbl.Width;
+            foreach (Control c in pnlButton.Controls)
             {
                 if (c.Tag == tag)
                 {
-                    pnlExo2.Controls.Remove((Label)sender);
+                    pnlMots.Controls.Remove((Label)sender);
                     c.Enabled = true;
                     c.BackColor = Color.Yellow;
                 }
             }
-            foreach (Label l in pnlExo2.Controls.OfType<Label>())
+            foreach (Label l in pnlMots.Controls.OfType<Label>())
             {
                 if (l.Left > ((Label)sender).Left)
                 {
@@ -446,14 +705,83 @@ namespace SaeTest
             lefttt -= decalage;
 
         }
+
+        //Normalise les phrases (enlève la ponctuation et met tout en minuscule)
         private String Normalsation(string s )
         {
             s = s.ToLower();
-            var sb = new StringBuilder(); foreach (char c in s) { if (!char.IsPunctuation(c)) sb.Append(c); }
+            var sb = new StringBuilder(); 
+            foreach (char c in s) 
+            { 
+                if (!char.IsPunctuation(c))
+                    sb.Append(c); 
+            }
             s = sb.ToString();
 
             return s;
         }
+
+        //Update le numéro d'Exercice quand un utilisateur a réussi l'exercice,
+        //si le numéro d'exercice est supérieur au nombre d'exercice dans le Cours, passe au cours suivant 
+        private void UpdateExo()
+        {
+            string requeteNombre = "numCours='" + numCours +"'"+" and numLecon=" + numLecon;
+
+            DataRow[] nbdexo = dsLocal.Tables["Exercices"].Select(requeteNombre);
+            int count = nbdexo.Length;
+
+            string requeteExo = "codeUtil=" + codeUtile;
+            DataRow[] Utilisateur = dsLocal.Tables["Utilisateurs"].Select(requeteExo);
+            int numExo = (int)Utilisateur[0]["codeExo"];
+            Utilisateur[0]["codeExo"] = numExo + 1;
+            numExo = (int)Utilisateur[0]["codeExo"];
+            if(numExo>count)
+            {
+                UpdateLecon();
+            }
+
+
+        }
+        private void ChangerExo()
+        {
+            string requeteExo = "codeUtil=" + codeUtile;
+            DataRow[] Utilisateur = dsLocal.Tables["Utilisateurs"].Select(requeteExo);
+
+            numCours = Utilisateur[0]["codeCours"].ToString();
+            numLecon = (int)Utilisateur[0]["codeLeçon"];
+            numExo = (int)Utilisateur[0]["codeExo"];
+            Reussi = false;
+            bpg.numCours = numCours;
+            bpg.numLecon = numLecon;
+            recupExo(numCours, numLecon, numExo);
+
+        }
+        private void UpdateLecon()
+        {
+            //string requeteNombre="numCours'"+numCours+"'"+"and "
+
+            string requeteLecon = "codeUtil=" + codeUtile;
+            DataRow[] Utilisateur = dsLocal.Tables["Utilisateurs"].Select(requeteLecon);
+            int numLecon = (int)Utilisateur[0]["codeLeçon"];
+            Utilisateur[0]["codeLeçon"] = numLecon + 1;
+            Utilisateur[0]["codeExo"] = 1;
+            ChangerExo();
+        }
+        private void MouseEntre(object sender, EventArgs e)
+        {
+            Label lbl = ((Label)sender);
+            lbl.ForeColor = Color.Red;
+            lbl.Font = new Font(new FontFamily("Nirmala UI"), 12F, FontStyle.Bold);
+            lbl.BringToFront();
+        }
+        private void MouseSort(object sender, EventArgs e)
+        {
+            Label lbl = ((Label)sender);
+            lbl.ForeColor = Color.White;
+            lbl.Font = new Font(new FontFamily("Nirmala UI"),12F, FontStyle.Regular) ;
+        }
+
+ 
     } 
 }
 

@@ -32,21 +32,25 @@ namespace SaeTest
             this.components = new System.ComponentModel.Container();
             this.pnlMid = new System.Windows.Forms.Panel();
             this.lblTitre = new System.Windows.Forms.Label();
+            this.exercicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.baseLangueDataSet = new SaeTest.baseLangueDataSet();
             this.btnArriere = new System.Windows.Forms.Button();
             this.btnDebut = new System.Windows.Forms.Button();
             this.btnAvant = new System.Windows.Forms.Button();
             this.btnFin = new System.Windows.Forms.Button();
             this.trwExos = new System.Windows.Forms.TreeView();
-            this.baseLangueDataSet = new SaeTest.baseLangueDataSet();
-            this.exercicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.exercicesTableAdapter = new SaeTest.baseLangueDataSetTableAdapters.ExercicesTableAdapter();
+            this.lblCorr = new System.Windows.Forms.Label();
+            this.lblPhrase = new System.Windows.Forms.Label();
             this.pnlMid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.baseLangueDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exercicesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.baseLangueDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMid
             // 
+            this.pnlMid.Controls.Add(this.lblPhrase);
+            this.pnlMid.Controls.Add(this.lblCorr);
             this.pnlMid.Controls.Add(this.lblTitre);
             this.pnlMid.Controls.Add(this.btnArriere);
             this.pnlMid.Controls.Add(this.btnDebut);
@@ -62,13 +66,23 @@ namespace SaeTest
             this.lblTitre.AutoSize = true;
             this.lblTitre.BackColor = System.Drawing.Color.Transparent;
             this.lblTitre.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.exercicesBindingSource, "enonceExo", true));
-            this.lblTitre.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitre.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblTitre.Location = new System.Drawing.Point(234, 19);
+            this.lblTitre.Location = new System.Drawing.Point(205, 33);
             this.lblTitre.Name = "lblTitre";
-            this.lblTitre.Size = new System.Drawing.Size(84, 45);
+            this.lblTitre.Size = new System.Drawing.Size(63, 32);
             this.lblTitre.TabIndex = 8;
             this.lblTitre.Text = "Titre";
+            // 
+            // exercicesBindingSource
+            // 
+            this.exercicesBindingSource.DataMember = "Exercices";
+            this.exercicesBindingSource.DataSource = this.baseLangueDataSet;
+            // 
+            // baseLangueDataSet
+            // 
+            this.baseLangueDataSet.DataSetName = "baseLangueDataSet";
+            this.baseLangueDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnArriere
             // 
@@ -127,23 +141,39 @@ namespace SaeTest
             this.trwExos.TabIndex = 1;
             this.trwExos.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trwExos_AfterSelect);
             // 
-            // baseLangueDataSet
-            // 
-            this.baseLangueDataSet.DataSetName = "baseLangueDataSet";
-            this.baseLangueDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // exercicesBindingSource
-            // 
-            this.exercicesBindingSource.DataMember = "Exercices";
-            this.exercicesBindingSource.DataSource = this.baseLangueDataSet;
-            // 
             // exercicesTableAdapter
             // 
             this.exercicesTableAdapter.ClearBeforeFill = true;
             // 
+            // lblCorr
+            // 
+            this.lblCorr.AutoSize = true;
+            this.lblCorr.BackColor = System.Drawing.Color.Transparent;
+            this.lblCorr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.exercicesBindingSource, "enonceExo", true));
+            this.lblCorr.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorr.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblCorr.Location = new System.Drawing.Point(206, 182);
+            this.lblCorr.Name = "lblCorr";
+            this.lblCorr.Size = new System.Drawing.Size(80, 30);
+            this.lblCorr.TabIndex = 9;
+            this.lblCorr.Text = "Corrige";
+            // 
+            // lblPhrase
+            // 
+            this.lblPhrase.AutoSize = true;
+            this.lblPhrase.BackColor = System.Drawing.Color.Transparent;
+            this.lblPhrase.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.exercicesBindingSource, "enonceExo", true));
+            this.lblPhrase.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhrase.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblPhrase.Location = new System.Drawing.Point(206, 108);
+            this.lblPhrase.Name = "lblPhrase";
+            this.lblPhrase.Size = new System.Drawing.Size(75, 30);
+            this.lblPhrase.TabIndex = 10;
+            this.lblPhrase.Text = "Phrase";
+            // 
             // frmAdminScroll
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 375);
@@ -157,8 +187,8 @@ namespace SaeTest
             this.Load += new System.EventHandler(this.frmAdminScroll_Load);
             this.pnlMid.ResumeLayout(false);
             this.pnlMid.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.baseLangueDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exercicesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.baseLangueDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,5 +205,7 @@ namespace SaeTest
         private baseLangueDataSet baseLangueDataSet;
         private System.Windows.Forms.BindingSource exercicesBindingSource;
         private baseLangueDataSetTableAdapters.ExercicesTableAdapter exercicesTableAdapter;
+        private System.Windows.Forms.Label lblPhrase;
+        private System.Windows.Forms.Label lblCorr;
     }
 }
