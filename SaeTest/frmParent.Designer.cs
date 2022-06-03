@@ -36,10 +36,13 @@ namespace SaeTest
             this.pbRetour = new System.Windows.Forms.PictureBox();
             this.pbMaison = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbUser = new System.Windows.Forms.PictureBox();
+            this.lblUser = new System.Windows.Forms.Label();
             this.pnlHaut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCroix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRetour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaison)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
             this.SuspendLayout();
             // 
             // lblYes
@@ -66,6 +69,8 @@ namespace SaeTest
             // pnlHaut
             // 
             this.pnlHaut.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHaut.Controls.Add(this.lblUser);
+            this.pnlHaut.Controls.Add(this.pbUser);
             this.pnlHaut.Controls.Add(this.pbCroix);
             this.pnlHaut.Controls.Add(this.pbRetour);
             this.pnlHaut.Controls.Add(this.pbMaison);
@@ -126,6 +131,26 @@ namespace SaeTest
             this.panel1.Size = new System.Drawing.Size(834, 10);
             this.panel1.TabIndex = 7;
             // 
+            // pbUser
+            // 
+            this.pbUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbUser.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pbUser.Location = new System.Drawing.Point(584, 8);
+            this.pbUser.Name = "pbUser";
+            this.pbUser.Size = new System.Drawing.Size(44, 34);
+            this.pbUser.TabIndex = 11;
+            this.pbUser.TabStop = false;
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Location = new System.Drawing.Point(634, 14);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(92, 25);
+            this.lblUser.TabIndex = 12;
+            this.lblUser.Text = "Anonyme";
+            // 
             // frmParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -147,6 +172,7 @@ namespace SaeTest
             ((System.ComponentModel.ISupportInitialize)(this.pbCroix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRetour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaison)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -160,6 +186,8 @@ namespace SaeTest
         private System.Windows.Forms.PictureBox pbCroix;
         private System.Windows.Forms.PictureBox pbRetour;
         private System.Windows.Forms.PictureBox pbMaison;
+        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.PictureBox pbUser;
     }
 }
 

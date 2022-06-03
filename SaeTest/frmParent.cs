@@ -194,6 +194,7 @@ namespace SaeTest
             pbMaison.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\maisonLogo.png"));
             pbCroix.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\croixLogo.png"));
             pbRetour.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\flecheArriereLogo.png"));
+            pbUser.BackgroundImage = Image.FromFile(photoExiste(@"..\..\Photos\userLogo.png"));
         }
 
         private void pbMaison_MouseEnter(object sender, EventArgs e)
@@ -247,6 +248,15 @@ namespace SaeTest
             {
                 chargeForm(new frmAdmin());
             }
+        }
+
+        public void ChangeUser(String str)
+        {
+            String[] recupNomPrenom = str.Split(' ');
+            if (recupNomPrenom.Length>= 2){
+                lblUser.Text = recupNomPrenom[1].Substring(0, 1) + ". " + recupNomPrenom[0];
+            }
+            
         }
     }
 }

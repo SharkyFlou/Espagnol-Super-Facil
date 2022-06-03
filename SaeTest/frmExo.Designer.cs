@@ -48,6 +48,8 @@ namespace SaeTest
             this.bpg = new barProgression.barProgression();
             this.pnlExo4 = new System.Windows.Forms.Panel();
             this.lblEnonce4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlExo1.SuspendLayout();
             this.pnlExo2.SuspendLayout();
             this.pnlExo4.SuspendLayout();
@@ -247,12 +249,31 @@ namespace SaeTest
             this.lblEnonce4.TabIndex = 0;
             this.lblEnonce4.Text = "label1";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(32, 321);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(161, 29);
+            this.textBox1.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(209, 321);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(29, 33);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmExo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(831, 375);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pnlExo4);
             this.Controls.Add(this.bpg);
             this.Controls.Add(this.pnlExo3);
@@ -275,6 +296,7 @@ namespace SaeTest
             this.pnlExo4.ResumeLayout(false);
             this.pnlExo4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -298,5 +320,7 @@ namespace SaeTest
         private System.Windows.Forms.Panel pnlPhrase;
         private System.Windows.Forms.Panel pnlExo4;
         private System.Windows.Forms.Label lblEnonce4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

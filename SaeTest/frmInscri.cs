@@ -63,6 +63,7 @@ namespace SaeTest
                     if (res > 0)
                     {
                         MessageBox.Show("Bienvenido " + txtPrenom.Text + " " + txtNom.Text + " !\n:)", "Retour création");
+                        frmParent.instance.ChangeUser(txtPrenom.Text +" "+ txtNom.Text);
                         frmParent.instance.chargeForm(new frmExo(nbrMax + 1));
                     }
                 }

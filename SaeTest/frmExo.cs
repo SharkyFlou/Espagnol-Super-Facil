@@ -781,7 +781,81 @@ namespace SaeTest
             lbl.Font = new Font(new FontFamily("Nirmala UI"),12F, FontStyle.Regular) ;
         }
 
- 
+        // Renvoie le mot mis en parametre normalise, sans "." ou "," ou  "'", mais garde les accents
+        public static string normalise(string Xmot)
+        {
+            string mot2 = "";
+            char lettre;
+            char lettreActu;
+
+            for (int i = 0; i < Xmot.Length; i++)
+            {
+                lettreActu = Xmot[i];
+                if ((int)Xmot[i] >= 65 && (int)Xmot[i] <= 90)
+                {
+                    lettre = (char)((int)Xmot[i] + 32); //mise en minuscule du characteres
+                    lettreActu = lettre; //ajout de la lettre en mini
+                }
+                else if (((int)Xmot[i] >= 145 && (int)Xmot[i] <= 148) || ((int)Xmot[i] == 8217))
+                { //transforme les "‘", les "’", les "“" et les "”" en "'" et le charactere chelou de 8217
+                    lettreActu = (char)(39);
+                }
+                else if ((int)Xmot[i] >= 97 && (int)Xmot[i] <= 122)
+                { //minuscules
+                    lettreActu = Xmot[i];
+                }
+                else if ((int)Xmot[i] == 39 || (int)Xmot[i] == 45 || (int)Xmot[i] == 156)
+                { //garde les "-" et les "'" et les "œ"
+                    lettreActu = Xmot[i];
+                }
+                else if ((int)Xmot[i] >= 192 && (int)Xmot[i] <= 221 && (int)Xmot[i] != 215)
+                {
+                    lettre = (char)((int)Xmot[i] + 32); //mise en minuscule du characteres speciaux sauf le "×"
+                    lettreActu = lettre;
+                }
+                
+
+                if((int)lettreActu >= 224 && (int)lettreActu <= 229) //pour les a
+                {
+                    lettreActu =  'a';
+                }
+                else if ((int)lettreActu >= 232 && (int)lettreActu <= 235) //pour les e
+                {
+                    lettreActu =  'e';
+                }
+                else if ((int)lettreActu >= 236 && (int)lettreActu <= 239) //pour les i
+                {
+                    lettreActu =  'i';
+                }
+                else if ((int)lettreActu == 241) //pour le ñ
+                {
+                    lettreActu =  'n';
+                }
+                else if ((int)lettreActu >= 242 && (int)lettreActu <= 246 || (int)lettreActu==246) //pour les o
+                {
+                    lettreActu =  'o';
+                }
+                else if ((int)lettreActu >= 249 && (int)lettreActu <= 252) //pour les u
+                {
+                    lettreActu =  'u';
+                }
+                else if ((int)lettreActu == 253 || (int)lettreActu == 255) //pour les y
+                {
+                    lettreActu =  'y';
+                }
+                else if ((int)lettreActu == 140)
+                { //transforme "Œ" en "œ"
+                    lettreActu =  (char)(156);
+                }
+                mot2 += lettreActu;
+            }
+            return mot2;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(normalise(textBox1.Text));
+        }
     } 
 }
 

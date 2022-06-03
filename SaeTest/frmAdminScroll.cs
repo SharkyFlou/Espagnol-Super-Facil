@@ -242,14 +242,14 @@ namespace SaeTest
             string requete;
             foreach (DataRow dr in tableMoment.Rows)
             {
-                if ((int)dr["codePhrase"] != 0) //soit exo 1 ou 2
+                if ((int)dr["codePhrase"] != 0) //soit exo 1 ou 2 (phrase a trou + phrase mots mélangés)
                 {
                     DataRow[] drr = dsLocal.Tables["Phrases"].Select("codePhrase = " + tableMoment.Rows[i]["codePhrase"]);
 
                     tableMoment.Rows[i]["phrase"] = drr[0]["textePhrase"].ToString();
                     tableMoment.Rows[i]["corrige"] = drr[0]["traducPhrase"].ToString();
                 }
-                else if((int)dr["codeVerbe"] == 0)
+                else if((int)dr["codeVerbe"] == 0) //soit exo 3 (voca)
                 {
                     requete = "numExo=" + dr["numExo"] + " and numCours='" + dr["numCours"] + "'" + " and numLecon=" + dr["numLecon"];
                     DataRow[] MotsConcerne = dsLocal.Tables["ConcerneMots"].Select(requete);

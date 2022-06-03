@@ -82,10 +82,12 @@ namespace SaeTest
             int codeUtile = cboLogin.SelectedIndex + 1;
             if(codeUtile==5 || codeUtile == 6)
             {
-                frmParent.instance.chargeForm(new frmAdmin());
+                frmParent.instance.ChangeUser(cboLogin.SelectedItem.ToString());
+                frmParent.instance.chargeForm(new frmAdmin()); 
             }
             else if (codeUtile >= 0)
             {
+                frmParent.instance.ChangeUser(cboLogin.SelectedItem.ToString());
                 frmParent.instance.chargeForm(new frmExo(codeUtile));
             }
         }

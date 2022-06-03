@@ -31,17 +31,17 @@ namespace SaeTest
         {
             this.components = new System.ComponentModel.Container();
             this.pnlMid = new System.Windows.Forms.Panel();
-            this.lblTitre = new System.Windows.Forms.Label();
+            this.lblPhrase = new System.Windows.Forms.Label();
             this.exercicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.baseLangueDataSet = new SaeTest.baseLangueDataSet();
+            this.lblCorr = new System.Windows.Forms.Label();
+            this.lblTitre = new System.Windows.Forms.Label();
             this.btnArriere = new System.Windows.Forms.Button();
             this.btnDebut = new System.Windows.Forms.Button();
             this.btnAvant = new System.Windows.Forms.Button();
             this.btnFin = new System.Windows.Forms.Button();
             this.trwExos = new System.Windows.Forms.TreeView();
             this.exercicesTableAdapter = new SaeTest.baseLangueDataSetTableAdapters.ExercicesTableAdapter();
-            this.lblCorr = new System.Windows.Forms.Label();
-            this.lblPhrase = new System.Windows.Forms.Label();
             this.pnlMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exercicesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.baseLangueDataSet)).BeginInit();
@@ -61,6 +61,42 @@ namespace SaeTest
             this.pnlMid.Size = new System.Drawing.Size(536, 351);
             this.pnlMid.TabIndex = 0;
             // 
+            // lblPhrase
+            // 
+            this.lblPhrase.AutoSize = true;
+            this.lblPhrase.BackColor = System.Drawing.Color.Transparent;
+            this.lblPhrase.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.exercicesBindingSource, "enonceExo", true));
+            this.lblPhrase.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhrase.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblPhrase.Location = new System.Drawing.Point(206, 108);
+            this.lblPhrase.Name = "lblPhrase";
+            this.lblPhrase.Size = new System.Drawing.Size(75, 30);
+            this.lblPhrase.TabIndex = 10;
+            this.lblPhrase.Text = "Phrase";
+            // 
+            // exercicesBindingSource
+            // 
+            this.exercicesBindingSource.DataMember = "Exercices";
+            this.exercicesBindingSource.DataSource = this.baseLangueDataSet;
+            // 
+            // baseLangueDataSet
+            // 
+            this.baseLangueDataSet.DataSetName = "baseLangueDataSet";
+            this.baseLangueDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lblCorr
+            // 
+            this.lblCorr.AutoSize = true;
+            this.lblCorr.BackColor = System.Drawing.Color.Transparent;
+            this.lblCorr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.exercicesBindingSource, "enonceExo", true));
+            this.lblCorr.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorr.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblCorr.Location = new System.Drawing.Point(206, 182);
+            this.lblCorr.Name = "lblCorr";
+            this.lblCorr.Size = new System.Drawing.Size(80, 30);
+            this.lblCorr.TabIndex = 9;
+            this.lblCorr.Text = "Corrige";
+            // 
             // lblTitre
             // 
             this.lblTitre.AutoSize = true;
@@ -73,16 +109,6 @@ namespace SaeTest
             this.lblTitre.Size = new System.Drawing.Size(63, 32);
             this.lblTitre.TabIndex = 8;
             this.lblTitre.Text = "Titre";
-            // 
-            // exercicesBindingSource
-            // 
-            this.exercicesBindingSource.DataMember = "Exercices";
-            this.exercicesBindingSource.DataSource = this.baseLangueDataSet;
-            // 
-            // baseLangueDataSet
-            // 
-            this.baseLangueDataSet.DataSetName = "baseLangueDataSet";
-            this.baseLangueDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnArriere
             // 
@@ -144,32 +170,6 @@ namespace SaeTest
             // exercicesTableAdapter
             // 
             this.exercicesTableAdapter.ClearBeforeFill = true;
-            // 
-            // lblCorr
-            // 
-            this.lblCorr.AutoSize = true;
-            this.lblCorr.BackColor = System.Drawing.Color.Transparent;
-            this.lblCorr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.exercicesBindingSource, "enonceExo", true));
-            this.lblCorr.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCorr.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblCorr.Location = new System.Drawing.Point(206, 182);
-            this.lblCorr.Name = "lblCorr";
-            this.lblCorr.Size = new System.Drawing.Size(80, 30);
-            this.lblCorr.TabIndex = 9;
-            this.lblCorr.Text = "Corrige";
-            // 
-            // lblPhrase
-            // 
-            this.lblPhrase.AutoSize = true;
-            this.lblPhrase.BackColor = System.Drawing.Color.Transparent;
-            this.lblPhrase.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.exercicesBindingSource, "enonceExo", true));
-            this.lblPhrase.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhrase.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblPhrase.Location = new System.Drawing.Point(206, 108);
-            this.lblPhrase.Name = "lblPhrase";
-            this.lblPhrase.Size = new System.Drawing.Size(75, 30);
-            this.lblPhrase.TabIndex = 10;
-            this.lblPhrase.Text = "Phrase";
             // 
             // frmAdminScroll
             // 
