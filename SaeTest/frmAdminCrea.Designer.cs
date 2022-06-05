@@ -52,9 +52,9 @@ namespace SaeTest
             this.cboUtil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUtil.ForeColor = System.Drawing.Color.Black;
             this.cboUtil.FormattingEnabled = true;
-            this.cboUtil.Location = new System.Drawing.Point(7, 49);
+            this.cboUtil.Location = new System.Drawing.Point(3, 49);
             this.cboUtil.Name = "cboUtil";
-            this.cboUtil.Size = new System.Drawing.Size(360, 29);
+            this.cboUtil.Size = new System.Drawing.Size(364, 29);
             this.cboUtil.TabIndex = 0;
             this.cboUtil.SelectionChangeCommitted += new System.EventHandler(this.cboUtil_SelectionChangeCommitted);
             // 
@@ -63,9 +63,9 @@ namespace SaeTest
             this.cboLecon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLecon.ForeColor = System.Drawing.Color.Black;
             this.cboLecon.FormattingEnabled = true;
-            this.cboLecon.Location = new System.Drawing.Point(7, 180);
+            this.cboLecon.Location = new System.Drawing.Point(3, 180);
             this.cboLecon.Name = "cboLecon";
-            this.cboLecon.Size = new System.Drawing.Size(360, 29);
+            this.cboLecon.Size = new System.Drawing.Size(364, 29);
             this.cboLecon.TabIndex = 2;
             this.cboLecon.SelectionChangeCommitted += new System.EventHandler(this.cboLecon_SelectionChangeCommitted);
             // 
@@ -74,9 +74,9 @@ namespace SaeTest
             this.cboCours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCours.ForeColor = System.Drawing.Color.Black;
             this.cboCours.FormattingEnabled = true;
-            this.cboCours.Location = new System.Drawing.Point(7, 115);
+            this.cboCours.Location = new System.Drawing.Point(3, 115);
             this.cboCours.Name = "cboCours";
-            this.cboCours.Size = new System.Drawing.Size(360, 29);
+            this.cboCours.Size = new System.Drawing.Size(364, 29);
             this.cboCours.TabIndex = 3;
             this.cboCours.SelectionChangeCommitted += new System.EventHandler(this.cboCours_SelectionChangeCommitted);
             // 
@@ -85,7 +85,7 @@ namespace SaeTest
             this.cboExo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboExo.ForeColor = System.Drawing.Color.Black;
             this.cboExo.FormattingEnabled = true;
-            this.cboExo.Location = new System.Drawing.Point(7, 254);
+            this.cboExo.Location = new System.Drawing.Point(3, 254);
             this.cboExo.Name = "cboExo";
             this.cboExo.Size = new System.Drawing.Size(360, 29);
             this.cboExo.TabIndex = 4;
@@ -138,6 +138,8 @@ namespace SaeTest
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.ForeColor = System.Drawing.Color.Black;
             this.btnReset.Location = new System.Drawing.Point(141, 296);
@@ -151,6 +153,8 @@ namespace SaeTest
             // btnValider
             // 
             this.btnValider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnValider.FlatAppearance.BorderSize = 0;
+            this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValider.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.ForeColor = System.Drawing.Color.Black;
             this.btnValider.Location = new System.Drawing.Point(243, 296);
@@ -202,9 +206,11 @@ namespace SaeTest
             // btSuppr
             // 
             this.btSuppr.BackColor = System.Drawing.Color.Red;
+            this.btSuppr.FlatAppearance.BorderSize = 0;
+            this.btSuppr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSuppr.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSuppr.ForeColor = System.Drawing.Color.Black;
-            this.btSuppr.Location = new System.Drawing.Point(8, 297);
+            this.btSuppr.Location = new System.Drawing.Point(3, 297);
             this.btSuppr.Name = "btSuppr";
             this.btSuppr.Size = new System.Drawing.Size(127, 50);
             this.btSuppr.TabIndex = 12;

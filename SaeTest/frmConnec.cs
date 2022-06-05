@@ -39,6 +39,7 @@ namespace SaeTest
             {
                 chargeLogin();
             }
+            frmParent.instance.ChangeUser("Anonyme");
         }
 
         private void chargeLogin()

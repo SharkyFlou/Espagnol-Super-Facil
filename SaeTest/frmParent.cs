@@ -24,6 +24,9 @@ namespace SaeTest
         Object formActu = null;
         public Font fontDeBase = new Font(new FontFamily("Nirmala UI"), 12F, FontStyle.Regular);
 
+        //font qui seront accessible partout
+        Font petitEcranPetitPol = new Font(new FontFamily("Nirmala UI"), 12F, FontStyle.Regular);
+
 
         public Object load
         {
@@ -46,8 +49,6 @@ namespace SaeTest
                 chargeForm(new frmDema());
                 chargePhotopb();
             }
-            this.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperHexa.png"));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Tile;
         }
 
 
@@ -64,6 +65,10 @@ namespace SaeTest
             else
             {
                pbRetour.Enabled = true;
+            }
+            if(Form.GetType() != typeof(frmAdmin))
+            {
+                frmParent.instance.changeTitre("Español súper fácil");
             }
             Form f = Form as Form;
             f.TopLevel = false;
@@ -140,16 +145,8 @@ namespace SaeTest
 
         private void pnlHaut_MouseDown(object sender, MouseEventArgs e)
         {
-            if (sender.GetType() == typeof(Label))
-            {
-                Label lbl = (Label)sender;
-                mouseLocation = new Point(-e.X- lbl.Left, -e.Y-lbl.Top);
-            }
-            else
-            {
-                mouseLocation = new Point(-e.X, -e.Y);
-            }
-            
+            Control t = (Control)sender; //cast vers classe parent, pour pouvoir récupérer le Left et le Top
+            mouseLocation = new Point(-e.X- t.Left, -e.Y- t.Top);   
         }
 
         private void pnlHaut_MouseMove(object sender, MouseEventArgs e)
@@ -256,7 +253,19 @@ namespace SaeTest
             if (recupNomPrenom.Length>= 2){
                 lblUser.Text = recupNomPrenom[1].Substring(0, 1) + ". " + recupNomPrenom[0];
             }
-            
+            else
+            {
+                lblUser.Text = str;
+            }
+
+            pbUser.Left = this.Width - lblUser.Width - pbUser.Width - pbCroix.Width -10;
+            lblUser.Left = this.Width - lblUser.Width  - pbCroix.Width - 10; ;
+        }
+
+        public void changeTitre(String str)
+        {
+            lblTitre.Text = str;
+            lblTitre.Left = (this.Width - lblTitre.Width) / 2;
         }
     }
 }

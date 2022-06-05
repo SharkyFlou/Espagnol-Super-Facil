@@ -110,7 +110,7 @@ namespace SaeTest
         private void frmAdminScroll_Load(object sender, EventArgs e)
         {
             // TODO: cette ligne de code charge les données dans la table 'baseLangueDataSet.Exercices'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            this.exercicesTableAdapter.Fill(this.baseLangueDataSet.Exercices);
+            //this.exercicesTableAdapter.Fill(this.baseLangueDataSet.Exercices);
             connec.ConnectionString = frmParent.instance.getLienBase();
             chargementDsLocal();
             chargementTree();

@@ -60,23 +60,31 @@ namespace SaeTest
             // 
             // btnAnnuler
             // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.IndianRed;
+            this.btnAnnuler.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAnnuler.FlatAppearance.BorderSize = 0;
+            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.ForeColor = System.Drawing.Color.Black;
             this.btnAnnuler.Location = new System.Drawing.Point(25, 265);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(126, 46);
             this.btnAnnuler.TabIndex = 8;
             this.btnAnnuler.Text = "Annuler";
-            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.UseVisualStyleBackColor = false;
             // 
             // btnValider
             // 
+            this.btnValider.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnValider.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnValider.FlatAppearance.BorderSize = 0;
+            this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValider.ForeColor = System.Drawing.Color.Black;
             this.btnValider.Location = new System.Drawing.Point(309, 265);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(126, 46);
             this.btnValider.TabIndex = 7;
             this.btnValider.Text = "Valider";
-            this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.UseVisualStyleBackColor = false;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // lblMail

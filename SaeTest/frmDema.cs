@@ -34,5 +34,20 @@ namespace SaeTest
         {
             frmParent.instance.chargeForm(new frmInscri());
         }
+
+        private void frmDema_Load(object sender, EventArgs e)
+        {
+            pbCharly.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\stickmans\stickCharly.png"));
+        }
+
+        private void pbCharly_MouseEnter(object sender, EventArgs e)
+        {
+            pbCharly.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\stickmans\stickCharlyHover.png"));
+        }
+
+        private void pbCharly_MouseLeave(object sender, EventArgs e)
+        {
+            pbCharly.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\stickmans\stickCharly.png"));
+        }
     }
 }

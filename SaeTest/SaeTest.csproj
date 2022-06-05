@@ -204,7 +204,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Photos\" />
+    <Folder Include="Photos\stickmans\" />
     <Folder Include="Source\" />
   </ItemGroup>
   <ItemGroup>

@@ -29,33 +29,33 @@ namespace SaeTest
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblYes = new System.Windows.Forms.Label();
+            this.lblTitre = new System.Windows.Forms.Label();
             this.pnlForm = new System.Windows.Forms.Panel();
             this.pnlHaut = new System.Windows.Forms.Panel();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.pbUser = new System.Windows.Forms.PictureBox();
             this.pbCroix = new System.Windows.Forms.PictureBox();
             this.pbRetour = new System.Windows.Forms.PictureBox();
             this.pbMaison = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pbUser = new System.Windows.Forms.PictureBox();
-            this.lblUser = new System.Windows.Forms.Label();
             this.pnlHaut.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCroix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRetour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaison)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblYes
+            // lblTitre
             // 
-            this.lblYes.AutoSize = true;
-            this.lblYes.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYes.Location = new System.Drawing.Point(291, 4);
-            this.lblYes.Name = "lblYes";
-            this.lblYes.Size = new System.Drawing.Size(237, 37);
-            this.lblYes.TabIndex = 0;
-            this.lblYes.Text = "Español súper fácil";
-            this.lblYes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
-            this.lblYes.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
+            this.lblTitre.AutoSize = true;
+            this.lblTitre.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.Location = new System.Drawing.Point(291, 4);
+            this.lblTitre.Name = "lblTitre";
+            this.lblTitre.Size = new System.Drawing.Size(237, 37);
+            this.lblTitre.TabIndex = 0;
+            this.lblTitre.Text = "Español súper fácil";
+            this.lblTitre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
+            this.lblTitre.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
             // 
             // pnlForm
             // 
@@ -68,21 +68,46 @@ namespace SaeTest
             // 
             // pnlHaut
             // 
-            this.pnlHaut.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHaut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnlHaut.Controls.Add(this.lblUser);
             this.pnlHaut.Controls.Add(this.pbUser);
             this.pnlHaut.Controls.Add(this.pbCroix);
             this.pnlHaut.Controls.Add(this.pbRetour);
             this.pnlHaut.Controls.Add(this.pbMaison);
             this.pnlHaut.Controls.Add(this.panel1);
-            this.pnlHaut.Controls.Add(this.lblYes);
+            this.pnlHaut.Controls.Add(this.lblTitre);
             this.pnlHaut.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHaut.ForeColor = System.Drawing.Color.White;
             this.pnlHaut.Location = new System.Drawing.Point(0, 0);
             this.pnlHaut.Name = "pnlHaut";
             this.pnlHaut.Size = new System.Drawing.Size(831, 55);
             this.pnlHaut.TabIndex = 6;
             this.pnlHaut.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
             this.pnlHaut.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Location = new System.Drawing.Point(706, 4);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(72, 20);
+            this.lblUser.TabIndex = 12;
+            this.lblUser.Text = "Anonyme";
+            this.lblUser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
+            this.lblUser.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
+            // 
+            // pbUser
+            // 
+            this.pbUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbUser.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pbUser.Location = new System.Drawing.Point(679, 4);
+            this.pbUser.Name = "pbUser";
+            this.pbUser.Size = new System.Drawing.Size(21, 18);
+            this.pbUser.TabIndex = 11;
+            this.pbUser.TabStop = false;
+            this.pbUser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
+            this.pbUser.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
             // 
             // pbCroix
             // 
@@ -131,26 +156,6 @@ namespace SaeTest
             this.panel1.Size = new System.Drawing.Size(834, 10);
             this.panel1.TabIndex = 7;
             // 
-            // pbUser
-            // 
-            this.pbUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbUser.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pbUser.Location = new System.Drawing.Point(584, 8);
-            this.pbUser.Name = "pbUser";
-            this.pbUser.Size = new System.Drawing.Size(44, 34);
-            this.pbUser.TabIndex = 11;
-            this.pbUser.TabStop = false;
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(634, 14);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(92, 25);
-            this.lblUser.TabIndex = 12;
-            this.lblUser.Text = "Anonyme";
-            // 
             // frmParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -169,17 +174,17 @@ namespace SaeTest
             this.Load += new System.EventHandler(this.frmParent_Load);
             this.pnlHaut.ResumeLayout(false);
             this.pnlHaut.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCroix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRetour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaison)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblYes;
+        private System.Windows.Forms.Label lblTitre;
         private System.Windows.Forms.Panel pnlForm;
         private System.Windows.Forms.Panel pnlHaut;
         private System.Windows.Forms.Panel panel1;

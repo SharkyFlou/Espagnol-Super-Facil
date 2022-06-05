@@ -19,6 +19,7 @@ namespace SaeTest
             this.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperSpainBlur.jpg"));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlMid.BackColor = Color.FromArgb(150, 0, 0, 0);
+            frmParent.instance.ChangeUser("Anonyme");
         }
         OleDbConnection connec = new OleDbConnection();
 

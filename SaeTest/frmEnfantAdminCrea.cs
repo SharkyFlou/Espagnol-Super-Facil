@@ -212,7 +212,7 @@ namespace SaeTest
             }
             else
             {
-                frmAdminCrea.instance.retourFrmEnfant(txtNom.Text.Trim(), txtPrenom.Text.Trim(), txtMail.Text.Trim(), clefCours[cboCours.SelectedIndex], clefLecon[cboLecon.SelectedIndex], clefExo[cboExo.SelectedIndex]);
+                frmAdmin.instance.retourFrmEnfant(txtNom.Text.Trim(), txtPrenom.Text.Trim(), txtMail.Text.Trim(), clefCours[cboCours.SelectedIndex], clefLecon[cboLecon.SelectedIndex], clefExo[cboExo.SelectedIndex]);
                 DialogResult = DialogResult.OK;
             }
         }

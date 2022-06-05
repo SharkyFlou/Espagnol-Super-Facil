@@ -75,32 +75,45 @@ namespace SaeTest
             // 
             // btnAnnuler
             // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.Brown;
+            this.btnAnnuler.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAnnuler.FlatAppearance.BorderSize = 0;
+            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
             this.btnAnnuler.Location = new System.Drawing.Point(3, 9);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(145, 62);
             this.btnAnnuler.TabIndex = 7;
             this.btnAnnuler.Text = "Annuler";
-            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.UseVisualStyleBackColor = false;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // btnValider
             // 
+            this.btnValider.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnValider.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnValider.FlatAppearance.BorderSize = 0;
+            this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValider.Location = new System.Drawing.Point(447, 9);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(145, 62);
             this.btnValider.TabIndex = 8;
             this.btnValider.Text = "Valider et créer";
-            this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.UseVisualStyleBackColor = false;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // btnAide
             // 
+            this.btnAide.BackColor = System.Drawing.Color.Orange;
+            this.btnAide.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAide.FlatAppearance.BorderSize = 0;
+            this.btnAide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAide.Location = new System.Drawing.Point(508, 9);
             this.btnAide.Name = "btnAide";
             this.btnAide.Size = new System.Drawing.Size(75, 40);
             this.btnAide.TabIndex = 6;
             this.btnAide.Text = "Aide";
-            this.btnAide.UseVisualStyleBackColor = true;
+            this.btnAide.UseVisualStyleBackColor = false;
             this.btnAide.Click += new System.EventHandler(this.btnAide_Click);
             // 
             // txtPrenom

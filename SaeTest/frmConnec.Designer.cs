@@ -32,8 +32,8 @@ namespace SaeTest
             this.cboLogin = new System.Windows.Forms.ComboBox();
             this.btnValide = new System.Windows.Forms.Button();
             this.pnlMid = new System.Windows.Forms.Panel();
-            this.eLog = new ecranLogin.ecranLogin();
             this.lblTitre = new System.Windows.Forms.Label();
+            this.eLog = new ecranLogin.ecranLogin();
             this.pnlMid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,14 +50,17 @@ namespace SaeTest
             // 
             // btnValide
             // 
+            this.btnValide.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnValide.FlatAppearance.BorderSize = 0;
+            this.btnValide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValide.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnValide.Location = new System.Drawing.Point(339, 71);
             this.btnValide.Margin = new System.Windows.Forms.Padding(4);
             this.btnValide.Name = "btnValide";
             this.btnValide.Size = new System.Drawing.Size(163, 35);
             this.btnValide.TabIndex = 5;
-            this.btnValide.Text = "Valider";
-            this.btnValide.UseVisualStyleBackColor = true;
+            this.btnValide.Text = "Se connecter";
+            this.btnValide.UseVisualStyleBackColor = false;
             this.btnValide.Click += new System.EventHandler(this.btnValide_Click);
             // 
             // pnlMid
@@ -70,21 +73,6 @@ namespace SaeTest
             this.pnlMid.Name = "pnlMid";
             this.pnlMid.Size = new System.Drawing.Size(566, 309);
             this.pnlMid.TabIndex = 6;
-            // 
-            // eLog
-            // 
-            this.eLog.BackColor = System.Drawing.Color.Transparent;
-            this.eLog.codeUtil = -1;
-            this.eLog.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eLog.lien = null;
-            this.eLog.Location = new System.Drawing.Point(38, 149);
-            this.eLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.eLog.MaximumSize = new System.Drawing.Size(500, 140);
-            this.eLog.MinimumSize = new System.Drawing.Size(500, 140);
-            this.eLog.Name = "eLog";
-            this.eLog.refresh = false;
-            this.eLog.Size = new System.Drawing.Size(500, 140);
-            this.eLog.TabIndex = 6;
             // 
             // lblTitre
             // 
@@ -100,6 +88,21 @@ namespace SaeTest
             this.lblTitre.TabIndex = 7;
             this.lblTitre.Text = "Connexion";
             this.lblTitre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // eLog
+            // 
+            this.eLog.BackColor = System.Drawing.Color.Transparent;
+            this.eLog.codeUtil = -1;
+            this.eLog.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eLog.lien = null;
+            this.eLog.Location = new System.Drawing.Point(38, 149);
+            this.eLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.eLog.MaximumSize = new System.Drawing.Size(500, 140);
+            this.eLog.MinimumSize = new System.Drawing.Size(500, 140);
+            this.eLog.Name = "eLog";
+            this.eLog.refresh = false;
+            this.eLog.Size = new System.Drawing.Size(500, 140);
+            this.eLog.TabIndex = 6;
             // 
             // frmConnec
             // 

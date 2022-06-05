@@ -851,11 +851,6 @@ namespace SaeTest
             }
             return mot2;
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(normalise(textBox1.Text));
-        }
     } 
 }
 
