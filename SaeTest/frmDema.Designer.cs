@@ -113,6 +113,8 @@ namespace SaeTest
             this.pbTanguy.Size = new System.Drawing.Size(60, 180);
             this.pbTanguy.TabIndex = 4;
             this.pbTanguy.TabStop = false;
+            this.pbTanguy.MouseEnter += new System.EventHandler(this.pbTanguy_MouseEnter);
+            this.pbTanguy.MouseLeave += new System.EventHandler(this.pbTanguy_MouseLeave);
             // 
             // frmDema
             // 
