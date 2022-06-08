@@ -40,6 +40,9 @@ namespace SaeTest
             this.lblTraductionFrançais = new System.Windows.Forms.Label();
             this.lblTrad = new System.Windows.Forms.Label();
             this.explicationExercice1 = new System.Windows.Forms.Label();
+            this.lblEnonce3 = new System.Windows.Forms.Label();
+            this.explicationExercice2 = new System.Windows.Forms.Label();
+            this.explicationExercice4 = new System.Windows.Forms.Label();
             this.btnRecommencer = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pnlExo2 = new System.Windows.Forms.Panel();
@@ -54,13 +57,15 @@ namespace SaeTest
             this.tTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlExo1.SuspendLayout();
             this.pnlExo2.SuspendLayout();
+            this.pnlExo3.SuspendLayout();
             this.pnlExo4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnValider
             // 
+            this.btnValider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnValider.ForeColor = System.Drawing.Color.Black;
-            this.btnValider.Location = new System.Drawing.Point(617, 308);
+            this.btnValider.Location = new System.Drawing.Point(710, 308);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(75, 33);
             this.btnValider.TabIndex = 0;
@@ -71,12 +76,13 @@ namespace SaeTest
             // 
             // btnAide
             // 
+            this.btnAide.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAide.ForeColor = System.Drawing.Color.Black;
-            this.btnAide.Location = new System.Drawing.Point(448, 308);
+            this.btnAide.Location = new System.Drawing.Point(202, 308);
             this.btnAide.Name = "btnAide";
             this.btnAide.Size = new System.Drawing.Size(75, 33);
             this.btnAide.TabIndex = 1;
-            this.btnAide.Text = "Aide";
+            this.btnAide.Text = "Indice";
             this.tTip.SetToolTip(this.btnAide, "Donner un indice");
             this.btnAide.UseVisualStyleBackColor = true;
             this.btnAide.Click += new System.EventHandler(this.btnAide_Click);
@@ -90,9 +96,9 @@ namespace SaeTest
             this.pnlExo1.Controls.Add(this.lblTrad);
             this.pnlExo1.Controls.Add(this.explicationExercice1);
             this.pnlExo1.ForeColor = System.Drawing.SystemColors.Control;
-            this.pnlExo1.Location = new System.Drawing.Point(47, 19);
+            this.pnlExo1.Location = new System.Drawing.Point(46, 19);
             this.pnlExo1.Name = "pnlExo1";
-            this.pnlExo1.Size = new System.Drawing.Size(677, 268);
+            this.pnlExo1.Size = new System.Drawing.Size(739, 268);
             this.pnlExo1.TabIndex = 2;
             this.pnlExo1.Visible = false;
             // 
@@ -112,7 +118,7 @@ namespace SaeTest
             this.lblEnonce.ForeColor = System.Drawing.SystemColors.Control;
             this.lblEnonce.Location = new System.Drawing.Point(0, 0);
             this.lblEnonce.Name = "lblEnonce";
-            this.lblEnonce.Size = new System.Drawing.Size(677, 268);
+            this.lblEnonce.Size = new System.Drawing.Size(739, 268);
             this.lblEnonce.TabIndex = 2;
             this.lblEnonce.Text = "Texte";
             this.lblEnonce.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -145,14 +151,53 @@ namespace SaeTest
             this.explicationExercice1.ForeColor = System.Drawing.Color.White;
             this.explicationExercice1.Location = new System.Drawing.Point(45, 54);
             this.explicationExercice1.Name = "explicationExercice1";
-            this.explicationExercice1.Size = new System.Drawing.Size(572, 21);
+            this.explicationExercice1.Size = new System.Drawing.Size(579, 21);
             this.explicationExercice1.TabIndex = 4;
-            this.explicationExercice1.Text = "Complétez les TextBox avec les mots correspondants à une traduction de la phrase.";
+            this.explicationExercice1.Text = "Complétez les TextBox avec les mots correspondants à une traduction de la phrase." +
+    "";
+            // 
+            // lblEnonce3
+            // 
+            this.lblEnonce3.BackColor = System.Drawing.Color.Transparent;
+            this.lblEnonce3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblEnonce3.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnonce3.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblEnonce3.Location = new System.Drawing.Point(0, 0);
+            this.lblEnonce3.Name = "lblEnonce3";
+            this.lblEnonce3.Size = new System.Drawing.Size(739, 268);
+            this.lblEnonce3.TabIndex = 15;
+            this.lblEnonce3.Text = "Texte";
+            this.lblEnonce3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // explicationExercice2
+            // 
+            this.explicationExercice2.AutoSize = true;
+            this.explicationExercice2.BackColor = System.Drawing.Color.Transparent;
+            this.explicationExercice2.ForeColor = System.Drawing.Color.White;
+            this.explicationExercice2.Location = new System.Drawing.Point(45, 54);
+            this.explicationExercice2.Name = "explicationExercice2";
+            this.explicationExercice2.Size = new System.Drawing.Size(692, 21);
+            this.explicationExercice2.TabIndex = 4;
+            this.explicationExercice2.Text = "Appuyez sur tout les boutons pour former une phrase, réappuyer sur les Labels pou" +
+    "r retirer le mot.";
+            // 
+            // explicationExercice4
+            // 
+            this.explicationExercice4.AutoSize = true;
+            this.explicationExercice4.BackColor = System.Drawing.Color.Transparent;
+            this.explicationExercice4.ForeColor = System.Drawing.Color.White;
+            this.explicationExercice4.Location = new System.Drawing.Point(45, 54);
+            this.explicationExercice4.Name = "explicationExercice4";
+            this.explicationExercice4.Size = new System.Drawing.Size(579, 21);
+            this.explicationExercice4.TabIndex = 4;
+            this.explicationExercice4.Text = "Complétez les TextBox avec les mots correspondants à une traduction de la phrase." +
+    "";
             // 
             // btnRecommencer
             // 
+            this.btnRecommencer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRecommencer.ForeColor = System.Drawing.Color.Black;
-            this.btnRecommencer.Location = new System.Drawing.Point(279, 308);
+            this.btnRecommencer.Location = new System.Drawing.Point(46, 308);
             this.btnRecommencer.Name = "btnRecommencer";
             this.btnRecommencer.Size = new System.Drawing.Size(128, 33);
             this.btnRecommencer.TabIndex = 3;
@@ -173,6 +218,7 @@ namespace SaeTest
             this.pnlExo2.Controls.Add(this.pnlMots);
             this.pnlExo2.Controls.Add(this.lblTraduction2);
             this.pnlExo2.Controls.Add(this.lblEnonce2);
+            this.pnlExo2.Controls.Add(this.explicationExercice2);
             this.pnlExo2.ForeColor = System.Drawing.SystemColors.Control;
             this.pnlExo2.Location = new System.Drawing.Point(46, 19);
             this.pnlExo2.Name = "pnlExo2";
@@ -192,9 +238,9 @@ namespace SaeTest
             // 
             this.pnlMots.BackColor = System.Drawing.Color.Transparent;
             this.pnlMots.ForeColor = System.Drawing.SystemColors.Control;
-            this.pnlMots.Location = new System.Drawing.Point(4, 81);
+            this.pnlMots.Location = new System.Drawing.Point(4, 127);
             this.pnlMots.Name = "pnlMots";
-            this.pnlMots.Size = new System.Drawing.Size(670, 102);
+            this.pnlMots.Size = new System.Drawing.Size(670, 85);
             this.pnlMots.TabIndex = 2;
             // 
             // lblTraduction2
@@ -202,7 +248,7 @@ namespace SaeTest
             this.lblTraduction2.AutoSize = true;
             this.lblTraduction2.BackColor = System.Drawing.Color.Transparent;
             this.lblTraduction2.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTraduction2.Location = new System.Drawing.Point(45, 47);
+            this.lblTraduction2.Location = new System.Drawing.Point(45, 104);
             this.lblTraduction2.Name = "lblTraduction2";
             this.lblTraduction2.Size = new System.Drawing.Size(0, 21);
             this.lblTraduction2.TabIndex = 1;
@@ -225,6 +271,7 @@ namespace SaeTest
             // pnlExo3
             // 
             this.pnlExo3.BackColor = System.Drawing.Color.Silver;
+            this.pnlExo3.Controls.Add(this.lblEnonce3);
             this.pnlExo3.ForeColor = System.Drawing.SystemColors.Control;
             this.pnlExo3.Location = new System.Drawing.Point(46, 19);
             this.pnlExo3.Name = "pnlExo3";
@@ -253,6 +300,7 @@ namespace SaeTest
             // pnlExo4
             // 
             this.pnlExo4.Controls.Add(this.lblEnonce4);
+            this.pnlExo4.Controls.Add(this.explicationExercice4);
             this.pnlExo4.Location = new System.Drawing.Point(46, 19);
             this.pnlExo4.Name = "pnlExo4";
             this.pnlExo4.Size = new System.Drawing.Size(739, 268);
@@ -296,12 +344,17 @@ namespace SaeTest
             this.pnlExo1.PerformLayout();
             this.pnlExo2.ResumeLayout(false);
             this.pnlExo2.PerformLayout();
+            this.pnlExo3.ResumeLayout(false);
             this.pnlExo4.ResumeLayout(false);
+            this.pnlExo4.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+        private System.Windows.Forms.Label lblEnonce3;
+        private System.Windows.Forms.Label explicationExercice2;
+        private System.Windows.Forms.Label explicationExercice4;
         private System.Windows.Forms.Label explicationExercice1;
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Button btnAide;

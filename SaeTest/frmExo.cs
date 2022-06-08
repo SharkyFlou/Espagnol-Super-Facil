@@ -179,12 +179,13 @@ namespace SaeTest
             pnlExo2.Visible = true;
             lblEnonce2.Text = enonce;
             lblTraduction2.Text = traduc;
+            explicationExercice2.BringToFront();
 
             mots = phrase.Split(' ');
             Random random = new Random();
             mots = mots.OrderBy(x => random.Next()).ToArray();
 
-            int left = lblEnonce2.Left;
+            int left = lblTraduction2.Left;
             int top = lblEnonce2.Top;
 
             decalageGauche = lblTraduction2.Left;
@@ -218,7 +219,7 @@ namespace SaeTest
 
 
         //Exercice Type 3 : Affichage du vocabulaire
-        private void Exo3(List<string> motsEspagnols, List<string> motsFrançais, List<string> cheminMots )
+        private void Exo3(string ennonceExo, List<string> motsEspagnols, List<string> motsFrançais, List<string> cheminMots )
         {
 
             Reussi = false;
@@ -231,7 +232,9 @@ namespace SaeTest
 
             }
             pnlExo3.Controls.Clear();
+            pnlExo3.Controls.Add(lblEnonce3);
             pnlExo3.Visible = true;
+            lblEnonce3.Text = ennonceExo;
 
             int espaceEntre = 8 + ((4 - motsEspagnols.Count) * 175 / (motsEspagnols.Count + 1));
             int ImageLeft = espaceEntre;
@@ -243,10 +246,11 @@ namespace SaeTest
                 u.LabelEspagnol = motsEspagnols[i];
                 u.LabelTraduction = motsFrançais[i];
                 u.Left = ImageLeft;
-                u.Top = 30;
+                u.Top = 70;
                 u.transparence = 150;
                 pnlExo3.Controls.Add(u);
                 ImageLeft += espaceEntre + u.Width;
+                u.BringToFront();
             }
         }
         private void Exo4(string enonce,  string traducVerbe,string verbe,int codeTemps,int groupeTemps)
@@ -683,8 +687,8 @@ namespace SaeTest
                         {
                             listeMotsConcerne.Add((int)MotsConcerne[i]["numMot"]);
                         }
-
-                        Exo3(motsEspagnols,motsFrançais,cheminMots);
+                        
+                        Exo3(enonceExo,motsEspagnols,motsFrançais,cheminMots);
                     }
                 }
 

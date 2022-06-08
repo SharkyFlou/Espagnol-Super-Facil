@@ -33,7 +33,9 @@ namespace SaeTest
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
         }
         Document document = new Document();
-        Page page = new Page();
+        Page pageJuste = new Page();
+        Page pageFausse = new Page();
+
         int numLecon;
         string chcon;
         private int codeUtile;
@@ -56,7 +58,8 @@ namespace SaeTest
         private void btnTélécharger_Click(object sender, EventArgs e)
         {
             RemplissagePage();
-            document.Pages.Add(page);
+            document.Pages.Add(pageJuste);
+            document.Pages.Add(pageFausse);
             document.Draw("C:\\Users\\tneu\\Leçon" + numLecon + ".pdf");
             frmParent.instance.chargeForm(new frmExo(codeUtile));
 
@@ -114,20 +117,78 @@ namespace SaeTest
         }
         private void RemplissagePage()
         {
-            int top = 10;
+
+            Table2 tableJuste = new Table2(0, 0, 400, 700);
+            Table2 tableFausse = new Table2(0, 0, 450, 700);
+
+            Column2 column1 = tableJuste.Columns.Add(200);
+            Column2 column2 = tableJuste.Columns.Add(200);
+
+            Row2 rowHeader1 = tableJuste.Rows.Add(40, ceTe.DynamicPDF.Font.CourierBold, 16, Grayscale.Black, Grayscale.Gray);
+            rowHeader1.CellDefault.Align = TextAlign.Center;
+            rowHeader1.CellDefault.VAlign = VAlign.Center;
+            rowHeader1.Cells.Add("Numéro d'exercice");
+            rowHeader1.Cells.Add("Exercices justes");
+
+            Column2 column3 = tableFausse.Columns.Add(150);
+            Column2 column4 = tableFausse.Columns.Add(150);
+            Column2 column5 = tableFausse.Columns.Add(150);
+
+            Row2 rowHeader2 = tableFausse.Rows.Add(40, ceTe.DynamicPDF.Font.CourierBold, 16, Grayscale.Black, Grayscale.Gray);
+            rowHeader2.CellDefault.Align = TextAlign.Center;
+            rowHeader2.CellDefault.VAlign = VAlign.Center;
+            rowHeader2.Cells.Add("Numéro d'exercice");
+            rowHeader2.Cells.Add("Exercices Faux");
+            rowHeader2.Cells.Add("Exercices Faux");
+
+            tableJuste.Border.Top.Color = RgbColor.Green;
+            tableJuste.Border.Bottom.Color = RgbColor.Green;
+            tableJuste.Border.Top.Width = 2;
+            tableJuste.Border.Bottom.Width = 2;
+
+            tableFausse.Border.Top.Color = RgbColor.Red;
+            tableFausse.Border.Bottom.Color = RgbColor.Red;
+            tableFausse.Border.Top.Width = 2;
+            tableFausse.Border.Bottom.Width = 2;
+
+            foreach (DataRow d in tableUtil.Rows)
+            {
+                string réponseVrai = d["phraseVrai"].ToString();
+
+                if (réponseVrai== "")
+                {
+                    string réponseFause = d["phraseFausse"].ToString();
+                    int numExo = (int)d["numExo"];
+                    string réponseCorrecte = d["corrige"].ToString();
+
+                    Row2 row = tableFausse.Rows.Add(40, ceTe.DynamicPDF.Font.CourierBold, 12, Grayscale.Black, Grayscale.Gray);
+                    row.Cells.Add(numExo.ToString());
+                    row.Cells.Add(réponseFause);
+                    row.Cells.Add(réponseCorrecte);
+                }
+                else
+                {
+                    int numExo = (int)d["numExo"];
+                    Row2 row = tableJuste.Rows.Add(40, ceTe.DynamicPDF.Font.CourierBold, 12, Grayscale.Black, Grayscale.Gray);
+                    row.Cells.Add(numExo.ToString());
+                    row.Cells.Add(réponseVrai);
+                }
+            }
+            /*
             foreach (System.Windows.Forms.Label l in pnlJuste.Controls.OfType<System.Windows.Forms.Label>())
             {
-                ceTe.DynamicPDF.PageElements.Label label = new ceTe.DynamicPDF.PageElements.Label(l.Text, 0, top, l.Width, l.Height);
-                page.Elements.Add(label);
-                top += l.Height + 5;
+                Cells
             }
 
             foreach (System.Windows.Forms.Label l in pnlFaux.Controls.OfType<System.Windows.Forms.Label>())
             {
                 ceTe.DynamicPDF.PageElements.Label label = new ceTe.DynamicPDF.PageElements.Label(l.Text, 0, top, l.Width, l.Height);
-                page.Elements.Add(label);
-                top += l.Height + 5;
-            }
+
+            }*/
+            pageJuste.Elements.Add(tableJuste);
+            pageFausse.Elements.Add(tableFausse);
+
+
         }
         private void chargementDsLocal()
         {
