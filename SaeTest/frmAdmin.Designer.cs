@@ -29,8 +29,9 @@ namespace SaeTest
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlHaut = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlHautGauche = new System.Windows.Forms.Panel();
             this.btnExos = new System.Windows.Forms.Button();
             this.btnUtil = new System.Windows.Forms.Button();
             this.pnlExo = new System.Windows.Forms.Panel();
@@ -45,12 +46,12 @@ namespace SaeTest
             this.trwExos = new System.Windows.Forms.TreeView();
             this.pnlUtil = new System.Windows.Forms.Panel();
             this.pnlDroit = new System.Windows.Forms.Panel();
-            this.btSuppr = new System.Windows.Forms.Button();
+            this.pbValider = new System.Windows.Forms.PictureBox();
+            this.pbReset = new System.Windows.Forms.PictureBox();
+            this.pbSuppr = new System.Windows.Forms.PictureBox();
             this.lblAjouterUtil = new System.Windows.Forms.Label();
             this.cboUtil = new System.Windows.Forms.ComboBox();
-            this.btnValider = new System.Windows.Forms.Button();
             this.cboCours = new System.Windows.Forms.ComboBox();
-            this.btnReset = new System.Windows.Forms.Button();
             this.lblCours = new System.Windows.Forms.Label();
             this.lblExo = new System.Windows.Forms.Label();
             this.lblLecon = new System.Windows.Forms.Label();
@@ -58,8 +59,9 @@ namespace SaeTest
             this.cboLecon = new System.Windows.Forms.ComboBox();
             this.pnlGauche = new System.Windows.Forms.Panel();
             this.btnAjouter = new System.Windows.Forms.Button();
+            this.tTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlHaut.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlHautGauche.SuspendLayout();
             this.pnlExo.SuspendLayout();
             this.pnlMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFin)).BeginInit();
@@ -68,28 +70,31 @@ namespace SaeTest
             ((System.ComponentModel.ISupportInitialize)(this.pbArriere)).BeginInit();
             this.pnlUtil.SuspendLayout();
             this.pnlDroit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbValider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSuppr)).BeginInit();
             this.pnlGauche.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHaut
             // 
             this.pnlHaut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.pnlHaut.Controls.Add(this.panel1);
+            this.pnlHaut.Controls.Add(this.pnlHautGauche);
             this.pnlHaut.Location = new System.Drawing.Point(0, 0);
             this.pnlHaut.Name = "pnlHaut";
             this.pnlHaut.Size = new System.Drawing.Size(831, 52);
             this.pnlHaut.TabIndex = 4;
             // 
-            // panel1
+            // pnlHautGauche
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.btnExos);
-            this.panel1.Controls.Add(this.btnUtil);
-            this.panel1.Location = new System.Drawing.Point(0, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(439, 52);
-            this.panel1.TabIndex = 5;
+            this.pnlHautGauche.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.pnlHautGauche.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlHautGauche.Controls.Add(this.btnExos);
+            this.pnlHautGauche.Controls.Add(this.btnUtil);
+            this.pnlHautGauche.Location = new System.Drawing.Point(0, 3);
+            this.pnlHautGauche.Name = "pnlHautGauche";
+            this.pnlHautGauche.Size = new System.Drawing.Size(439, 52);
+            this.pnlHautGauche.TabIndex = 5;
             // 
             // btnExos
             // 
@@ -102,6 +107,7 @@ namespace SaeTest
             this.btnExos.Size = new System.Drawing.Size(150, 48);
             this.btnExos.TabIndex = 0;
             this.btnExos.Text = "Voir les exos";
+            this.tTip.SetToolTip(this.btnExos, "Aller sur la page d\'affichage des exercices");
             this.btnExos.UseVisualStyleBackColor = false;
             this.btnExos.Click += new System.EventHandler(this.btnExos_Click);
             // 
@@ -116,6 +122,7 @@ namespace SaeTest
             this.btnUtil.Size = new System.Drawing.Size(281, 48);
             this.btnUtil.TabIndex = 1;
             this.btnUtil.Text = "Ajouter/modifier des utilisateurs";
+            this.tTip.SetToolTip(this.btnUtil, "Aller sur la page pour ajouter/modifer des utilisateurs");
             this.btnUtil.UseVisualStyleBackColor = false;
             this.btnUtil.Click += new System.EventHandler(this.btnUtil_Click);
             // 
@@ -230,6 +237,7 @@ namespace SaeTest
             this.lblTitre.TabIndex = 8;
             this.lblTitre.Text = "Titre";
             this.lblTitre.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tTip.SetToolTip(this.lblTitre, "Titre de l\'exercice");
             // 
             // trwExos
             // 
@@ -253,12 +261,12 @@ namespace SaeTest
             // 
             // pnlDroit
             // 
-            this.pnlDroit.Controls.Add(this.btSuppr);
+            this.pnlDroit.Controls.Add(this.pbValider);
+            this.pnlDroit.Controls.Add(this.pbReset);
+            this.pnlDroit.Controls.Add(this.pbSuppr);
             this.pnlDroit.Controls.Add(this.lblAjouterUtil);
             this.pnlDroit.Controls.Add(this.cboUtil);
-            this.pnlDroit.Controls.Add(this.btnValider);
             this.pnlDroit.Controls.Add(this.cboCours);
-            this.pnlDroit.Controls.Add(this.btnReset);
             this.pnlDroit.Controls.Add(this.lblCours);
             this.pnlDroit.Controls.Add(this.lblExo);
             this.pnlDroit.Controls.Add(this.lblLecon);
@@ -269,20 +277,50 @@ namespace SaeTest
             this.pnlDroit.Size = new System.Drawing.Size(370, 310);
             this.pnlDroit.TabIndex = 15;
             // 
-            // btSuppr
+            // pbValider
             // 
-            this.btSuppr.BackColor = System.Drawing.Color.Red;
-            this.btSuppr.FlatAppearance.BorderSize = 0;
-            this.btSuppr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btSuppr.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSuppr.ForeColor = System.Drawing.Color.Black;
-            this.btSuppr.Location = new System.Drawing.Point(3, 257);
-            this.btSuppr.Name = "btSuppr";
-            this.btSuppr.Size = new System.Drawing.Size(127, 50);
-            this.btSuppr.TabIndex = 12;
-            this.btSuppr.Text = "Supprimer l\'utilisateur";
-            this.btSuppr.UseVisualStyleBackColor = false;
-            this.btSuppr.Click += new System.EventHandler(this.btSuppr_Click);
+            this.pbValider.BackColor = System.Drawing.Color.Transparent;
+            this.pbValider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbValider.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbValider.Location = new System.Drawing.Point(307, 248);
+            this.pbValider.Name = "pbValider";
+            this.pbValider.Size = new System.Drawing.Size(61, 65);
+            this.pbValider.TabIndex = 14;
+            this.pbValider.TabStop = false;
+            this.tTip.SetToolTip(this.pbValider, "Appliquer les modfications \r\nà l\'utilisateur sélectionné");
+            this.pbValider.Click += new System.EventHandler(this.btnModifier_Click);
+            this.pbValider.MouseEnter += new System.EventHandler(this.pbValider_MouseEnter);
+            this.pbValider.MouseLeave += new System.EventHandler(this.pbValider_MouseLeave);
+            // 
+            // pbReset
+            // 
+            this.pbReset.BackColor = System.Drawing.Color.Transparent;
+            this.pbReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbReset.Location = new System.Drawing.Point(240, 248);
+            this.pbReset.Name = "pbReset";
+            this.pbReset.Size = new System.Drawing.Size(61, 67);
+            this.pbReset.TabIndex = 13;
+            this.pbReset.TabStop = false;
+            this.tTip.SetToolTip(this.pbReset, "Remettre à default l\'avancement \r\nde l\'utilisateur sélectionné");
+            this.pbReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.pbReset.MouseEnter += new System.EventHandler(this.pbReset_MouseEnter);
+            this.pbReset.MouseLeave += new System.EventHandler(this.pbReset_MouseLeave);
+            // 
+            // pbSuppr
+            // 
+            this.pbSuppr.BackColor = System.Drawing.Color.Transparent;
+            this.pbSuppr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbSuppr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbSuppr.Location = new System.Drawing.Point(3, 248);
+            this.pbSuppr.Name = "pbSuppr";
+            this.pbSuppr.Size = new System.Drawing.Size(61, 67);
+            this.pbSuppr.TabIndex = 12;
+            this.pbSuppr.TabStop = false;
+            this.tTip.SetToolTip(this.pbSuppr, "Supprimer l\'utilisateur sélectionné");
+            this.pbSuppr.Click += new System.EventHandler(this.btSuppr_Click);
+            this.pbSuppr.MouseEnter += new System.EventHandler(this.pbSuppr_MouseEnter);
+            this.pbSuppr.MouseLeave += new System.EventHandler(this.pbSuppr_MouseLeave);
             // 
             // lblAjouterUtil
             // 
@@ -308,21 +346,6 @@ namespace SaeTest
             this.cboUtil.TabIndex = 0;
             this.cboUtil.SelectionChangeCommitted += new System.EventHandler(this.cboUtil_SelectionChangeCommitted);
             // 
-            // btnValider
-            // 
-            this.btnValider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnValider.FlatAppearance.BorderSize = 0;
-            this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnValider.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValider.ForeColor = System.Drawing.Color.Black;
-            this.btnValider.Location = new System.Drawing.Point(243, 256);
-            this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(124, 50);
-            this.btnValider.TabIndex = 11;
-            this.btnValider.Text = "Modifier";
-            this.btnValider.UseVisualStyleBackColor = false;
-            this.btnValider.Click += new System.EventHandler(this.btnModifier_Click);
-            // 
             // cboCours
             // 
             this.cboCours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -333,21 +356,6 @@ namespace SaeTest
             this.cboCours.Size = new System.Drawing.Size(364, 29);
             this.cboCours.TabIndex = 3;
             this.cboCours.SelectionChangeCommitted += new System.EventHandler(this.cboCours_SelectionChangeCommitted);
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnReset.FlatAppearance.BorderSize = 0;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(138, 256);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(96, 50);
-            this.btnReset.TabIndex = 10;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // lblCours
             // 
@@ -414,6 +422,7 @@ namespace SaeTest
             // btnAjouter
             // 
             this.btnAjouter.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnAjouter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAjouter.FlatAppearance.BorderSize = 0;
             this.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAjouter.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -442,7 +451,7 @@ namespace SaeTest
             this.Text = "frmAdmin";
             this.Load += new System.EventHandler(this.frmAdmin_Load);
             this.pnlHaut.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.pnlHautGauche.ResumeLayout(false);
             this.pnlExo.ResumeLayout(false);
             this.pnlMid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbFin)).EndInit();
@@ -452,6 +461,9 @@ namespace SaeTest
             this.pnlUtil.ResumeLayout(false);
             this.pnlDroit.ResumeLayout(false);
             this.pnlDroit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbValider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSuppr)).EndInit();
             this.pnlGauche.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -469,12 +481,9 @@ namespace SaeTest
         private System.Windows.Forms.Label lblCorr;
         private System.Windows.Forms.Label lblTitre;
         private System.Windows.Forms.Panel pnlDroit;
-        private System.Windows.Forms.Button btSuppr;
         private System.Windows.Forms.Label lblAjouterUtil;
         private System.Windows.Forms.ComboBox cboUtil;
-        private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.ComboBox cboCours;
-        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblCours;
         private System.Windows.Forms.Label lblExo;
         private System.Windows.Forms.Label lblLecon;
@@ -482,10 +491,14 @@ namespace SaeTest
         private System.Windows.Forms.ComboBox cboLecon;
         private System.Windows.Forms.Panel pnlGauche;
         private System.Windows.Forms.Button btnAjouter;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlHautGauche;
         private System.Windows.Forms.PictureBox pbFin;
         private System.Windows.Forms.PictureBox pbAvant;
         private System.Windows.Forms.PictureBox pbDebut;
         private System.Windows.Forms.PictureBox pbArriere;
+        private System.Windows.Forms.PictureBox pbSuppr;
+        private System.Windows.Forms.PictureBox pbValider;
+        private System.Windows.Forms.PictureBox pbReset;
+        private System.Windows.Forms.ToolTip tTip;
     }
 }

@@ -40,12 +40,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\ecranLogin.dll</HintPath>
     </Reference>
-    <Reference Include="Exerc">
-      <HintPath>.\Exerc.dll</HintPath>
-    </Reference>
     <Reference Include="petiteBoule, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\petiteBoule.dll</HintPath>
+    </Reference>
+    <Reference Include="petiteImage">
+      <HintPath>.\petiteImage.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>

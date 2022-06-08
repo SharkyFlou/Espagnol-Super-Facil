@@ -29,6 +29,7 @@ namespace SaeTest
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTitre = new System.Windows.Forms.Label();
             this.pnlForm = new System.Windows.Forms.Panel();
             this.pnlHaut = new System.Windows.Forms.Panel();
@@ -38,6 +39,7 @@ namespace SaeTest
             this.pbRetour = new System.Windows.Forms.PictureBox();
             this.pbMaison = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlHaut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCroix)).BeginInit();
@@ -54,6 +56,7 @@ namespace SaeTest
             this.lblTitre.Size = new System.Drawing.Size(237, 37);
             this.lblTitre.TabIndex = 0;
             this.lblTitre.Text = "Español súper fácil";
+            this.tTip.SetToolTip(this.lblTitre, "La mejor aplicación");
             this.lblTitre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
             this.lblTitre.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
             // 
@@ -94,6 +97,7 @@ namespace SaeTest
             this.lblUser.Size = new System.Drawing.Size(72, 20);
             this.lblUser.TabIndex = 12;
             this.lblUser.Text = "Anonyme";
+            this.tTip.SetToolTip(this.lblUser, "Votre nom");
             this.lblUser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
             this.lblUser.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
             // 
@@ -106,6 +110,7 @@ namespace SaeTest
             this.pbUser.Size = new System.Drawing.Size(21, 18);
             this.pbUser.TabIndex = 11;
             this.pbUser.TabStop = false;
+            this.tTip.SetToolTip(this.pbUser, "Votre nom");
             this.pbUser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseDown);
             this.pbUser.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHaut_MouseMove);
             // 
@@ -118,6 +123,7 @@ namespace SaeTest
             this.pbCroix.Size = new System.Drawing.Size(44, 42);
             this.pbCroix.TabIndex = 10;
             this.pbCroix.TabStop = false;
+            this.tTip.SetToolTip(this.pbCroix, "Quitter l\'application :\'(");
             this.pbCroix.Click += new System.EventHandler(this.btnQuitter_Click);
             this.pbCroix.MouseEnter += new System.EventHandler(this.pbCroix_MouseEnter);
             this.pbCroix.MouseLeave += new System.EventHandler(this.pbCroix_MouseLeave);
@@ -131,6 +137,7 @@ namespace SaeTest
             this.pbRetour.Size = new System.Drawing.Size(47, 33);
             this.pbRetour.TabIndex = 9;
             this.pbRetour.TabStop = false;
+            this.tTip.SetToolTip(this.pbRetour, "Retour en arrière");
             this.pbRetour.Click += new System.EventHandler(this.pbRetour_Click);
             this.pbRetour.MouseEnter += new System.EventHandler(this.pbRetour_MouseEnter);
             this.pbRetour.MouseLeave += new System.EventHandler(this.pbRetour_MouseLeave);
@@ -144,6 +151,7 @@ namespace SaeTest
             this.pbMaison.Size = new System.Drawing.Size(44, 42);
             this.pbMaison.TabIndex = 8;
             this.pbMaison.TabStop = false;
+            this.tTip.SetToolTip(this.pbMaison, "Aller à l\'acceuil");
             this.pbMaison.Click += new System.EventHandler(this.btnMaison_Click);
             this.pbMaison.MouseEnter += new System.EventHandler(this.pbMaison_MouseEnter);
             this.pbMaison.MouseLeave += new System.EventHandler(this.pbMaison_MouseLeave);
@@ -193,6 +201,7 @@ namespace SaeTest
         private System.Windows.Forms.PictureBox pbMaison;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.PictureBox pbUser;
+        private System.Windows.Forms.ToolTip tTip;
     }
 }
 

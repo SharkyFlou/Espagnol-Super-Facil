@@ -90,6 +90,10 @@ namespace SaeTest
 
             pbFin.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\skipAvantBlancLogo.png"));
             pbFin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+
+            pbSuppr.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\corbeilleLogo.png"));
+            pbReset.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\resetLogo.png"));
+            pbValider.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\validerLogo.png"));
         }
 
 
@@ -750,5 +754,37 @@ namespace SaeTest
         {
             pbFin.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\skipAvantBlancLogo.png"));
         }
+
+        private void pbSuppr_MouseEnter(object sender, EventArgs e)
+        {
+            pbSuppr.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\corbeilleHoverLogo.png"));
+        }
+
+        private void pbSuppr_MouseLeave(object sender, EventArgs e)
+        {
+            pbSuppr.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\corbeilleLogo.png"));
+        }
+
+        private void pbReset_MouseEnter(object sender, EventArgs e)
+        {
+            pbReset.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\resetHoverLogo.png"));
+        }
+
+        private void pbReset_MouseLeave(object sender, EventArgs e)
+        {
+            pbReset.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\resetLogo.png"));
+        }
+
+
+        private void pbValider_MouseEnter(object sender, EventArgs e)
+        {
+            pbValider.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\validerHoverLogo.png"));
+        }
+
+        private void pbValider_MouseLeave(object sender, EventArgs e)
+        {
+            pbValider.BackgroundImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\validerLogo.png"));
+        }
+
     }
 }

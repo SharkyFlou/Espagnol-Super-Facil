@@ -227,18 +227,20 @@ namespace SaeTest
             pnlExo3.Controls.Clear();
             pnlExo3.Visible = true;
 
-            int ImageLeft = 8;
+            int espaceEntre = 8+((4-motsEspagnols.Count)*175/ (motsEspagnols.Count+1));
+            int ImageLeft = espaceEntre;
 
-            for(int i=0;i<motsEspagnols.Count;i++)
+            for (int i=0;i<motsEspagnols.Count;i++)
             {
-                Exerc.PetiteImage u = new Exerc.PetiteImage();
-                u.LienImage = frmParent.instance.photoExiste(@"..\..\Photos\"+cheminMots[i]);
+                petiteImage.petiteImage u = new petiteImage.petiteImage();
+                u.backImage = Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\"+cheminMots[i]));
                 u.LabelEspagnol = motsEspagnols[i];
                 u.LabelTraduction = motsFrançais[i];
                 u.Left = ImageLeft;
                 u.Top = 30;
+                u.transparence = 150;
                 pnlExo3.Controls.Add(u);
-                ImageLeft += 8+u.Width;
+                ImageLeft += espaceEntre + u.Width;
             }
         }
         private void Exo4(string enonce,  string traducVerbe,string verbe,int codeTemps,int groupeTemps)
@@ -853,4 +855,3 @@ namespace SaeTest
         }
     } 
 }
-

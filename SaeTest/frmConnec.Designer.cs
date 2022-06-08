@@ -29,11 +29,13 @@ namespace SaeTest
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cboLogin = new System.Windows.Forms.ComboBox();
             this.btnValide = new System.Windows.Forms.Button();
             this.pnlMid = new System.Windows.Forms.Panel();
             this.lblTitre = new System.Windows.Forms.Label();
             this.eLog = new ecranLogin.ecranLogin();
+            this.tTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,11 +48,13 @@ namespace SaeTest
             this.cboLogin.Name = "cboLogin";
             this.cboLogin.Size = new System.Drawing.Size(237, 32);
             this.cboLogin.TabIndex = 4;
+            this.tTip.SetToolTip(this.cboLogin, "Sélectionnez votre nom");
             this.cboLogin.SelectionChangeCommitted += new System.EventHandler(this.cboLogin_SelectionChangeCommitted);
             // 
             // btnValide
             // 
             this.btnValide.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnValide.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnValide.FlatAppearance.BorderSize = 0;
             this.btnValide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValide.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -60,6 +64,7 @@ namespace SaeTest
             this.btnValide.Size = new System.Drawing.Size(163, 35);
             this.btnValide.TabIndex = 5;
             this.btnValide.Text = "Se connecter";
+            this.tTip.SetToolTip(this.btnValide, "Se connecter et commencer\r\nà travailler");
             this.btnValide.UseVisualStyleBackColor = false;
             this.btnValide.Click += new System.EventHandler(this.btnValide_Click);
             // 
@@ -103,6 +108,7 @@ namespace SaeTest
             this.eLog.refresh = false;
             this.eLog.Size = new System.Drawing.Size(500, 140);
             this.eLog.TabIndex = 6;
+            this.tTip.SetToolTip(this.eLog, "Avancement de l\'utilisateur sélectionné");
             // 
             // frmConnec
             // 
@@ -131,5 +137,6 @@ namespace SaeTest
         private System.Windows.Forms.Panel pnlMid;
         private ecranLogin.ecranLogin eLog;
         private System.Windows.Forms.Label lblTitre;
+        private System.Windows.Forms.ToolTip tTip;
     }
 }

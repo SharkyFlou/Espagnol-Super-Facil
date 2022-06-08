@@ -29,12 +29,14 @@ namespace SaeTest
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnInscri = new System.Windows.Forms.Button();
             this.btnConnec = new System.Windows.Forms.Button();
             this.pnlMid = new System.Windows.Forms.Panel();
             this.lblTitre = new System.Windows.Forms.Label();
             this.pbCharly = new System.Windows.Forms.PictureBox();
             this.pbTanguy = new System.Windows.Forms.PictureBox();
+            this.tTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCharly)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTanguy)).BeginInit();
@@ -52,6 +54,7 @@ namespace SaeTest
             this.btnInscri.Size = new System.Drawing.Size(225, 82);
             this.btnInscri.TabIndex = 0;
             this.btnInscri.Text = "Registro";
+            this.tTip.SetToolTip(this.btnInscri, "Créer son compte");
             this.btnInscri.UseVisualStyleBackColor = false;
             this.btnInscri.Click += new System.EventHandler(this.btnInscri_Click);
             // 
@@ -67,6 +70,7 @@ namespace SaeTest
             this.btnConnec.Size = new System.Drawing.Size(225, 82);
             this.btnConnec.TabIndex = 1;
             this.btnConnec.Text = "Conexión";
+            this.tTip.SetToolTip(this.btnConnec, "Se connecter");
             this.btnConnec.UseVisualStyleBackColor = false;
             this.btnConnec.Click += new System.EventHandler(this.btnConnec_Click);
             // 
@@ -91,6 +95,7 @@ namespace SaeTest
             this.lblTitre.Size = new System.Drawing.Size(203, 50);
             this.lblTitre.TabIndex = 2;
             this.lblTitre.Text = "Bienvenido";
+            this.tTip.SetToolTip(this.lblTitre, "Bienvenu");
             // 
             // pbCharly
             // 
@@ -101,6 +106,7 @@ namespace SaeTest
             this.pbCharly.Size = new System.Drawing.Size(60, 180);
             this.pbCharly.TabIndex = 3;
             this.pbCharly.TabStop = false;
+            this.tTip.SetToolTip(this.pbCharly, "Créateur Charly Flu");
             this.pbCharly.MouseEnter += new System.EventHandler(this.pbCharly_MouseEnter);
             this.pbCharly.MouseLeave += new System.EventHandler(this.pbCharly_MouseLeave);
             // 
@@ -113,6 +119,7 @@ namespace SaeTest
             this.pbTanguy.Size = new System.Drawing.Size(60, 180);
             this.pbTanguy.TabIndex = 4;
             this.pbTanguy.TabStop = false;
+            this.tTip.SetToolTip(this.pbTanguy, "Créateur Tanguy Neu");
             this.pbTanguy.MouseEnter += new System.EventHandler(this.pbTanguy_MouseEnter);
             this.pbTanguy.MouseLeave += new System.EventHandler(this.pbTanguy_MouseLeave);
             // 
@@ -148,5 +155,6 @@ namespace SaeTest
         private System.Windows.Forms.Label lblTitre;
         private System.Windows.Forms.PictureBox pbCharly;
         private System.Windows.Forms.PictureBox pbTanguy;
+        private System.Windows.Forms.ToolTip tTip;
     }
 }
