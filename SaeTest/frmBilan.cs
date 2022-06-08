@@ -10,8 +10,7 @@ using System.Windows.Forms;
 using ceTe.DynamicPDF;
 using ceTe.DynamicPDF.PageElements;
 using System.Data.OleDb;
-
-
+using Label = ceTe.DynamicPDF.PageElements.Label;
 
 namespace SaeTest
 {
@@ -22,13 +21,15 @@ namespace SaeTest
         {
             InitializeComponent();
         }
-        public frmBilan(DataTable xtableUtilisateur,int xcodeUtile)
+        public frmBilan(DataTable xtableUtilisateur,int xcodeUtile,string xtitreCours,string xtitreLecon)
         {
             InitializeComponent();
             chcon = frmParent.instance.getLienBase();
             codeUtile = xcodeUtile;
             tableUtil = xtableUtilisateur;
             instance = this;
+            titreCours = xtitreCours;
+            titreLecon = xtitreLecon;
             this.BackgroundImage = System.Drawing.Image.FromFile(frmParent.instance.photoExiste(@"..\..\Photos\fond\wallpaperExo.jpg"));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
         }
@@ -36,6 +37,9 @@ namespace SaeTest
         Page pageJuste = new Page();
         Page pageFausse = new Page();
 
+
+        string titreCours;
+        string titreLecon;
         int numLecon;
         string chcon;
         private int codeUtile;
@@ -44,7 +48,7 @@ namespace SaeTest
         DataTable tableUtil = new DataTable();
         public static frmBilan instance;
 
-
+        //Charge le DataSet Local et Remplit le panel en fonction de la table envoyé au formulaire
         private void frmBilan_Load(object sender, EventArgs e)
         {
             pnlJuste.BackColor = System.Drawing.Color.FromArgb(150, 0, 0, 0);
@@ -54,7 +58,7 @@ namespace SaeTest
             chargementDsLocal();
             RemplissagePanel();
         }
-
+        //Télécharges directement le pdf dans un dossier, puis rappeles le frmExo
         private void btnTélécharger_Click(object sender, EventArgs e)
         {
             RemplissagePage();
@@ -64,6 +68,7 @@ namespace SaeTest
             frmParent.instance.chargeForm(new frmExo(codeUtile));
 
         }
+        //Remplit le panel en fonction de si l'Exercice est faux ou non 
         private void RemplissagePanel()
         {
             int topJuste = 10;
@@ -71,6 +76,7 @@ namespace SaeTest
             foreach(DataRow d in tableUtil.Rows)
             {
                 string réponseVrai = d["phraseVrai"].ToString();
+                //Si il n'y a rien dans réponse vrai, l'exercice est faux
                 if(réponseVrai=="")
                 {
                     string réponseFause = d["phraseFausse"].ToString();
@@ -115,10 +121,24 @@ namespace SaeTest
                 }
             }
         }
+        //Remplit la page du PDF dans 2 tableaux ( un tableau des exercices corrects, et un des exercices faux)
         private void RemplissagePage()
         {
+            
+            string requeteUtil = "codeUtil=" + codeUtile;
 
-            Table2 tableJuste = new Table2(0, 0, 400, 700);
+            DataRow []Utilisateur = dsLocal.Tables["Utilisateurs"].Select(requeteUtil);
+            string utilisateur = Utilisateur[0]["nomUtil"].ToString() + " " + Utilisateur[0]["pnUtil"].ToString();
+           
+
+            Label nomPrenom = new Label(utilisateur,0,0,504,20,ceTe.DynamicPDF.Font.Helvetica,16,TextAlign.Center);
+            pageJuste.Elements.Add(nomPrenom);
+            Label cours = new Label(titreCours, 0, 25, 504, 20, ceTe.DynamicPDF.Font.Helvetica, 14, TextAlign.Center);
+            pageJuste.Elements.Add(cours);
+            Label lecon = new Label(titreLecon, 0, 50, 504, 20, ceTe.DynamicPDF.Font.Helvetica,14, TextAlign.Center);
+            pageJuste.Elements.Add(lecon);
+
+            Table2 tableJuste = new Table2(0, 100, 400, 700);
             Table2 tableFausse = new Table2(0, 0, 450, 700);
 
             Column2 column1 = tableJuste.Columns.Add(200);
@@ -174,22 +194,10 @@ namespace SaeTest
                     row.Cells.Add(réponseVrai);
                 }
             }
-            /*
-            foreach (System.Windows.Forms.Label l in pnlJuste.Controls.OfType<System.Windows.Forms.Label>())
-            {
-                Cells
-            }
-
-            foreach (System.Windows.Forms.Label l in pnlFaux.Controls.OfType<System.Windows.Forms.Label>())
-            {
-                ceTe.DynamicPDF.PageElements.Label label = new ceTe.DynamicPDF.PageElements.Label(l.Text, 0, top, l.Width, l.Height);
-
-            }*/
             pageJuste.Elements.Add(tableJuste);
             pageFausse.Elements.Add(tableFausse);
-
-
         }
+        //Charge le DataSet Local
         private void chargementDsLocal()
         {
             connec.Open();

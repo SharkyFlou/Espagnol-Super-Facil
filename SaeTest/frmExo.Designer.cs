@@ -154,10 +154,11 @@ namespace SaeTest
             // 
             this.explicationExercice1.AutoSize = true;
             this.explicationExercice1.BackColor = System.Drawing.Color.Transparent;
+            this.explicationExercice1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.explicationExercice1.ForeColor = System.Drawing.Color.White;
-            this.explicationExercice1.Location = new System.Drawing.Point(45, 54);
+            this.explicationExercice1.Location = new System.Drawing.Point(25, 54);
             this.explicationExercice1.Name = "explicationExercice1";
-            this.explicationExercice1.Size = new System.Drawing.Size(579, 21);
+            this.explicationExercice1.Size = new System.Drawing.Size(708, 25);
             this.explicationExercice1.TabIndex = 4;
             this.explicationExercice1.Text = "Complétez les TextBox avec les mots correspondants à une traduction de la phrase." +
     "";
@@ -179,24 +180,26 @@ namespace SaeTest
             // 
             this.explicationExercice2.AutoSize = true;
             this.explicationExercice2.BackColor = System.Drawing.Color.Transparent;
+            this.explicationExercice2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.explicationExercice2.ForeColor = System.Drawing.Color.White;
             this.explicationExercice2.Location = new System.Drawing.Point(45, 54);
             this.explicationExercice2.Name = "explicationExercice2";
-            this.explicationExercice2.Size = new System.Drawing.Size(692, 21);
+            this.explicationExercice2.Size = new System.Drawing.Size(636, 50);
             this.explicationExercice2.TabIndex = 4;
-            this.explicationExercice2.Text = "Appuyez sur tout les boutons pour former une phrase, réappuyer sur les Labels pou" +
-    "r retirer le mot.";
+            this.explicationExercice2.Text = "Appuyez sur les boutons pour former une phrase, réappuyer sur les Labels\n                                             pour re" +
+    "tirer le mot.";
             // 
             // explicationExercice4
             // 
             this.explicationExercice4.AutoSize = true;
             this.explicationExercice4.BackColor = System.Drawing.Color.Transparent;
+            this.explicationExercice4.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.explicationExercice4.ForeColor = System.Drawing.Color.White;
-            this.explicationExercice4.Location = new System.Drawing.Point(45, 54);
+            this.explicationExercice4.Location = new System.Drawing.Point(30, 54);
             this.explicationExercice4.Name = "explicationExercice4";
-            this.explicationExercice4.Size = new System.Drawing.Size(579, 21);
-            this.explicationExercice4.TabIndex = 4;
-            this.explicationExercice4.Text = "Complétez les TextBox avec les mots correspondants à une traduction de la phrase." +
+            this.explicationExercice4.Size = new System.Drawing.Size(708, 25);
+            this.explicationExercice4.TabIndex = 20;
+            this.explicationExercice4.Text = "Complétez les TextBox avec les Terminaisons correspondantes au temps indiqué." +
     "";
             // 
             // btnRecommencer
