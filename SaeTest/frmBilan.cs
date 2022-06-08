@@ -60,7 +60,7 @@ namespace SaeTest
             RemplissagePage();
             document.Pages.Add(pageJuste);
             document.Pages.Add(pageFausse);
-            document.Draw("C:\\Users\\tneu\\Leçon" + numLecon + ".pdf");
+            document.Draw(@"..\..\pdfs\" + numLecon + ".pdf");
             frmParent.instance.chargeForm(new frmExo(codeUtile));
 
         }

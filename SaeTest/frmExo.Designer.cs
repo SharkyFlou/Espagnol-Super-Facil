@@ -63,7 +63,10 @@ namespace SaeTest
             // 
             // btnValider
             // 
+            this.btnValider.BackColor = System.Drawing.Color.Chartreuse;
             this.btnValider.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnValider.FlatAppearance.BorderSize = 0;
+            this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValider.ForeColor = System.Drawing.Color.Black;
             this.btnValider.Location = new System.Drawing.Point(710, 308);
             this.btnValider.Name = "btnValider";
@@ -71,20 +74,23 @@ namespace SaeTest
             this.btnValider.TabIndex = 0;
             this.btnValider.Text = "Valider";
             this.tTip.SetToolTip(this.btnValider, "Valider la proposition");
-            this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.UseVisualStyleBackColor = false;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // btnAide
             // 
+            this.btnAide.BackColor = System.Drawing.Color.DarkGray;
             this.btnAide.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAide.FlatAppearance.BorderSize = 0;
+            this.btnAide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAide.ForeColor = System.Drawing.Color.Black;
-            this.btnAide.Location = new System.Drawing.Point(202, 308);
+            this.btnAide.Location = new System.Drawing.Point(180, 308);
             this.btnAide.Name = "btnAide";
             this.btnAide.Size = new System.Drawing.Size(75, 33);
             this.btnAide.TabIndex = 1;
             this.btnAide.Text = "Indice";
             this.tTip.SetToolTip(this.btnAide, "Donner un indice");
-            this.btnAide.UseVisualStyleBackColor = true;
+            this.btnAide.UseVisualStyleBackColor = false;
             this.btnAide.Click += new System.EventHandler(this.btnAide_Click);
             // 
             // pnlExo1
@@ -195,7 +201,10 @@ namespace SaeTest
             // 
             // btnRecommencer
             // 
+            this.btnRecommencer.BackColor = System.Drawing.Color.DarkOrange;
             this.btnRecommencer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRecommencer.FlatAppearance.BorderSize = 0;
+            this.btnRecommencer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecommencer.ForeColor = System.Drawing.Color.Black;
             this.btnRecommencer.Location = new System.Drawing.Point(46, 308);
             this.btnRecommencer.Name = "btnRecommencer";
@@ -203,7 +212,7 @@ namespace SaeTest
             this.btnRecommencer.TabIndex = 3;
             this.btnRecommencer.Text = "Recommencer";
             this.tTip.SetToolTip(this.btnRecommencer, "Recommencer l\'exercice actuell");
-            this.btnRecommencer.UseVisualStyleBackColor = true;
+            this.btnRecommencer.UseVisualStyleBackColor = false;
             this.btnRecommencer.Click += new System.EventHandler(this.btnRecommencer_Click);
             // 
             // contextMenuStrip1
